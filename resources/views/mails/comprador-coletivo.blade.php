@@ -27,7 +27,7 @@
                         fresco diretamente ao pescador e seguramente aos melhores preços de mercado.
                   </p>
                   <p>
-                        <strong> Seu login:</strong> {{ $email }}
+                        <strong> Seu login:</strong> {{ $email }}<br>
                         <strong> Sua senha:</strong> {{ $senha }}
                   </p>
              <p> OBS : Obtenha mais informações em <a href="www.karapau.pt">www.karapau.pt</a> , ou contacte nos através dos meios que colocamos a
