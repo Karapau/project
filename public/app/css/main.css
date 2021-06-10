@@ -1,0 +1,143 @@
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.header {
+  background-color: #DCF2FB;
+  border-bottom: 4px solid #119bc5;
+  border-top: 4px solid #119bc5;
+}
+
+.main {
+  background-color: #DCF2FB;
+  height: 100vh;
+}
+
+.title {
+  border-bottom: 2px solid #119bc5;
+}
+
+.title h4 {
+  font-weight: 700;
+}
+
+.title h3 {
+  font-weight: 800;
+}
+
+.menu-ic a {
+  color: #000;
+  font-size: 1.3em;
+}
+
+.menu-ic .a-1 {
+  font-size: 3em;
+}
+
+.menu-ic .a-2 {
+  font-size: 3em;
+}
+
+.menu-ic .a-3 {
+  font-size: 3em;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  left: 40px;
+  background-color: #07b0f3;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 3px #999;
+          box-shadow: 2px 2px 3px #999;
+}
+
+.my-float {
+  margin-top: 18px;
+  font-size: 1.5em;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+/*# sourceMappingURL=main.css.map */

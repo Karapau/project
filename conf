@@ -1,0 +1,2 @@
+ chown -R www-data.www-data /var/www/html/karapauproject/storage
+chown -R www-data.www-data /var/www/html/karapauproject/bootstrap/cache
