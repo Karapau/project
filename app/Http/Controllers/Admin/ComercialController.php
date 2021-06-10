@@ -34,6 +34,8 @@ class ComercialController extends Controller
   {
     $comprador1 = CompradorIndividual::where('id', $id)->get();
     $mails = new Mails();
+    $mails['email'] = $comprador1[0]->email;
+    $mails['senha'] = $comprador1[0]->codigo;
 
     Mail::to($comprador1[0]->email)->send(new CompradorColetivoMail($mails));
 
@@ -43,7 +45,9 @@ class ComercialController extends Controller
   {
     $comprador1 = CompradorColetivo::where('id', $id)->get();
     $mails = new Mails();
-
+    $mails['email'] = $comprador1[0]->email;
+    $mails['senha'] = $comprador1[0]->codigo;
+    
     Mail::to($comprador1[0]->email)->send(new CompradorColetivoMail($mails));
     return redirect()->back();
   }

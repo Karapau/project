@@ -16,20 +16,22 @@
 
 
                   <p>Seja bem-vindo à Karapau, a plataforma que une pescadores e consumidores.
-                        O seu registo foi feito com sucesso. ( em destaque )</p>
+                       <strong> O seu registo foi feito com sucesso.</strong></p>
                   <p> È para nós motivo de regozijo tê-lo como nosso usuário. Temos como missão garantir aos
                         consumidores em geral não só as
                         melhores práticas ao longo de toda a cadeia de distribuição como também criar condições ao
                         pescador para que possa ver o
                         esforço do seu trabalho ser recompensado de forma justa e equilibrada.</p>
-                  <p> Ao instalar a nossa aplicação (link para instalar a aplicação) pode começar desde já a comprar
+                  <p> Ao instalar a nossa aplicação  pode começar desde já a comprar
                         peixe verdadeiramente
                         fresco diretamente ao pescador e seguramente aos melhores preços de mercado.
                   </p>
-   
+                  <p>
+                        Seu login: {{ $email }}
+                        Sua senha: {{ $senha }}
+                  </p>
              <p> OBS : Obtenha mais informações em <a href="www.karapau.pt">www.karapau.pt</a> , ou contacte nos através dos meios que colocamos a
-                  sua disposição (
-                  inserir ícones das redes sociais )</p>
+                  sua disposição </p>
 
             </div>
       </div>

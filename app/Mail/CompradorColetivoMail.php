@@ -33,7 +33,8 @@ class CompradorColetivoMail extends Mailable
     {
         return $this->markdown('mails.comprador-coletivo')->subject('Boas vindas ao Karapau!')->with(
             [
-                
+                'email' => $this->mail->email,
+                'senha' => $this->mail->senha,
             ]
         );
     }
