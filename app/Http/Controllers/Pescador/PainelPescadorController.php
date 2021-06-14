@@ -6,6 +6,7 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Models\PescadorPedido;
 use App\Http\Controllers\Controller;
+use App\Models\SellToWallet;
 use App\Models\UserProduct;
 
 class PainelPescadorController extends Controller
@@ -14,7 +15,8 @@ class PainelPescadorController extends Controller
     {
         $produtos = Produto::where('pescador_id', auth()->guard('pescador')->user()->id)->get();
         $pedidos = PescadorPedido::with(['orders', 'adresses', 'products'])->where('pescador_id', auth()->user()->id)->get();
-        return view('pescador.pages.index', compact('produtos', 'pedidos'));
+        $wallet = SellToWallet::where('pescador_id', auth()->user()->id)->where('status', 1)->sum('value');
+        return view('pescador.pages.index', compact('produtos', 'pedidos', 'wallet'));
     }
 
     public function pedidos()

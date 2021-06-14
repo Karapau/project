@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PescadorPedido;
 use App\Models\Produto;
+use App\Models\SellToWallet;
 use App\Models\UserOrder;
 use App\Models\UserProduct;
 
@@ -62,6 +63,16 @@ class CheckoutController extends Controller
                 'pescador_id' => $item->attributes->pescador_id,
             ]);
 
+            $itemQty = $item->price * $item->quantity;
+            $value = $itemQty - $itemQty * (40/100);
+
+            SellToWallet::create([
+                'pescador_id' => $item->attributes->pescador_id,
+                'product_id' =>  $item->id,
+                'value' => $value,
+                
+            ]);
+
             $quantidade = Produto::find($item->id);
             $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
             $quantidade->save();
@@ -73,6 +84,8 @@ class CheckoutController extends Controller
                 'produtos' => $produtos->id,
                 'user_id' => auth()->user()->id,
             ]);
+
+     
         }
 
 
