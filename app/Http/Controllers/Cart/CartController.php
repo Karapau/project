@@ -26,7 +26,7 @@ class CartController extends Controller
                 'user_id' => $product['user_id'],
                 'pescador_id' => $product['pescador_id'],
                 'embarcacao' => $product['embarcacao'],
-                
+                'margem' =>  $product['margem'],
              
             )
         ));

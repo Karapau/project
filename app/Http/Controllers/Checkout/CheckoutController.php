@@ -64,7 +64,7 @@ class CheckoutController extends Controller
             ]);
 
             $itemQty = $item->price * $item->quantity;
-            $value = $itemQty - $itemQty * (40/100);
+            $value = $itemQty - $itemQty * ($item->attributes->margem/100);
 
             SellToWallet::create([
                 'pescador_id' => $item->attributes->pescador_id,
