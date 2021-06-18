@@ -41,7 +41,7 @@ class StoreLoginController extends Controller
             return redirect('store-index');
         }
    
-        return "Usuário ou senha incorretos";
+        return redirect()->back()->with('error', 'Você ainda não tem permissão para acessar');
     }
 
     public function store(Request $request)

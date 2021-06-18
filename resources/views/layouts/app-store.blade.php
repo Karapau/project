@@ -69,6 +69,22 @@
         </script>
 
     @endif
+    @if (Session::has('error'))
+        <script type="text/javascript">
+            Swal.fire({
+                title: 'Oops!',
+                icon: 'error',
+                text: "{{ Session::get('error') }}",
+                timer: 5000,
+                type: 'error'
+            }).then((result) => {
+                // Reload the Page
+                location.reload();
+            });
+
+        </script>
+
+    @endif
     <script type="text/javascript">
     var url = "{{ route('store.produto', '') }}"
     var urlImage = "{{ url('storage/portos') }}"
