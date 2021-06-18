@@ -24,7 +24,13 @@
                         <th scope="row">{{ $comp1->id }}</th>
                         <td>{{ $comp1->name }}</td>
                         <td>{{ $comp1->email }}</td>
-                        <td>{{ $comp1->comercial->name }}</td>
+                        <td>
+                            @if ($comp1->user_id == 1)
+                                Site
+                            @else
+                                {{ $comp1->comercial->name }}
+                            @endif
+                        </td>
                         <td>
                             @if ($comp1->status == 0)
                             Inativo @else
@@ -37,20 +43,20 @@
                                     @if ($comp1->type == 'individual')
                                         <a href="{{ route('admin.clientes.edit-ind', $comp1->id) }}"><button
                                                 class="btn btn-sm btn-dark">Editar</button></a>
-                                    @elseif($comp1->type == 'coletivo')    
-                                    <a href="{{ route('admin.clientes.edit-col', $comp1->id) }}"><button
-                                          class="btn btn-sm btn-dark">Editar</button></a>  
+                                    @elseif($comp1->type == 'coletivo')
+                                        <a href="{{ route('admin.clientes.edit-col', $comp1->id) }}"><button
+                                                class="btn btn-sm btn-dark">Editar</button></a>
                                     @endif
                                 </div>
 
                                 <div>
                                     <form action="{{ route('admin.update.status', $comp1->id) }}" method="POST">
-                                          @csrf
+                                        @csrf
                                         @if ($comp1->status == 0)
-                                        <input type="hidden" name="status" value="1">
+                                            <input type="hidden" name="status" value="1">
                                             <button type="submit" class="btn btn-sm btn-success">Ativar</button>
                                         @else
-                                        <input type="hidden" name="status" value="0">
+                                            <input type="hidden" name="status" value="0">
                                             <button type="submit" class="btn btn-sm btn-danger">Inativar</button>
                                         @endif
                                     </form>
