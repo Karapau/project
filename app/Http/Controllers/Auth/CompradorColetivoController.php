@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Mails;
+use App\Mail\AdminMail;
+use App\Models\Comprador;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CompradorColetivo;
 use App\Mail\CompradorColetivoMail;
 use App\Http\Controllers\Controller;
-use App\Mail\AdminMail;
+use App\Models\BuyerColective;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -42,44 +44,37 @@ class CompradorColetivoController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'email' => 'required',
-            'nome' => 'required',
-        ]);
+        // $validated = $request->validate([
+        //     'email' => 'required',
+        //     'nome' => 'required',
+        // ]);
 
         $random = Str::random(9);
         $user = auth()->guard('consultor')->user()->id;
         $dados = $request->all();
-        $save = CompradorColetivo::create([
+      
+        $comprador = Comprador::create([
             'user_id' => $user,
-            'nome' => $request->nome,
-            'telefone' => $request->telefone,
-            'telemovel_empresa' => $request->telemovel_empresa,
+            'name' =>  $dados['name'],
+            'lastname' => 'coletivo',
+            'telemovel' => $request->telemovel,
             'email' => $request->email,
             'password' => Hash::make($random),
             'codigo' =>  $random,
+            'type' => 'coletivo',
+        ]);
+
+        $save = BuyerColective::create([
+            'comprador_id' => $comprador->id,
             'morada' => $request->morada,
             'nif' => $request->nif,
             'contato' => $request->contato,
-            'telemovel' => $request->telemovel,
+            'telefone' => $request->telefone,
+            'telemovel_empresa' => $request->telemovel_empresa,
             'tipo' => $request->tipo,
         ]);
 
-        // $mails = new Mails();
-      
-        // $mails['nome'] = $request->nome;
-        // $mails['email'] = $request->email;
-        // $mails['senha'] = $random;
 
-        // Mail::to($request->email)->send(new CompradorColetivoMail($mails));
-
-        // $mails = new Mails();
-        // $mails['consultor'] = auth()->user()->name;
-        // $mails['nome'] = $request->nome;
-        // $mails['email'] = $request->email;
-        // $mails['senha'] = $random;
-
-        // Mail::to('cadastros@karapau.pt')->send(new AdminMail($mails));
 
         return redirect()->route('consultor')->with('success', 'Comprador criado com sucesso!');
     }

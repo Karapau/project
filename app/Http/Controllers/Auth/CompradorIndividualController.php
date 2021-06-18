@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CompradorIndividualMail;
-
+use App\Models\BuyerInduvidual;
+use App\Models\Comprador;
 
 class CompradorIndividualController extends Controller
 {
@@ -47,33 +48,24 @@ class CompradorIndividualController extends Controller
         $random = Str::random(9);
         $user = auth()->guard('consultor')->user()->id;
         $dados = $request->all();
-        $save = CompradorIndividual::create([
+        $comprador = Comprador::create([
             'user_id' => $user,
-            'nome' => $request->nome,
-            'sobrenome' => $request->sobrenome,
+            'name' => $request->nome,
+            'lastname' => $request->sobrenome,
             'email' => $request->email,
             'password' => Hash::make($random),
             'telemovel' => $request->telemovel,
+            'codigo' =>  $random,
+            'type' => 'individual',
+        ]);
+
+        $save = BuyerInduvidual::create([
+            'comprador_id' => $comprador->id,
             'morada' => $request->morada,
             'nif' => $request->nif,
-            'codigo' =>  $random,
         ]);
 
 
-        // $mails = new Mails();
-        // $mails['consultor'] = auth()->user()->name;
-        // $mails['nome'] = $request->nome;
-        // $mails['email'] = $request->email;
-        // $mails['senha'] = $random;
-
-        // Mail::to('cadastros@karapau.pt')->send(new AdminMail($mails));
-
-        // $mails = new Mails();
-        // $mails['nome'] = $request->nome;
-        // $mails['email'] = $request->email;
-        // $mails['senha'] = $random;
-
-        // Mail::to($request->email)->send(new CompradorIndividualMail($mails));
 
         return redirect()->route('consultor')->with('success', 'Comprador criado com sucesso!');
     }

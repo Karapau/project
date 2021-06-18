@@ -55,11 +55,6 @@ return [
             'provider' => 'buyers',
         ],
 
-        'compradorind' => [
-            'driver' => 'session',
-            'provider' => 'compredoresinds',
-        ],
-
 
 
         'api' => [
@@ -101,13 +96,10 @@ return [
             'model' => App\Models\Pescador::class,
         ],
 
-        'compredoresinds' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\CompradorIndividual::class,
-        ],
+  
         'buyers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\CompradorColetivo::class,
+            'model' => App\Models\Comprador::class,
         ],
 
 

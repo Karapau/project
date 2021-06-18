@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\ComercialController;
 use App\Models\CompradorIndividual;
 use Illuminate\Support\Facades\Route;
@@ -84,7 +85,12 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('estatistica/{id}', [EstatiscaDiariaController::class, 'index'])->name('admin.estatistica');
     Route::post('estatistica/store', [EstatiscaDiariaController::class, 'store'])->name('admin.estatistica.store');
 
-
+    Route::get('cliente', [ClienteController::class, 'index'])->name('admin.clientes');
+    Route::get('cliente/edit-ind/{id}', [ClienteController::class, 'editInd'])->name('admin.clientes.edit-ind');
+    Route::get('cliente/edit-col/{id}', [ClienteController::class, 'editCol'])->name('admin.clientes.edit-col');
+    Route::post('cliente-ind-update/{id}', [ClienteController::class, 'updateIndividual'])->name('admin.update.individual');
+    Route::post('cliente-col-update/{id}', [ClienteController::class, 'updateColetivo'])->name('admin.update.coletivo');
+    Route::any('cliente-status/{id}', [ClienteController::class, 'ativar'])->name('admin.update.status');
 
     Route::get('consultor', [ComercialController::class, 'index'])->name('admin.consultores');
     Route::get('consultor-create', [ComercialController::class, 'create'])->name('admin.consultores.create');
@@ -164,7 +170,7 @@ Route::middleware('auth:pescador')->group(function(){
 Route::get('store-login-page', [StoreLoginController::class, 'index'])->name('store.login');
 Route::post('store-login', [StoreLoginController::class, 'login'])->name('store.login.post');
 
-Route::group(['middleware' => ['auth:compradorind']], function(){
+Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('store-index', [StoreController::class, 'index'])->name('store.index');
     Route::get('store-index-2', [StoreController::class, 'index'])->name('store.index.2');
     Route::get('store-porto', [StoreController::class, 'porto'])->name('store.porto');

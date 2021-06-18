@@ -37,7 +37,7 @@
                         <p>0</p>
                   </div>
                   <div class="col-4">
-                        {{ $comp->nome }}
+                        {{ $comp->name }}
                   </div>
                   <div class="col-4">
                      <a href="{{ route('consultor.edit.individual', $comp->id) }}"> <span>Concluir</span></a>
@@ -45,21 +45,7 @@
             </div>
       </div>
       @endforeach
-      @foreach ($incomplete_col as $comp)
-      <div class="ativo my-3 text-center py-3">
-            <div class="container row">
-                  <div class="col-4 dia">
-                        <p>0</p>
-                  </div>
-                  <div class="col-4">
-                        {{ $comp->nome }}
-                  </div>
-                  <div class="col-4">
-                       <a href="{{ route('consultor.edit.coletivo', $comp->id) }}"> <span>Concluir</span></a>
-                  </div>
-            </div>
-      </div>
-      @endforeach
+
 
 
 

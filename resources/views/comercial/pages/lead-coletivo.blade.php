@@ -32,7 +32,7 @@
       <form action="{{ route('consultor.comprador-coletivo.store') }}" method="POST">
             @csrf
             <div class="form-group input-material">
-                  <input type="text" class="form-control" name="nome" id="name-field">
+                  <input type="text" class="form-control" name="name" id="name-field">
                   <label for="name-field">Nome da Empresa</label>
             </div>
 

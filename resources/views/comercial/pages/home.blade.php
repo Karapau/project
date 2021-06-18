@@ -37,33 +37,33 @@
                 </div>
             </div>
       </div>
-      @php $comp = $comprador1->count() + $comprador2->count() @endphp
-      @php $comp_ativo = $ativos_individual->count() + $ativos_coletivo->count() @endphp
+      @php $comp = $comprador1->count()  @endphp
+      {{-- @php $comp_ativo = $ativos_individual->count() + $ativos_coletivo->count() @endphp --}}
       <div class="container mt-3">
             <div class="ativos px-4">
                   <div class="py-4">
                         <a href=""> <i class="fas fa-thumbs-up"></i> Compradores Ativos</a>
-                        <h3>{{ $comp_ativo }}/100</h3>
+                        <h3>{{ $ativos->count() }}/100</h3>
                   </div>
             </div>
       </div>
-      @php $comp = $comprador1->count() + $comprador2->count() @endphp
-      @php $comp_inativo = $inativos_individual->count() + $inativos_coletivo->count() @endphp
+     
+      {{-- @php $comp_inativo = $inativos_individual->count() + $inativos_coletivo->count() @endphp --}}
       <div class="container mt-3">
             <div class="inativos px-4">
                   <div class="py-4">
                         <a href=""> <i class="fas fa-thumbs-down"></i> Compradores Inativos</a>
-                        <h3>{{ $comp_inativo }}/{{ $comp }}</h3>
+                        <h3>{{ $inativos->count() }}</h3>
                   </div>
             </div>
       </div>
-      @php $comp = $comprador1->count() + $comprador2->count() @endphp
-      @php $comp_incompleto = count($incomplete_col) + count($incomplete_ind) @endphp
+      @php $comp = $comprador1->count()  @endphp
+      {{-- @php $comp_incompleto = count($incomplete_col) + count($incomplete_ind) @endphp --}}
       <div class="container mt-3">
             <div class="incompletos px-4">
                   <div class="py-4">
                         <a href=""> <i class="fas fa-ban"></i> CADASTROS INCOMPLETOS</a>
-                        <h3>{{ $comp_incompleto }}</h3>
+                        <h3>{{ count($incomplete_ind) }}</h3>
                   </div>
             </div>
       </div>

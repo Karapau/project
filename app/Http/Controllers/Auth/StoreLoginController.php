@@ -36,14 +36,11 @@ class StoreLoginController extends Controller
     public function login(Request $request)
     {
 
-        if (Auth::guard('buyer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('buyer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1], )) {
 
             return redirect('store-index');
         }
-        if (Auth::guard('compradorind')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
-            return redirect('store-index');
-        }
+   
         return "Usuário ou senha incorretos";
     }
 

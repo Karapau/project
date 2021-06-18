@@ -31,30 +31,30 @@
 <div class="container login-py">
       <div class="mt-3">
             <div class="wrapper">
-                  <form action="{{ route('consultor.update.individual', $comprador_ind->id) }}" method="POST">
+                  <form action="{{ route('consultor.update.individual', $comprador->id) }}" method="POST">
                         @csrf
                         <div class="form-group input-material">
-                              <input type="text" class="form-control" value="{{ $comprador_ind->nome }}" name="nome" id="name-field">
+                              <input type="text" class="form-control" value="{{ $comprador->name }}" name="name" id="name-field">
                               <label for="name-field">Nome</label>
                         </div>
                         <div class="form-group input-material">
-                              <input type="text" class="form-control" value="{{ $comprador_ind->sobrenome }}" name="sobrenome" id="name-field">
+                              <input type="text" class="form-control" value="{{ $comprador->lastname }}" name="lastname" id="name-field">
                               <label for="name-field">Sobrenome</label>
                         </div>
                         <div class="form-group input-material">
-                              <input type="email" class="form-control" value="{{ $comprador_ind->email }}" name="email" id="name-field">
+                              <input type="email" class="form-control" value="{{ $comprador->email }}" name="email" id="name-field">
                               <label for="name-field">Email</label>
                         </div>
                         <div class="form-group input-material">
-                              <input type="text" class="form-control" value="{{ $comprador_ind->telemovel }}" name="telemovel" id="name-field">
+                              <input type="text" class="form-control" value="{{ $comprador->telemovel }}" name="telemovel" id="name-field">
                               <label for="name-field">Telemovel</label>
                         </div>
                         <div class="form-group input-material">
-                              <input type="text" class="form-control" value="{{ $comprador_ind->morada }}" name="morada" id="name-field">
+                              <input type="text" class="form-control" value="{{ $comprador->individuais[0]->morada }}" name="morada" id="name-field">
                               <label for="name-field">Morada</label>
                         </div>
                         <div class="form-group input-material">
-                              <input type="text" class="form-control" value="{{ $comprador_ind->nif }}" name="nif" id="name-field">
+                              <input type="text" class="form-control" value="{{ $comprador->individuais[0]->nif }}" name="nif" id="name-field">
                               <label for="name-field">NIF</label>
                         </div>
 

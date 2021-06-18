@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompradorColetivosTable extends Migration
+class CreateCompradorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateCompradorColetivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('comprador_coletivos', function (Blueprint $table) {
+        Schema::create('compradors', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
-            $table->string('nome');
-            $table->string('sobrenome');
+            $table->string('name');
+            $table->string('lastname')->nullable();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('password-confirm')->nullable();
-            $table->string('telemovel');
-            $table->string('morada');
-            $table->string('nif')->nullable();
-            $table->string('tipo');
+            $table->string('codigo');
+            $table->string('telemovel')->nullable();
             $table->string('status')->default(0);
+            $table->string('type');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ class CreateCompradorColetivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comprador_coletivos');
+        Schema::dropIfExists('compradors');
     }
 }

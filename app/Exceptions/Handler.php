@@ -56,9 +56,6 @@ class Handler extends ExceptionHandler
             case 'pescador':
                 $login = 'login.pescador';
                 break;
-            case 'compradorind':
-                $login = 'store.login';
-                break;
             case 'buyer':
                 $login = 'store.login';
                 break;

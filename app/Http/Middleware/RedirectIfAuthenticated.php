@@ -25,9 +25,6 @@ class RedirectIfAuthenticated
         if ($guard == "pescador" && Auth::guard($guard)->check()) {
             return redirect('pescador');
         }
-        if ($guard == "compradorind" && Auth::guard($guard)->check()) {
-            return redirect('store-index');
-        }
         if ($guard == "buyer" && Auth::guard($guard)->check()) {
             return redirect('store-index');
         }

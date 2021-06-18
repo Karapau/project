@@ -60,6 +60,9 @@
                               <a href="#"><i class="fas fa-truck"></i> Entregadores</a>
                         </li>
                         <li>
+                              <a href="{{ route('admin.clientes') }}"><i class="fas fa-users"></i> Clientes</a>
+                        </li>
+                        <li>
                               <a href="{{ route('admin.consultores') }}"><i class="fas fa-briefcase"></i> Comerciais</a>
                         </li>
                         <li>

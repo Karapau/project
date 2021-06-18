@@ -22,7 +22,9 @@ class CreateCompradorIndividualsTable extends Migration
             $table->string('password');
             $table->string('password-confirm')->nullable();
             $table->string('telemovel');
+            $table->string('nif')->nullable();
             $table->string('morada');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

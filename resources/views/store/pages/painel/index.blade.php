@@ -9,13 +9,10 @@
                         <img src="{{ url('app-store/img/icons/icone-notificacoes.svg') }}" alt="">
                   </div>
                   <div class="mx-3">
-                        @if(auth()->guard('compradorind'))
+                      
                         <a href="{{ route('store.user.edit-ind', auth()->user()->id) }}"> <img
                                     src="{{ url('app-store/img/icons/edit-off.svg') }}" alt=""></a>
-                        @elseif(auth()->guard() == 'buyer')
-                        <a href="{{ route('store.user.edit-col') }}"> <img
-                                    src="{{ url('app-store/img/icons/edit-off.svg') }}" alt=""></a>
-                        @endif
+                  
                   </div>
 
             </div>
@@ -25,7 +22,7 @@
 
 <div class="container">
       <div class="title">
-            <p>Olá, {{ auth()->user()->nome }}</p>
+            <p>Olá, {{ auth()->user()->name }}</p>
       </div>
 
       <div class="row mt-5 menu-icons">

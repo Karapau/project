@@ -9,6 +9,7 @@ use App\Models\CompradorColetivo;
 use App\Mail\CompradorColetivoMail;
 use App\Models\CompradorIndividual;
 use App\Http\Controllers\Controller;
+use App\Models\Comprador;
 use Illuminate\Support\Facades\Mail;
 
 class ComercialController extends Controller
@@ -25,14 +26,14 @@ class ComercialController extends Controller
   }
   public function clientes($id)
   {
-    $comprador1 = CompradorIndividual::where('user_id', $id)->get();
+    $comprador1 = Comprador::where('user_id', $id)->get();
     $comprador2 = CompradorColetivo::where('user_id', $id)->get();
     return view('painel.pages.consultores.clientes', compact('comprador1', 'comprador2'));
   }
 
   public function emailIndividual($id)
   {
-    $comprador1 = CompradorIndividual::where('id', $id)->get();
+    $comprador1 = Comprador::where('id', $id)->get();
     $mails = new Mails();
     $mails['email'] = $comprador1[0]->email;
     $mails['senha'] = $comprador1[0]->codigo;
