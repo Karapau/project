@@ -70,7 +70,7 @@
 
             </tbody>
         </table>
-
+{{ $compradores->links() }}
 
     </div>
 

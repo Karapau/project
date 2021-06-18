@@ -15,7 +15,7 @@ class ClienteController extends Controller
     {
 
 
-        $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->get();
+        $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->paginate(15);
 
         return view('painel.pages.clientes.index', compact('compradores'));
     }
