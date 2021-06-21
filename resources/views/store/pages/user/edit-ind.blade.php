@@ -19,7 +19,7 @@
 
 <div class="container">
       <div class="title">
-            <p>Olá, {{ auth()->user()->nome }}</p>
+            <p>Olá, {{ auth()->user()->name }}</p>
       </div>
 
       <div class="mt-4">
@@ -27,12 +27,12 @@
                   @csrf
                   <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
-                        <input type="text" class="form-control" name="nome" value="{{ $user->nome }}">
+                        <input type="text" class="form-control" name="nome" value="{{ $user->name }}">
 
                   </div>
                   <div class="form-group">
                         <label for="exampleInputEmail1">Sobrenome</label>
-                        <input type="text" class="form-control" name="sobrenome" value="{{ $user->sobrenome }}">
+                        <input type="text" class="form-control" name="sobrenome" value="{{ $user->lastname }}">
 
                   </div>
                   <div class="form-group">

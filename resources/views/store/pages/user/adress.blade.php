@@ -19,7 +19,7 @@
 
 <div class="container">
       <div class="title">
-            <p>Olá, {{ auth()->user()->nome }}</p>
+            <p>Olá, {{ auth()->user()->name }}</p>
       </div>
 
       <div class="mt-4">

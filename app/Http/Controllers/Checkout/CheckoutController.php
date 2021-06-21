@@ -43,7 +43,7 @@ class CheckoutController extends Controller
             'payment_mothod' => $request->payment,
             'shipping_mothod' => $request->shipment,
             'user_id' => auth()->user()->id,
-            'user_name' => auth()->user()->nome,
+            'user_name' => auth()->user()->name,
             'email' => auth()->user()->email,
             'telemovel' => auth()->user()->telemovel,
             'total' => \Cart::getTotal(),
