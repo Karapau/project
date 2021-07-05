@@ -22,16 +22,16 @@ class ClienteController extends Controller
 
     public function editInd($id)
     {
-        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);  
+        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);
         return view('painel.pages.clientes.edit-ind', compact('comprador'));
     }
     public function editCol($id)
     {
-        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);  
+        $comprador = Comprador::with('individuais', 'coletivos', 'comercial')->find($id);
         return view('painel.pages.clientes.edit-col', compact('comprador'));
     }
 
-    
+
     public function updateIndividual(Request $request, $id)
     {
         $comprador = Comprador::with('individuais', 'coletivos')->find($id);
@@ -40,7 +40,7 @@ class ClienteController extends Controller
         $comprador->name =     $request->get('name');
         $comprador->lastname = $request->get('lastname');
         $comprador->email = $request->get('email');
-        $comprador->password = Hash::make($request->get('email'));
+        $comprador->password = Hash::make($request->get('password'));
         $comprador->telemovel = $request->get('telemovel');
         $comprador->save();
 
@@ -62,7 +62,7 @@ class ClienteController extends Controller
         $comprador->name =     $request->get('name');
         $comprador->email = $request->get('email');
         $comprador->telemovel = $request->get('telemovel');
-        $comprador->password = Hash::make($request->get('email'));
+        $comprador->password = Hash::make($request->get('password'));
         $comprador->save();
 
 

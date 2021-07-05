@@ -28,7 +28,7 @@
                             @if ($comp1->user_id == 1)
                                 Site
                             @else
-                                {{ $comp1->comercial->name }}
+                                {{ $comp1->comercial->name ?? ''}}
                             @endif
                         </td>
                         <td>
