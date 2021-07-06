@@ -30,7 +30,7 @@
                         <strong> Seu login:</strong> {{ $email }}<br>
                         <strong> Sua senha:</strong> {{ $senha }}
                   </p>
-                  <p><strong>Link para baixar o APP</strong><a href="http://104.236.76.162/download/app-debug.apk">Clique aqui para baixar</a></p>
+                  <p><strong>Link para baixar o APP</strong> <a href="http://104.236.76.162/download/karapau.apk"> Clique aqui para baixar</a></p>
              <p> OBS : Obtenha mais informações em <a href="www.karapau.pt">www.karapau.pt</a> , ou contacte nos através dos meios que colocamos a
                   sua disposição </p>
 
