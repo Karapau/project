@@ -197,6 +197,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('store/checkout/adress', [CheckoutController::class, 'adress'])->name('store.checkout.adress');
 
     Route::get('store/adress', [AdressController::class, 'index'])->name('store.adress');
+    Route::get('adress/cep', [AdressController::class, 'buscaCep'])->name('adress.cep');
 
     Route::post('store/adress/save', [AdressController::class, 'store'])->name('store.adress.save');
 

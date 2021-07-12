@@ -105,7 +105,7 @@
                                    " "+'src="'+urlImage+'/'+data[i].image+'" alt=""></a>'+
                         '<p>'+data[i].nome+'</p></div>');
                       }
-                   
+
                 }
             });
         })
@@ -119,6 +119,27 @@
         });
 
     </script>
+        <script type="text/javascript">
+
+            $('#buscar').on('click', function() {
+                $value = $('#cep').val();
+                $.ajax({
+                    type: 'get',
+                    url: '{{ url('adress/cep') }}',
+                    data: {
+                        'search': $value
+                    },
+                    success: function(data) {
+                          console.log(data);
+                          $('#morada').val(data.Morada);
+                          $('#regiao').val(data.Localidade);
+                          $('#distrito').val(data.Distrito);
+                          $('#conselho').val(data.Concelho);
+                          $('#freguesia').val(data.Freguesia);
+                    }
+                });
+            })
+        </script>
 </body>
 
 </html>

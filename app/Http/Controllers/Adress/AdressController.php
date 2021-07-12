@@ -6,6 +6,7 @@ use App\Models\AdressBuyer;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class AdressController extends Controller
 {
@@ -29,6 +30,14 @@ class AdressController extends Controller
         //
     }
 
+    public function buscaCep(Request $request)
+    {
+
+        $valor = $request->search;
+        $url = Http::get('https://api.duminio.com/ptcp/ptapi60ec808f3e8951.33243239/'.$valor);
+
+        return $url->collect();
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +52,7 @@ class AdressController extends Controller
         }else{
             return redirect()->route('store.checkout')->with('success', 'Endereço Salvo');
         }
-       
+
     }
 
     /**
