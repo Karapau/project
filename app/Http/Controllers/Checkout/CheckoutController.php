@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Checkout;
 
-use App\Models\AdressBuyer;
-use Darryldecode\Cart\Cart;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\PescadorPedido;
 use App\Models\Produto;
-use App\Models\SellToWallet;
+use App\Models\PortoTax;
 use App\Models\UserOrder;
+use App\Models\AdressBuyer;
 use App\Models\UserProduct;
+use Darryldecode\Cart\Cart;
+use App\Models\SellToWallet;
+use Illuminate\Http\Request;
+use App\Models\PescadorPedido;
+use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
@@ -21,8 +22,9 @@ class CheckoutController extends Controller
     }
     public function index()
     {
+        $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
-        return view('store.pages.painel.checkout', compact('adresses'));
+        return view('store.pages.painel.checkout', compact('adresses', 'taxa'));
     }
 
     public function payment(Request $request)
@@ -70,7 +72,7 @@ class CheckoutController extends Controller
                 'pescador_id' => $item->attributes->pescador_id,
                 'product_id' =>  $item->id,
                 'value' => $value,
-                
+
             ]);
 
             $quantidade = Produto::find($item->id);
@@ -85,7 +87,7 @@ class CheckoutController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
-     
+
         }
 
 
