@@ -25,7 +25,7 @@
             </div>
       </form>
       <div class="col-md-6">
-        <h4>Taxa Atual: @if ($taxa->value != null)
+        <h4>Taxa Atual: @if ($taxa != null)
             {{  '€ '.number_format($taxa->value, 2, ',', '.') }}
         @endif</h4>
       </div>
