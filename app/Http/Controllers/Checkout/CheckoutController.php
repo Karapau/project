@@ -24,7 +24,7 @@ class CheckoutController extends Controller
     {
         // $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
-        return view('store.pages.painel.checkout', compact('adresses', 'taxa'));
+        return view('store.pages.painel.checkout', compact('adresses'));
     }
 
     public function payment(Request $request)
