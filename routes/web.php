@@ -81,6 +81,9 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('porto/edit/{id}', [PortoController::class, 'edit'])->name('admin.porto.edit');
     Route::post('porto/update/{id}', [PortoController::class, 'update'])->name('admin.porto.update');
     Route::any('porto/update/status/{id}', [PortoController::class, 'status'])->name('admin.porto.update.status');
+    Route::get('porto/tax/{id}', [PortoController::class, 'tax'])->name('admin.porto.tax');
+    Route::post('porto/tax/store', [PortoController::class, 'taxStore'])->name('admin.porto.store');
+
 
     Route::get('estatistica/{id}', [EstatiscaDiariaController::class, 'index'])->name('admin.estatistica');
     Route::post('estatistica/store', [EstatiscaDiariaController::class, 'store'])->name('admin.estatistica.store');
@@ -103,7 +106,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('consultor-email-coletivo/{id}', [ComercialController::class, 'emailColetivo'])->name('admin.consultores.email.coletivo');
 
 });
-    
+
 
 Route::get('consultor-login', [LoginConsultorController::class, 'index'])->name('consultor.login-page');
 Route::post('consultor-entrar', [LoginConsultorController::class, 'login'])->name('consultor.login');
@@ -128,7 +131,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::any('consultor-logout', [LoginConsultorController::class, 'logout'])->name('consultor.logout');
 
         Route::get('consultor-incompletos', [ComercialPainelController::class, 'incompleto'])->name('consultor.list.incompletos');
-        
+
         Route::get('consultor-ind-edit/{id}', [ComercialPainelController::class, 'editIndividual'])->name('consultor.edit.individual');
         Route::get('consultor-col-edit/{id}', [ComercialPainelController::class, 'editColetivo'])->name('consultor.edit.coletivo');
 
@@ -139,7 +142,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::get('consultor-lead-form1', [ComercialPainelController::class, 'leadForm1'])->name('consultor.lead.individual');
         Route::get('consultor-lead-form2', [ComercialPainelController::class, 'leadForm2'])->name('consultor.lead.coletivo');
 
-      
+
 
     });
 
@@ -192,7 +195,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
 
 
     Route::get('store/checkout/adress', [CheckoutController::class, 'adress'])->name('store.checkout.adress');
-    
+
     Route::get('store/adress', [AdressController::class, 'index'])->name('store.adress');
 
     Route::post('store/adress/save', [AdressController::class, 'store'])->name('store.adress.save');

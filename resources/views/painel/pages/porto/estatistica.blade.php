@@ -52,7 +52,7 @@
             </thead>
             <tbody>
                   @foreach ($estatisticas as $est)
-                
+
                       <tr>
                                           <th scope="row">{{ $est->especie }}</th>
                                           <td>{{ $est->preco_minimo }}</td>
@@ -60,8 +60,8 @@
                                           <td>{{ $est->preco_maximo }}</td>
                                           <td>{{ date('d/m/Y', strtotime($est->created_at)) }}</td>
                                     </tr>
-             
-  
+
+
                   @endforeach
 
             </tbody>

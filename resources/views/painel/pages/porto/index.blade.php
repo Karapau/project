@@ -42,6 +42,10 @@
                                                             class="btn btn-dark ml-2">Estatisticas Diarias</button></a>
                                           </div>
                                           <div>
+                                                <a href="{{ route('admin.porto.tax', $porto->id) }}"> <button
+                                                            class="btn btn-info ml-2">Taxas</button></a>
+                                          </div>
+                                          <div>
                                                 <form action="{{ route('admin.porto.update.status', $porto->id) }}">
                                                       @csrf
                                                       @if($porto->status == 0)
@@ -52,7 +56,7 @@
                                                       <button type="submit" class="btn btn-success ml-2">Ativar</button>
                                                       @endif
 
-                                                     
+
                                                 </form>
                                           </div>
                                     </div>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Especie;
 use App\Models\EspecieToPorto;
+use App\Models\PortoTax;
 use Intervention\Image\ImageManagerStatic;
 
 class PortoController extends Controller
@@ -175,5 +176,18 @@ class PortoController extends Controller
         $porto = Porto::findOrFail($id);
         $porto->delete();
         return redirect()->route('admin.porto')->with('success', "Porto $porto->nome deletado com sucesso!");
+    }
+
+    public function tax($id)
+    {
+        $porto = Porto::find($id);
+        $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
+        return view('painel.pages.porto.taxas', compact('porto', 'taxa'));
+    }
+
+    public function taxstore(Request $request)
+    {
+         $porto = PortoTax::create($request->all());
+         return redirect()->route('admin.porto')->with('success', "Taxa criado com sucesso!");
     }
 }
