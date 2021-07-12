@@ -64,11 +64,11 @@
             </div>
             <div class="tax">
                   <div class="container">
-                        <p>@if ($taxa != null)
+                        {{-- <p>@if ($taxa != null)
                             {{  '€ '.number_format($taxa->value, 2, ',', '.') }}
                             @else
                             Sem taxa
-                        @endif</p>
+                        @endif</p> --}}
                   </div>
             </div>
       </div>

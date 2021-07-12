@@ -22,7 +22,7 @@ class CheckoutController extends Controller
     }
     public function index()
     {
-        $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
+        // $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
         return view('store.pages.painel.checkout', compact('adresses', 'taxa'));
     }
