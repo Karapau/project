@@ -146,7 +146,7 @@ Route::middleware(['auth:consultor'])->group(function () {
 
     });
 
-Route::get('teste', [TesteController::class, 'index']);
+Route::any('teste', [TesteController::class, 'index']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

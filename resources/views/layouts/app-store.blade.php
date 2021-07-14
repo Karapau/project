@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7558422b-a536-4f3e-839f-d9368b6dfe79" data-blockingmode="auto" type="text/javascript"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
