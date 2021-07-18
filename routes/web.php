@@ -82,7 +82,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::post('porto/update/{id}', [PortoController::class, 'update'])->name('admin.porto.update');
     Route::any('porto/update/status/{id}', [PortoController::class, 'status'])->name('admin.porto.update.status');
     Route::get('porto/tax/{id}', [PortoController::class, 'tax'])->name('admin.porto.tax');
-    Route::post('porto/tax/store', [PortoController::class, 'taxStore'])->name('admin.porto.store');
+    Route::post('porto/tax/store', [PortoController::class, 'taxStore'])->name('admin.porto.tax.store');
 
 
     Route::get('estatistica/{id}', [EstatiscaDiariaController::class, 'index'])->name('admin.estatistica');

@@ -5,7 +5,7 @@
 
 <p>Taxa de entrega {{ $porto->nome }}</p>
 <div class="col-md-12">
-      <form action="{{ route('admin.porto.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.porto.tax.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row col-md-6">
                   <input type="hidden" name="porto_id" value="{{ $porto->id }}">
