@@ -33,7 +33,7 @@
                                                                  <a href="{{ route('admin.especies.delete', $order->id) }}" onclick="return confirm('Você tem certeza?');"> <button class="btn btn-danger ">Apagar</button></a>
                                                             </div>
                                                             <div>
-                                                                 <a href="{{ route('admin.especies.show', $order->id) }}"> <button class="btn btn-primary ml-2">Ver Pedido</button></a>
+                                                                 <a href="{{ route('admin.pescador.pedidos.completo', $order->id) }}"> <button class="btn btn-primary ml-2">Ver Pedido</button></a>
                                                             </div>
                                                       </div>
                                                 </td>
