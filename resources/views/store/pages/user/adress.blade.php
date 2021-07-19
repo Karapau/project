@@ -45,7 +45,10 @@
                     <input type="text" class="form-control" id="morada" name="morada">
 
                 </div>
-
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Numero da Porta</label>
+                    <input type="text" class="form-control" id="porta" name="porta" id="exampleInputPassword1">
+                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Região</label>
                     <input type="text" class="form-control" id="regiao" name="regiao">
@@ -63,10 +66,7 @@
                     <label for="exampleInputPassword1">Freguesia</label>
                     <input type="text" class="form-control" id="freguesia" name="freguesia" id="exampleInputPassword1">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Numero da Porta</label>
-                    <input type="text" class="form-control" id="porta" name="porta" id="exampleInputPassword1">
-                </div>
+             
                 <input type="hidden" name="latitude" id="latitude">
                 <input type="hidden" name="longitude" id="longitude">
                 <div class="text-center my-4">
