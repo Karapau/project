@@ -196,6 +196,317 @@
               </button>
             </div>
             <div class="modal-body">
+                <style>
+                     ol {
+                margin: 0;
+                padding: 0;
+            }
+            table td,
+            table th {
+                padding: 0;
+            }
+            .c26 {
+                border-right-style: solid;
+                padding: 0pt 5.4pt 0pt 5.4pt;
+                border-bottom-color: #000000;
+                border-top-width: 1pt;
+                border-right-width: 1pt;
+                border-left-color: #000000;
+                vertical-align: top;
+                border-right-color: #000000;
+                border-left-width: 1pt;
+                border-top-style: solid;
+                border-left-style: solid;
+                border-bottom-width: 1pt;
+                width: 248.3pt;
+                border-top-color: #000000;
+                border-bottom-style: solid;
+            }
+            .c18 {
+                border-right-style: solid;
+                padding: 0pt 5.4pt 0pt 5.4pt;
+                border-bottom-color: #000000;
+                border-top-width: 1pt;
+                border-right-width: 1pt;
+                border-left-color: #000000;
+                vertical-align: top;
+                border-right-color: #000000;
+                border-left-width: 1pt;
+                border-top-style: solid;
+                border-left-style: solid;
+                border-bottom-width: 1pt;
+                width: 182.3pt;
+                border-top-color: #000000;
+                border-bottom-style: solid;
+            }
+            .c32 {
+                border-right-style: solid;
+                padding: 0pt 5.4pt 0pt 5.4pt;
+                border-bottom-color: #000000;
+                border-top-width: 1pt;
+                border-right-width: 1pt;
+                border-left-color: #000000;
+                vertical-align: top;
+                border-right-color: #000000;
+                border-left-width: 1pt;
+                border-top-style: solid;
+                border-left-style: solid;
+                border-bottom-width: 1pt;
+                width: 430.7pt;
+                border-top-color: #000000;
+                border-bottom-style: solid;
+            }
+            .c1 {
+                margin-left: 36pt;
+                padding-top: 0pt;
+                padding-left: 0pt;
+                padding-bottom: 0pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c4 {
+                -webkit-text-decoration-skip: none;
+                color: #1155cc;
+                font-weight: 400;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+                font-size: 11pt;
+                font-family: "Times New Roman";
+            }
+            .c13 {
+                padding-top: 0pt;
+                padding-bottom: 14pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+                height: 11pt;
+            }
+            .c17 {
+                padding-top: 0pt;
+                padding-bottom: 0pt;
+                line-height: 1.15;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+                height: 11pt;
+            }
+            .c35 {
+                padding-top: 18pt;
+                padding-bottom: 4pt;
+                line-height: 1.1500000000000001;
+                page-break-after: avoid;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c0 {
+                color: #000000;
+                font-weight: 400;
+                text-decoration: none;
+                vertical-align: baseline;
+                font-size: 12pt;
+                font-family: "Times New Roman";
+                font-style: normal;
+            }
+            .c6 {
+                padding-top: 0pt;
+                padding-bottom: 10pt;
+                line-height: 1.1500000000000001;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c41 {
+                padding-top: 14pt;
+                padding-bottom: 8pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c19 {
+                -webkit-text-decoration-skip: none;
+                color: #1155cc;
+                font-weight: 400;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+                font-family: "Times New Roman";
+            }
+            .c44 {
+                padding-top: 14pt;
+                padding-bottom: 13.5pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: center;
+            }
+            .c3 {
+                padding-top: 14pt;
+                padding-bottom: 14pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c23 {
+                padding-top: 0pt;
+                padding-bottom: 14pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c20 {
+                padding-top: 14pt;
+                padding-bottom: 0pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c30 {
+                padding-top: 0pt;
+                padding-bottom: 10pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c42 {
+                padding-top: 0pt;
+                padding-bottom: 14pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: center;
+            }
+            .c31 {
+                padding-top: 14pt;
+                padding-bottom: 10pt;
+                line-height: 1;
+                orphans: 2;
+                widows: 2;
+                text-align: left;
+            }
+            .c9 {
+                font-size: 12pt;
+                font-family: "Times New Roman";
+                font-style: italic;
+                font-weight: 400;
+            }
+            .c16 {
+                margin-left: -5.2pt;
+                border-spacing: 0;
+                border-collapse: collapse;
+                margin-right: auto;
+            }
+            .c36 {
+                -webkit-text-decoration-skip: none;
+                color: #1155cc;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+            }
+            .c37 {
+                -webkit-text-decoration-skip: none;
+                color: #0000ff;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+            }
+            .c40 {
+                padding-top: 0pt;
+                padding-bottom: 0pt;
+                line-height: 1.15;
+                text-align: left;
+            }
+            .c7 {
+                color: #000000;
+                text-decoration: none;
+                vertical-align: baseline;
+                font-style: normal;
+            }
+            .c2 {
+                font-size: 12pt;
+                font-family: "Times New Roman";
+                font-weight: 700;
+            }
+            .c8 {
+                font-weight: 400;
+                font-size: 11pt;
+                font-family: "Calibri";
+            }
+            .c15 {
+                font-size: 12pt;
+                font-family: "Times New Roman";
+                font-weight: 400;
+            }
+            .c25 {
+                font-weight: 700;
+                font-size: 13.5pt;
+                font-family: "Times New Roman";
+            }
+            .c24 {
+                font-weight: 700;
+                font-size: 18pt;
+                font-family: "Times New Roman";
+            }
+            .c43 {
+                font-weight: 700;
+                font-family: "Times New Roman";
+            }
+            .c12 {
+                padding: 0;
+                margin: 0;
+            }
+            .c21 {
+                color: inherit;
+                text-decoration: inherit;
+            }
+            .c39 {
+                max-width: 451.4pt;
+                padding: 72pt 72pt 72pt 72pt;
+            }
+            .c5 {
+                margin-left: 36pt;
+                padding-left: 0pt;
+            }
+            .c33 {
+                font-weight: 400;
+                font-family: "Times New Roman";
+            }
+            .c10 {
+                font-weight: 400;
+                font-family: "Calibri";
+            }
+            .c11 {
+                font-weight: 700;
+                font-family: "Calibri";
+            }
+            .c29 {
+                font-weight: 400;
+                font-family: "Arial";
+            }
+            .c28 {
+                font-size: 11pt;
+            }
+            .c27 {
+                height: 0pt;
+            }
+            .c22 {
+                height: 11pt;
+            }
+            .c38 {
+                font-size: 13pt;
+            }
+            .c34 {
+                background-color: #ffffff;
+            }
+            .c14 {
+                font-style: italic;
+            }
+                </style>
                 <p class="c23"><span class="c7 c24">POL&Iacute;TICAS</span></p>
                 <p class="c13"><span class="c7 c24"></span></p>
                 <p class="c13"><span class="c7 c24"></span></p>
