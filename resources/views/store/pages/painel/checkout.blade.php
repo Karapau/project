@@ -171,7 +171,7 @@
                 <input type="hidden" name="totalval" value="{{ Cart::getTotal() + ($shipping->value * $ceil) }}">
             </div>
         </div>
-            <div class="text-center">
+            <div class="text-center my-4 bg-light py-4">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="sim" required>
                     <label class="form-check-label" for="defaultCheck1">
