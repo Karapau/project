@@ -40,7 +40,7 @@
                               <a href="{{ route('admin.pescador') }}"><i class="fas fa-boxes"></i> Pescadores</a>
                         </li>
                         <li>
-                              <a href="#"><i class="fas fa-box"></i> Encomendas</a>
+                              <a href="{{ route('admin.encomendas') }}"><i class="fas fa-box"></i> Encomendas</a>
                         </li>
                         <li>
                               <a href="#cadastros" data-toggle="collapse" aria-expanded="false"
@@ -52,7 +52,7 @@
                                     <li>
                                           <a href="{{ route('admin.porto') }}">Portos</a>
                                     </li>
-                              
+
 
                               </ul>
                         </li>

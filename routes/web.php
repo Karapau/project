@@ -1,32 +1,33 @@
 <?php
 
-use App\Http\Controllers\Admin\ClienteController;
-use App\Http\Controllers\Admin\ComercialController;
 use App\Models\CompradorIndividual;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TesteController;
-use App\Http\Controllers\Admin\PortoController;
-use App\Http\Controllers\Admin\PainelController;
-use App\Http\Controllers\Admin\EspecieController;
-
-use App\Http\Controllers\Auth\LoginConsultorController;
-
-use App\Http\Controllers\Admin\EstatiscaDiariaController;
-use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
-use App\Http\Controllers\Adress\AdressController;
-use App\Http\Controllers\Auth\CompradorColetivoController;
-use App\Http\Controllers\Auth\CompradorIndividualController;
-use App\Http\Controllers\Auth\PescadorController;
-use App\Http\Controllers\Auth\PescadorRegController;
-use App\Http\Controllers\Auth\StoreLoginController;
-use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Cart\CartController;
-use App\Http\Controllers\Checkout\CheckoutController;
-use App\Http\Controllers\Comercial\ComercialPainelController;
-use App\Http\Controllers\Pedidos\PedidoController;
-use App\Http\Controllers\Pescador\PainelPescadorController;
-use App\Http\Controllers\Pescador\ProdutoController;
+use App\Http\Controllers\Admin\PortoController;
+use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Store\StoreController;
+use App\Http\Controllers\Admin\PainelController;
+
+use App\Http\Controllers\Admin\ClienteController;
+
+use App\Http\Controllers\Admin\EspecieController;
+use App\Http\Controllers\Adress\AdressController;
+use App\Http\Controllers\Auth\PescadorController;
+use App\Http\Controllers\Pedidos\PedidoController;
+use App\Http\Controllers\Admin\ComercialController;
+use App\Http\Controllers\Auth\StoreLoginController;
+use App\Http\Controllers\Admin\EncomendasController;
+use App\Http\Controllers\Auth\PescadorRegController;
+use App\Http\Controllers\Pescador\ProdutoController;
+use App\Http\Controllers\Checkout\CheckoutController;
+use App\Http\Controllers\Auth\LoginConsultorController;
+use App\Http\Controllers\Admin\EstatiscaDiariaController;
+use App\Http\Controllers\Auth\CompradorColetivoController;
+use App\Http\Controllers\Pescador\PainelPescadorController;
+use App\Http\Controllers\Auth\CompradorIndividualController;
+use App\Http\Controllers\Comercial\ComercialPainelController;
+use App\Http\Controllers\Admin\PescadorController as AdminPescadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,8 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('consultor-clientes/{id}', [ComercialController::class, 'clientes'])->name('admin.consultores.clientes');
     Route::get('consultor-email-individual/{id}', [ComercialController::class, 'emailIndividual'])->name('admin.consultores.email.individual');
     Route::get('consultor-email-coletivo/{id}', [ComercialController::class, 'emailColetivo'])->name('admin.consultores.email.coletivo');
+
+    Route::get('encomendas', [EncomendasController::class, 'index'])->name('admin.encomendas');
 
 });
 

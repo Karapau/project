@@ -19,4 +19,8 @@ class UserProduct extends Model
         'order_id',
         'pescador_id',
     ];
+
+
+
+
 }
