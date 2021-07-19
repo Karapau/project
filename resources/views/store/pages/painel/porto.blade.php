@@ -29,7 +29,7 @@
                         data-parent="#accordionExample">
                         <div class="collapse" id="collapseExample">
                               <div class="form-group">
-                                    <input type="text" id="search" name="search" class="form-control" placeholder="Buscar Porto...">
+                                    <input type="text" id="search" name="search" class="form-control" placeholder="Buscar Porto..." x-webkit-speech>
                               </div>
                         </div>
                   </div>
