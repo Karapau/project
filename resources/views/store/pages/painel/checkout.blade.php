@@ -175,7 +175,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="sim" required>
                     <label class="form-check-label" for="defaultCheck1">
-                    <a data-toggle="modal" data-target="#exampleModal"> Termos e Condições</a>
+                    <a data-toggle="modal"  data-target="#exampleModal"> TERMOS E CONDIÇÕES</a>
                     </label>
                   </div>
             </div>
