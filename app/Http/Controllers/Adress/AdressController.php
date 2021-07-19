@@ -48,7 +48,7 @@ class AdressController extends Controller
     public function store(Request $request)
     {
 
-        $url = Http::get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=41.198284,-8.611175&destinations=$request->latitude,$request->longitude&key=AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg");
+        $url = Http::get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=41.183,-8.67977&destinations=$request->latitude,$request->longitude&key=AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg");
 
         $collection = collect(json_decode($url, true));
 
