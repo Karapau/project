@@ -6,6 +6,7 @@ use App\Models\Produto;
 use App\Models\PortoTax;
 use App\Models\UserOrder;
 use App\Models\AdressBuyer;
+use App\Models\ShippingTax;
 use App\Models\UserProduct;
 use Darryldecode\Cart\Cart;
 use App\Models\SellToWallet;
@@ -24,7 +25,8 @@ class CheckoutController extends Controller
     {
         // $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
-        return view('store.pages.painel.checkout', compact('adresses'));
+        $shipping = ShippingTax::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        return view('store.pages.painel.checkout', compact('adresses', 'shipping'));
     }
 
     public function payment(Request $request)

@@ -64,11 +64,10 @@
             </div>
             <div class="tax">
                   <div class="container">
-                        {{-- <p>@if ($taxa != null)
-                            {{  '€ '.number_format($taxa->value, 2, ',', '.') }}
-                            @else
-                            Sem taxa
-                        @endif</p> --}}
+                        <p>
+                            {{  '€ '.number_format($shipping->value, 2, ',', '.') }}
+                          </p>
+
                   </div>
             </div>
       </div>
@@ -124,6 +123,9 @@
             <div class="status">
                   <div class="container">
                         @forelse (Cart::getContent() as $item)
+                        @php
+                            $quantity = $item->quantity;
+                        @endphp
                         <div class="d-flex mt-5 status-in">
                               <div class="item text-uppercase row">
 
@@ -156,9 +158,13 @@
       <div class="finalizar">
             <div class="container">
                   <div class="py-4">
+                      @php
+
+                      @endphp
                         <p>Subtotal: {{  '€ '.number_format(Cart::getSubTotal(), 2, ',', '.') }}</p>
-                        <p>Taxa de Entrega: € 00,00</p>
-                        <h3>Total: {{  '€ '.number_format(Cart::getTotal(), 2, ',', '.') }}</h3>
+                        <p>Numero de Caixas: {{  substr($quantity,0,-1) }}</p>
+                        <p>Taxa de Entrega:  {{  '€ '.number_format($shipping->value, 2, ',', '.') }}</p>
+                        <h3>Total: {{  '€ '.number_format(Cart::getTotal() + $shipping->value, 2, ',', '.') }}</h3>
                   </div>
             </div>
 

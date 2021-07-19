@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adress;
 
 use App\Models\AdressBuyer;
+use App\Models\ShippingTax;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,6 +47,20 @@ class AdressController extends Controller
      */
     public function store(Request $request)
     {
+
+        $url = Http::get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=41.198284,-8.611175&destinations=$request->latitude,$request->longitude&key=AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg");
+
+        $collection = collect(json_decode($url, true));
+
+        $dist = $collection['rows'][0]['elements'][0]['distance']['text'];
+        $distF = (float)$dist;
+        $distC = $distF;
+
+        $shipValue = ShippingTax::create([
+            'user_id' => auth()->user()->id,
+            'value' => $distC,
+        ]);
+
         $adress = AdressBuyer::create($request->all());
         if(\Cart::isEmpty()){
             return redirect()->route('store.index')->with('success', 'Endereço Salvo');

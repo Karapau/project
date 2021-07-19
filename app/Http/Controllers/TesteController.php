@@ -12,20 +12,8 @@ class TesteController extends Controller
 {
     public function index(Request $request)
     {
-        $request = [
-            'amount' => 102.34,
-            'currency' => 'EUR',
-            'brand' => 'VISA',
-            'type' => 'DB',
-            'number' => 4200000000000000,
-            'holder' => 'Jane Jones',
-            'expiry_month' => 05,
-            'expiry_year' => 2020,
-            'cvv' => 123,
-            'optionalParameters' => [],
-        ];
-        $response = Sibs::checkout($request)->pay();
-       return $response;
+        $url = Http::get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=41.198284,-8.611175&destinations=41.057029,-8.473592&key=AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg');
+        return $url;
     }
 
 

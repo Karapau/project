@@ -80,6 +80,9 @@
                               <option value="tamanho2">Tamanho 2 (T2)</option>
                               <option value="tamanho3">Tamanho 3 (T3)</option>
                               <option value="tamanho4">Tamanho 4 (T4)</option>
+                              <option value="pequeno">Pequeno</option>
+                              <option value="medio">Médio</option>
+                              <option value="grande">Grande</option>
                         </select>
                   </div>
                   <div class="form-group input-material">

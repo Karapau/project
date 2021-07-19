@@ -16,5 +16,8 @@ class AdressBuyer extends Model
         'distrito',
         'conselho',
         'freguesia',
+        'porta',
+        'latitude',
+        'longitude',
     ];
 }

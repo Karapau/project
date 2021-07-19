@@ -136,6 +136,8 @@
                           $('#distrito').val(data.Distrito);
                           $('#conselho').val(data.Concelho);
                           $('#freguesia').val(data.Freguesia);
+                          $('#latitude').val(data.Latitude);
+                          $('#longitude').val(data.Longitude);
                     }
                 });
             })
