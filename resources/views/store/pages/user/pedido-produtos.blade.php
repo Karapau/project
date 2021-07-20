@@ -57,9 +57,9 @@
                   </div>
                   <div>
                         <button
-                              class="@if($order->products->status == 0) botao-prep @elseif($order->products->status == 1) botao-trans @elseif($order->products->status == 2) botao-entr @endif">@if($order->products->status
-                              == 0) PREPARAÇÃO @elseif($order->products->status == 1) TRANSPORTE
-                              @elseif($order->products->status == 2) ENTREGUE @endif</button>
+                              class=" botao-prep @if($order->products->status == 0) botao-prep @elseif($order->products->status == 1) botao-trans @elseif($order->products->status == 2) botao-entr @endif">@if($order->products->status
+                              == 0) AGUARDANDO PAGAMENTO @elseif($order->products->status == 1) TRANSPORTE
+                              @elseif($order->products->status == 2) ANÁLISE FINANCEIRA @endif</button>
                   </div>
             </div>
             <div class="mt-3 text-center " id="linha-horizontal"></div>
@@ -89,6 +89,22 @@
                   </div>
             </div>
       </div>
+</div>
+<div class="square">
+    <div class="container">
+        <div  class="itens">
+            <form action="{{ route('pay.image.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                <div class="form-group">
+                  <input type="file" name="comprovante" class="form-control-file" required>
+                </div>
+                <div>
+                    <button class="btn btn-success">Enviar Comprovante</button>
+                </div>
+              </form>
+          </div>
+    </div>
 </div>
 <div class="square">
       <div class="container">

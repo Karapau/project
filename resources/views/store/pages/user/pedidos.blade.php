@@ -41,7 +41,7 @@
             <div class="col-5">
                   <button
                         class="btn @if($order->products->status == 0) btn-status0 @elseif($order->products->status == 1) btn-status1 @elseif($order->products->status == 2) btn-status2 @endif">@if($order->products->status
-                        == 0) PREPARAÇÃO @elseif($order->products->status == 1) TRANSPORTE
+                        == 0) AGUARDANDO PAGAMENTO @elseif($order->products->status == 1) TRANSPORTE
                         @elseif($order->products->status == 2) ENTREGUE @endif</button>
             </div>
       </div>

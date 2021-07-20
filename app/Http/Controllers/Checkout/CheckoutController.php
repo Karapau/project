@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Checkout;
 
 use App\Models\Produto;
+use App\Models\PayImage;
 use App\Models\PortoTax;
 use App\Models\UserOrder;
 use App\Models\AdressBuyer;
 use App\Models\ShippingTax;
 use App\Models\UserProduct;
 use Darryldecode\Cart\Cart;
+use Illuminate\Support\Str;
 use App\Models\SellToWallet;
 use Illuminate\Http\Request;
 use App\Models\PescadorPedido;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic;
 
 class CheckoutController extends Controller
 {
@@ -106,5 +109,27 @@ class CheckoutController extends Controller
     public function thanks()
     {
         return view('store.pages.painel.thanks');
+    }
+
+    public function payImage(Request $request)
+{
+        $data = $request->all();
+        $img = ImageManagerStatic::make($data['comprovante']);
+        $name = Str::random() . '.jpg';
+
+        $originalPath = storage_path('app/public/comprovantes/');
+
+        $img->save($originalPath . $name);
+
+        $comprovante = PayImage::create([
+            'user_id' => auth()->user()->id,
+            'order_id' => $request->order_id,
+            'path' => $name
+        ]);
+        $produto = UserProduct::find($request->order_id);
+        $produto->status = 2;
+        $produto->save();
+
+        return redirect()->back()->with('success', 'Comprovante Enviado');
     }
 }

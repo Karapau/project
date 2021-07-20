@@ -107,6 +107,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('consultor-email-coletivo/{id}', [ComercialController::class, 'emailColetivo'])->name('admin.consultores.email.coletivo');
 
     Route::get('encomendas', [EncomendasController::class, 'index'])->name('admin.encomendas');
+    Route::get('encomendas/download/{id}', [EncomendasController::class, 'download'])->name('admin.encomendas.download');
 
 });
 
@@ -207,6 +208,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::post('store/checkout/store', [CheckoutController::class, 'payment'])->name('store.checkout.payment');
 
     Route::get('store/thanks', [CheckoutController::class, 'thanks'])->name('store.thanks');
+    Route::post('payimage/store', [CheckoutController::class, 'payImage'])->name('pay.image.store');
 
     Route::get('porto/buscar', [StoreController::class, 'portoSearch'])->name('store.porto.buscar');
     Route::get('produto/buscar', [StoreController::class, 'produtoSearch'])->name('store.produto.buscar');

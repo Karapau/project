@@ -20,12 +20,17 @@ class UserOrder extends Model
         'telemovel',
         'total',
         'sub_total',
-       
+
     ];
 
     public function enderecos()
     {
         return $this->belongsTo(AdressBuyer::class, 'adress');
     }
- 
+
+    public function payimage()
+    {
+        return $this->hasMany(PayImage::class, 'order_id');
+    }
+
 }
