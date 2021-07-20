@@ -213,6 +213,8 @@ Route::group(['middleware' => ['auth:buyer']], function(){
 
     Route::get('store/pedidos', [PedidoController::class, 'userPedido'])->name('user.pedidos');
     Route::get('store/pedidos/produtos/{id}', [PedidoController::class, 'pedidoDatalheUser'])->name('user.pedido.produto');
+
+    Route::any('pescador/produto/status/{id}', [PainelPescadorController::class, 'produtoStatus'])->name('user.produto.status');
 });
 
 

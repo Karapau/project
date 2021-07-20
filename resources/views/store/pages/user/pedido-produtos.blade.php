@@ -13,7 +13,7 @@
 <div class="container">
       <div class="d-flex inicio mt-3 ">
             <div>
-                  <button class="btn btn-voltar">VOLTAR</button>
+                <a href="{{ route('store.index') }}">  <button class="btn btn-voltar">VOLTAR</button></a>
             </div>
             <div>
                   <span>ENCOMENDA {{ $order->id }}</span>
@@ -64,8 +64,18 @@
             </div>
             <div class="mt-3 text-center " id="linha-horizontal"></div>
             <div class="d-flex mt-3 avaliar">
-                  <button class="btn btn-primary">INFORMAR RECEBIMENTO</button>
-                  <button class="btn btn-primary">AVALIAR</button>
+                @if ($order->products->status != 2)
+                <form action="{{ route('user.produto.status', $order->products->id) }}" method="post">
+                    @csrf
+                    <input type="hidden" name="status" value="2">
+                    <button type="submit" class="btn btn-primary">INFORMAR RECEBIMENTO</button>
+                </form>
+                @else
+                <button type="button" class="btn botao-entr">PRODUTO ENTREGUE</button>
+                @endif
+
+
+                  <button type="button" class="btn btn-primary">AVALIAR</button>
             </div>
       </div>
 </div>
