@@ -75,7 +75,7 @@
             <div class=" itens mt-3 pt-3 text-start">
                   <span>Conta para Transferência</span>
                   <div>
-                        <span>Banco: Nubank <br> Conta: 00000-0 <br> Ag: 01 <br> Razão: 000000000-0000</span>
+                        <span>banco Montepio - numero de conta : 295.10.005582-7 <br> BIC/SWIFT : MPIOPTPL <br> NIB : 0036.0295.99100055827.07 <br> IBAN: PT50.0036.0295.99100055827.07</span>
                   </div>
             </div>
       </div>
