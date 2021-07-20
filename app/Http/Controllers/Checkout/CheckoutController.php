@@ -18,14 +18,19 @@ class CheckoutController extends Controller
 {
     public function adress()
     {
-        $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
+        $adresses = AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         return view('store.pages.painel.endereco', compact('adresses'));
     }
     public function index()
     {
         // $taxa = PortoTax::where('porto_id', $id)->orderBy('created_at', 'desc')->first();
-        $adresses = AdressBuyer::where('user_id', auth()->user()->id)->get();
+        $adresses = AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         $shipping = ShippingTax::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+
+        if(\Cart::isEmpty()){
+            return redirect()->route('store.porto');
+        }
+
         return view('store.pages.painel.checkout', compact('adresses', 'shipping'));
     }
 

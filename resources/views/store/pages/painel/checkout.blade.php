@@ -28,33 +28,25 @@
                 <p>Sitios Salvos</p>
             </div>
 
-
-
-            @forelse ($adresses as $adress)
-                @if ($loop->first)
-
                     <div class="end">
                         <div class="end-in row align-items-center justify-content-center">
                             <div class="col-2">
                                 <img src="{{ url('app-store/img/icons/location.svg') }}" alt="">
                             </div>
                             <div class="col-8">
-                                <h4>{{ $adress->morada }} - {{ $adress->distrito }}</h4>
+                                <h4>{{ $adresses->morada }} - {{ $adresses->distrito }}</h4>
                             </div>
                             <div class="col-2">
                                 <img src="{{ url('app-store/img/icons/close.svg') }}" alt="">
                             </div>
                         </div>
-                        <input type="hidden" name="adress" value="{{ $adress->id }}">
+                        <input type="hidden" name="adress" value="{{ $adresses->id }}">
                     </div>
-                @endif
-            @empty
 
-            @endforelse
         </div>
         <div class="container mt-4">
             <div class="morada text-right">
-                <button type="button" class="btn btn-cadastrar">Alterar</button>
+              <a href="{{ route('store.adress') }}">  <button type="button" class="btn btn-cadastrar">Alterar</button></a>
             </div>
         </div>
         <div class="mt-4">
@@ -141,7 +133,7 @@
                                 </div>
 
                                 <div class="col-4 d-flex flex-column">
-                                    <button class="btn btn-status0 mb-2">{{ $item->attributes->embarcacao }}</button>
+                                    <button type="button" class="btn btn-status0 mb-2">{{ $item->attributes->embarcacao }}</button>
                                     <a href="{{ route('store.cart.remove', $item->id) }}"> <button type="button"
                                             class="btn btn-status0 bg-danger mt-4">REMOVER</button></a>
                                 </div>

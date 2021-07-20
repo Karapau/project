@@ -62,3 +62,4 @@ var QtyInput = (function () {
             $input.val(qty);
       });
 })();
+$('#cep').mask('0000-000');

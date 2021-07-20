@@ -28,8 +28,6 @@
       <div class="morada mt-4">
             <p>Sitios Salvos</p>
       </div>
-      @forelse ($adresses as $adress)
-      @if($loop->first)
       <a href="{{ route('store.checkout') }}">
             <div class="end">
                   <div class="end-in row align-items-center justify-content-center">
@@ -37,21 +35,17 @@
                               <img src="{{ url('app-store/img/icons/location.svg') }}" alt="">
                         </div>
                         <div class="col-8">
-                              <h4>{{ $adress->morada }} - {{ $adress->distrito }}</h4>
+                              <h4>{{ $adresses->morada }} - {{ $adresses->distrito }}</h4>
                         </div>
                         <div class="col-2">
                               <img src="{{ url('app-store/img/icons/close.svg') }}" alt="">
                         </div>
                   </div>
-                  <input type="hidden" name="adress" value="{{ $adress->id }}">
+                  <input type="hidden" name="adress" value="{{ $adresses->id }}">
             </div>
       </a>
       <div class="mt-5">
             <a href="{{ route('store.checkout') }}"> <button class="btn btn-continuar">CONTINUAR</button></a>
       </div>
-      @endif
-      @empty
-
-      @endforelse
 </div>
 @endsection

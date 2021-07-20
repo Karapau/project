@@ -38,7 +38,7 @@
       <div class="portos mt-4">
             <div class="row">
                   @foreach ($portos as $porto)
-                  <div class="col-6">
+                  <div class="col-6 mb-4">
                         <a href="{{ route('store.produto', $porto->id) }}"> <img
                                     src="{{ url('storage/portos/'.$porto->image) }}" alt=""></a>
                         <p>{{ $porto->nome }}</p>

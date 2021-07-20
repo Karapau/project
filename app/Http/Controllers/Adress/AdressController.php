@@ -35,7 +35,9 @@ class AdressController extends Controller
     {
 
         $valor = $request->search;
-        $url = Http::get('https://api.duminio.com/ptcp/ptapi60ec808f3e8951.33243239/'.$valor);
+        $cep = str_replace('-', '', $valor);
+
+        $url = Http::get('https://api.duminio.com/ptcp/ptapi60ec808f3e8951.33243239/'.$cep);
 
         return $url->collect();
     }

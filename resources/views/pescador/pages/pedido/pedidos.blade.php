@@ -77,13 +77,8 @@
                               @if($pedido->products->status == 0)
                               <input type="hidden" name="status" value="1">
                               <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
-                              @elseif($pedido->products->status == 1)
-                              <input type="hidden" name="status" value="2">
-                              <button class="btn btn-success bg-success text-white">ENTREGUE</button>
-                              @elseif($pedido->products->status == 2)
                              
-                              <h5>ENTREGUE</h5>
-                        
+
                               @endif
                         </form>
                   </div>
