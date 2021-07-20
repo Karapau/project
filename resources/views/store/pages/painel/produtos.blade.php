@@ -37,7 +37,7 @@
                                     @foreach ($especies as $especie)
                                     <option value="{{ $especie->id }}">{{ $especie->nome_portugues }}</option>
                                     @endforeach
-                                
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="portos produtos mt-4">
+        <div class="portos produtos my-4">
             <div class="row">
                 @foreach ($produtos as $produto)
                     @if ($produto->quantidade_kg >= 10)
