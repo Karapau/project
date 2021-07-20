@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="exampleInputEmail1">Código Postal</label>
-                        <input id="cep" type="text" class="form-control" name="codigo_postal">
+                        <input id="cep" type="number" class="form-control" name="codigo_postal">
 
                     </div>
                     <div style="margin-top: 32px;" class="col-6">
@@ -66,7 +66,7 @@
                     <label for="exampleInputPassword1">Freguesia</label>
                     <input type="text" class="form-control" id="freguesia" name="freguesia" id="exampleInputPassword1">
                 </div>
-             
+
                 <input type="hidden" name="latitude" id="latitude">
                 <input type="hidden" name="longitude" id="longitude">
                 <div class="text-center my-4">
