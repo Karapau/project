@@ -44,7 +44,7 @@
                                         <a href="{{ route('admin.pescador.pedidos.completo', $order->id) }}"> <button
                                                 class="btn btn-primary ml-2">Ver Pedido</button></a>
                                     </div>
-                                    @if ($order->payImage->count() != 0)
+                                    @if ($order->payImage->path != null)
                                     <div>
                                         <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
                                                 class="btn btn-dark ml-2">Baixar Comprovante</button></a>
