@@ -25,6 +25,12 @@ class PescadorPedido extends Model
     {
         return $this->belongsTo(AdressBuyer::class, 'adress');
     }
+
+    public function payImage()
+    {
+        return $this->belongsTo(PayImage::class, 'order_id');
+    }
+
     public function products()
     {
         return $this->belongsTo(UserProduct::class, 'produtos');

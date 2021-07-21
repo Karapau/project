@@ -39,19 +39,17 @@
                             </td>
                             <td>
                                 <div class="d-flex">
-                             
+
                                     <div>
                                         <a href="{{ route('admin.pescador.pedidos.completo', $order->id) }}"> <button
                                                 class="btn btn-primary ml-2">Ver Pedido</button></a>
                                     </div>
-
-                                        <div>
-                                            <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
-                                                    class="btn btn-dark ml-2">Baixar Comprovante</button></a>
-                                        </div>
-
-
-
+                                    @if ($order->payImage->count() != 0)
+                                    <div>
+                                        <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
+                                                class="btn btn-dark ml-2">Baixar Comprovante</button></a>
+                                    </div>
+                                    @endif
 
                                 </div>
                             </td>

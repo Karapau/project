@@ -14,7 +14,7 @@ class TesteController extends Controller
 {
     public function index(Request $request)
     {
-        $get = PescadorPedido::with('adresses', 'orders', 'products', 'users', 'pescador')->get();
+        $get = PescadorPedido::with('adresses','payImage', 'orders', 'products', 'users', 'pescador')->get();
         dd($get);
     }
 
