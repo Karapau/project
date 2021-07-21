@@ -28,7 +28,7 @@ class PescadorPedido extends Model
 
     public function payImage()
     {
-        return $this->belongsTo(PayImage::class, 'order_id');
+        return $this->hasOne(PayImage::class, 'order_id');
     }
 
     public function products()

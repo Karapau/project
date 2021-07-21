@@ -25,17 +25,16 @@
                             <td>{{ $order->users->name }}</td>
 
                             <td>
-                                @if($order->products->status
-                                == 0) AGUARDANDO PAGAMENTO
-                              @elseif($order->products->status == 1) ANÁLISE FINANCEIRA
-                              @elseif($order->products->status == 2) PAGAMENTO ACEITO
-                              @elseif($order->products->status == 3) A LIBERAR
-                              @elseif($order->products->status == 4) EM TRANSPORTE
-                              @elseif($order->products->status == 5) ENTREGUE
-                              @elseif($order->products->status == 6) CANCELADO @endif
+                                @if ($order->products->status == 0) AGUARDANDO PAGAMENTO
+                                @elseif($order->products->status == 1) ANÁLISE FINANCEIRA
+                                @elseif($order->products->status == 2) PAGAMENTO ACEITO
+                                @elseif($order->products->status == 3) A LIBERAR
+                                @elseif($order->products->status == 4) EM TRANSPORTE
+                                @elseif($order->products->status == 5) ENTREGUE
+                                @elseif($order->products->status == 6) CANCELADO @endif
                             </td>
                             <td>
-                              {{ $order->pescador->name }}
+                                {{ $order->pescador->name }}
                             </td>
                             <td>
                                 <div class="d-flex">
@@ -44,12 +43,13 @@
                                         <a href="{{ route('admin.pescador.pedidos.completo', $order->id) }}"> <button
                                                 class="btn btn-primary ml-2">Ver Pedido</button></a>
                                     </div>
-                                    @if ($order->payImage != null)
-                                    <div>
-                                        <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
-                                                class="btn btn-dark ml-2">Baixar Comprovante</button></a>
-                                    </div>
-                                    @endif
+                              @if ($order->payImage)
+                              <div>
+                                <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
+                                        class="btn btn-dark ml-2">Baixar Comprovante</button></a>
+                            </div>
+
+                              @endif
 
                                 </div>
                             </td>
