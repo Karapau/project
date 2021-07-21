@@ -14,7 +14,8 @@ class PescadorPedido extends Model
         'order_id',
         'adress',
         'produtos',
-        'user_id'
+        'user_id',
+        'wallet'
     ];
 
     public function orders()
@@ -42,5 +43,9 @@ class PescadorPedido extends Model
     public function pescador()
     {
         return $this->belongsTo(Pescador::class, 'pescador_id');
+    }
+    public function values()
+    {
+        return $this->belongsTo(SellToWallet::class, 'wallet');
     }
 }

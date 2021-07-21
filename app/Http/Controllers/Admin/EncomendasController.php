@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\PayImage;
 use App\Models\UserOrder;
 use App\Models\UserProduct;
+use App\Models\SellToWallet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\PescadorPedido;
@@ -32,6 +33,8 @@ class EncomendasController extends Controller
         $porto = UserProduct::find($id);
         $porto->status = $request->get('status');
         $porto->save();
+
+    
         return redirect()->back();
     }
 }

@@ -78,7 +78,7 @@ class CheckoutController extends Controller
             $itemQty = $item->price * $item->quantity;
             $value = $itemQty - $itemQty * ($item->attributes->margem/100);
 
-            SellToWallet::create([
+           $wallet = SellToWallet::create([
                 'pescador_id' => $item->attributes->pescador_id,
                 'product_id' =>  $item->id,
                 'value' => $value,
@@ -89,11 +89,12 @@ class CheckoutController extends Controller
             $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
             $quantidade->save();
 
-            PescadorPedido::create([
+          $pedido =  PescadorPedido::create([
                 'pescador_id' => $item->attributes->pescador_id,
                 'order_id' => $user_order->id,
                 'adress' => $request->adress,
                 'produtos' => $produtos->id,
+                'wallet' => $wallet->id,
                 'user_id' => auth()->user()->id,
             ]);
 

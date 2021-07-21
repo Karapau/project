@@ -64,6 +64,7 @@
         <div class="modal-body">
             <form action="{{ url('admin/user/produto/status/'.$pedido->products->id) }}" method="post">
                 @csrf
+                
                 <div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="status" id="exampleRadios1"

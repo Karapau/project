@@ -14,9 +14,8 @@ class PainelPescadorController extends Controller
     public function index()
     {
         $produtos = Produto::where('pescador_id', auth()->guard('pescador')->user()->id)->get();
-        $pedidos = PescadorPedido::with(['orders', 'adresses', 'products'])->where('pescador_id', auth()->user()->id)->get();
-        $wallet = SellToWallet::where('pescador_id', auth()->user()->id)->where('status', 1)->sum('value');
-        return view('pescador.pages.index', compact('produtos', 'pedidos', 'wallet'));
+        $pedidos = PescadorPedido::with(['orders', 'adresses', 'products', 'values'])->where('pescador_id', auth()->user()->id)->get();
+        return view('pescador.pages.index', compact('produtos', 'pedidos'));
     }
 
     public function pedidos()
@@ -31,6 +30,8 @@ class PainelPescadorController extends Controller
         $porto = UserProduct::find($id);
         $porto->status = $request->get('status');
         $porto->save();
+
+
         return redirect()->back();
     }
 }

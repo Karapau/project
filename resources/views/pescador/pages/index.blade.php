@@ -22,19 +22,35 @@
             </div>
       </div>
       {{-- @php
-            $value = 0; 
+            $value = 0;
       @endphp
       @foreach ($wallet as $result)
       @php
                  $value = $result->value;
       @endphp
- 
+
 @endforeach --}}
+
+        @php
+            $value = 0;
+        @endphp
+        @foreach ($pedidos as $pedido)
+            @if ($pedido->products->status != 0 AND $pedido->products->status != 1)
+            @if ($pedido->values)
+            @php
+                $value += $pedido->values->value
+            @endphp
+            @endif
+            @endif
+
+        @endforeach
       <div class="container mt-2">
             <div class="wallet d-flex px-4">
                   <div class="py-4 ">
                         <a href=""><i class="fas fa-wallet a-2"></i> Seu Wallet</a>
-                        <h3 class="balance">{{  '€ '.number_format($wallet, 2, ',', '.') }}</h3>
+                        <h3 class="balance">
+                            {{  '€ '.number_format($value, 2, ',', '.') }}
+                        </h3>
                   </div>
                   <div class="col-4 eye">
                         <span onclick="hide()"><i class="fas fa-eye"></i></span>
