@@ -127,7 +127,7 @@ class CheckoutController extends Controller
             'path' => $name
         ]);
         $produto = UserProduct::find($request->order_id);
-        $produto->status = 2;
+        $produto->status = 1;
         $produto->save();
 
         return redirect()->back()->with('success', 'Comprovante Enviado');

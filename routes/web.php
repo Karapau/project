@@ -108,7 +108,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
 
     Route::get('encomendas', [EncomendasController::class, 'index'])->name('admin.encomendas');
     Route::get('encomendas/download/{id}', [EncomendasController::class, 'download'])->name('admin.encomendas.download');
-
+    Route::any('user/produto/status/{id}', [EncomendasController::class, 'status']);
 });
 
 
@@ -171,7 +171,7 @@ Route::middleware('auth:pescador')->group(function(){
     Route::get('pescador-logout', [PescadorController::class, 'logout'])->name('pescador.logout');
 
     Route::get('pescador/pedidos', [PainelPescadorController::class, 'pedidos'])->name('pescador.pedidos');
-    Route::any('pescador/produto/status/{id}', [PainelPescadorController::class, 'produtoStatus'])->name('pescador.produto.status');
+    Route::any('pescador/produto/status/{id}', [PainelPescadorController::class, 'produtoStatus']);
 });
 
 Route::get('store-login-page', [StoreLoginController::class, 'index'])->name('store.login');

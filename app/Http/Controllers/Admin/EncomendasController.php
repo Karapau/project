@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\PayImage;
 use App\Models\UserOrder;
+use App\Models\UserProduct;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\PescadorPedido;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +16,7 @@ class EncomendasController extends Controller
     public function index()
     {
 
-        $orders = UserOrder::with('enderecos','payimage')->orderBy('created_at', 'desc')->paginate(15);
+        $orders  = PescadorPedido::with('adresses', 'orders', 'products', 'users', 'pescador')->get();
         return view('painel.pages.encomendas.index', compact('orders'));
     }
 
@@ -24,5 +26,12 @@ class EncomendasController extends Controller
         $filepath = public_path('storage/comprovantes/'.$comprovante->path);
 
         return response()->download($filepath);
+    }
+    public function status(Request $request, $id)
+    {
+        $porto = UserProduct::find($id);
+        $porto->status = $request->get('status');
+        $porto->save();
+        return redirect()->back();
     }
 }

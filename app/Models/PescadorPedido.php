@@ -29,4 +29,12 @@ class PescadorPedido extends Model
     {
         return $this->belongsTo(UserProduct::class, 'produtos');
     }
+    public function users()
+    {
+        return $this->belongsTo(Comprador::class, 'user_id');
+    }
+    public function pescador()
+    {
+        return $this->belongsTo(Pescador::class, 'pescador_id');
+    }
 }

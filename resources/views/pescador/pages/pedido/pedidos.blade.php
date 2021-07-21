@@ -49,6 +49,7 @@
             </div>
       </div>
       @foreach ($pedidos as $pedido)
+      @if ($pedido->products->status == 2)
       <div class="repeat">
             <div class="for">
                   <div class="container">
@@ -73,17 +74,19 @@
             </div>
             <div class="">
                   <div class="text-center mt-4 mb-4">
-                        <form action="{{ route('pescador.produto.status', $pedido->products->id) }}">
-                              @if($pedido->products->status == 0)
-                              <input type="hidden" name="status" value="1">
+                        <form action="{{ url('pescador/produto/status/'.$pedido->products->id) }}">
+                            @csrf
+                              @if($pedido->products->status == 2)
+                              <input type="hidden" name="status" value="3">
                               <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
-                             
+
 
                               @endif
                         </form>
                   </div>
             </div>
       </div>
+      @endif
       @endforeach
 </div>
 

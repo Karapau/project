@@ -57,17 +57,23 @@
                   </div>
                   <div>
                         <button
-                              class=" botao-prep @if($order->products->status == 0) botao-prep @elseif($order->products->status == 1) botao-trans @elseif($order->products->status == 2) botao-entr @endif">@if($order->products->status
-                              == 0) AGUARDANDO PAGAMENTO @elseif($order->products->status == 1) TRANSPORTE
-                              @elseif($order->products->status == 2) ANÁLISE FINANCEIRA @endif</button>
+                              class=" botao-prep @if($order->products->status == 0) botao-prep @elseif($order->products->status == 1) botao-trans @elseif($order->products->status == 2) botao-entr @endif">
+                              @if($order->products->status
+                              == 0) AGUARDANDO PAGAMENTO
+                            @elseif($order->products->status == 1) ANÁLISE FINANCEIRA
+                            @elseif($order->products->status == 2) PAGAMENTO ACEITO
+                            @elseif($order->products->status == 3) A LIBERAR
+                            @elseif($order->products->status == 4) EM TRANSPORTE
+                            @elseif($order->products->status == 5) ENTREGUE
+                            @elseif($order->products->status == 6) CANCELADO @endif</button>
                   </div>
             </div>
             <div class="mt-3 text-center " id="linha-horizontal"></div>
             <div class="d-flex mt-3 avaliar">
-                @if ($order->products->status != 2)
+                @if ($order->products->status != 5)
                 <form action="{{ route('user.produto.status', $order->products->id) }}" method="post">
                     @csrf
-                    <input type="hidden" name="status" value="2">
+                    <input type="hidden" name="status" value="5">
                     <button type="submit" class="btn btn-primary">INFORMAR RECEBIMENTO</button>
                 </form>
                 @else
@@ -92,6 +98,7 @@
 </div>
 <div class="square">
     <div class="container">
+        @if ($order->products->status == 0)
         <div  class="itens">
             <form action="{{ route('pay.image.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -104,6 +111,8 @@
                 </div>
               </form>
           </div>
+        @endif
+
     </div>
 </div>
 <div class="square">
