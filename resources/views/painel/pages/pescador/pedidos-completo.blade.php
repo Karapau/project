@@ -13,7 +13,7 @@
             <li class="list-group-item">Email do Comprador: {{ $pedido->orders->email }}</li>
             <li class="list-group-item">Telemóvel do Comprador: {{ $pedido->orders->telemovel }}</li>
             {{-- <li class="list-group-item">Telemóvel do Comprador: {{ $pedido->products->status }}</li> --}}
-            <li class="list-group-item">Status: @if($pedido->products->status == 0) Aguardando
+            <li class="list-group-item bg-danger text-white">Status: @if($pedido->products->status == 0) Aguardando
                   @elseif($pedido->products->status == 1) Em Preparação @elseif($pedido->products->status == 2) Saiu
                   Para Entrega @elseif($pedido->products->status == 3) Entregue @endif</li>
 
