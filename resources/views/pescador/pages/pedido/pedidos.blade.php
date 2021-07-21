@@ -49,7 +49,7 @@
             </div>
       </div>
       @foreach ($pedidos as $pedido)
-      @if ($pedido->products->status == 2)
+      @if ($pedido->products->status != 0 AND $pedido->products->status != 1)
       <div class="repeat">
             <div class="for">
                   <div class="container">
