@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Checkout;
 use App\Models\Produto;
 use App\Models\PayImage;
 use App\Models\PortoTax;
+use App\Models\Comprador;
 use App\Models\UserOrder;
+use App\Models\WalletCom;
 use App\Models\AdressBuyer;
 use App\Models\ShippingTax;
 use App\Models\UserProduct;
@@ -83,7 +85,19 @@ class CheckoutController extends Controller
                 'pescador_id' => $item->attributes->pescador_id,
                 'product_id' =>  $item->id,
                 'value' => $value,
+            ]);
 
+            $id = auth()->user()->id;
+            $comprador = Comprador::with('comercial')->find($id);
+            $valor = \Cart::getTotal() * (2/100);
+
+            $walletCom = WalletCom::create([
+                'user_id' => $comprador->comercial->id,
+                'comprador_id' => $id,
+                'pescador_id' => $item->attributes->pescador_id,
+                'product_id' => $item->id,
+                'total' => \Cart::getTotal(),
+                'value' => $valor,
             ]);
 
             $quantidade = Produto::find($item->id);
@@ -128,7 +142,7 @@ class CheckoutController extends Controller
             'order_id' => $request->order_id,
             'path' => $name
         ]);
-        $produto = UserProduct::find($request->order_id);
+        $produto = UserOrder::find($request->order_id);
         $produto->status = 1;
         $produto->save();
 

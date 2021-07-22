@@ -71,7 +71,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::any('pescador/edit/produto/{id}', [AdminPescadorController::class, 'editProduto'])->name('admin.pescador.produto.edit');
     Route::post('pescador/update/produto/{id}', [AdminPescadorController::class, 'updateProduto'])->name('admin.pescador.produto.update');
     Route::get('pescador/pedidos/{id}', [AdminPescadorController::class, 'pedidos'])->name('admin.pescador.pedidos');
-    Route::get('pescador/pedidos/completo/{id}', [AdminPescadorController::class, 'pedidosCompletos'])->name('admin.pescador.pedidos.completo');
+    Route::get('pedidos/completo/{id}', [EncomendasController::class, 'pedidoDatalheUser'])->name('admin.pedidos.completo');
 
 
 
@@ -150,7 +150,7 @@ Route::middleware(['auth:consultor'])->group(function () {
 
     });
 
-Route::any('teste', [TesteController::class, 'index']);
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -217,6 +217,8 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('store/pedidos/produtos/{id}', [PedidoController::class, 'pedidoDatalheUser'])->name('user.pedido.produto');
 
     Route::any('user/produto/status/{id}', [PedidoController::class, 'produtoStatus'])->name('user.produto.status');
+
+    Route::any('teste', [TesteController::class, 'index']);
 });
 
 

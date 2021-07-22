@@ -152,12 +152,10 @@ class PescadorController extends Controller
         return redirect()->back();
 
     }
-    
+
     public function pedidos($id)
     {
         $pedidos = PescadorPedido::with('orders', 'products', 'adresses')->where('pescador_id', $id)->get();
-
-     
         return view('painel.pages.pescador.pedidos', compact('pedidos'));
     }
     public function pedidosCompletos($id)
@@ -165,7 +163,7 @@ class PescadorController extends Controller
         $pedido = PescadorPedido::with('orders', 'products', 'adresses')->find($id);
         // dd($pedido);
         // $produtos = UserProduct::where('order_id', $id)->get();
-  
+
         return view('painel.pages.pescador.pedidos-completo', compact('pedido'));
     }
 

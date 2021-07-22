@@ -7,37 +7,42 @@
     <div class="container">
         <h2 class="text-center">Pedido</h2>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: {{ $pedido->orders->id }}</li>
-            <li class="list-group-item">Método de Pagamento: {{ $pedido->orders->payment_mothod }}</li>
-            <li class="list-group-item">Comprador: {{ $pedido->orders->user_name }}</li>
-            <li class="list-group-item">Email do Comprador: {{ $pedido->orders->email }}</li>
-            <li class="list-group-item">Telemóvel do Comprador: {{ $pedido->orders->telemovel }}</li>
+            <li class="list-group-item">ID: {{ $user_order->id }}</li>
+            <li class="list-group-item">Método de Pagamento: {{$user_order->payment_mothod }}</li>
+            <li class="list-group-item">Comprador: {{ $user_order->user_name }}</li>
+            <li class="list-group-item">Email do Comprador: {{ $user_order->email }}</li>
+            <li class="list-group-item">Telemóvel do Comprador: {{ $user_order->telemovel }}</li>
             {{-- <li class="list-group-item">Telemóvel do Comprador: {{ $pedido->products->status }}</li> --}}
             <li class="list-group-item bg-danger text-white" data-toggle="modal" data-target="#exampleModal">Status:
-                @if ($pedido->products->status == 0) Aguardando Pagamento
-            @elseif($pedido->products->status == 1) Análise Financeira @elseif($pedido->products->status == 2) Pagamento Aceito @elseif($pedido->products->status == 3) A liberar @elseif($pedido->products->status == 4)
-            Transporte @elseif($pedido->products->status == 5)
-            Entregue @elseif($pedido->products->status == 6)
-            Cancelado @endif <span><i class="fas fa-external-link-alt"></i></span></li>
+                @if ($user_order->status == 0) Aguardando Pagamento
+            @elseif($user_order->status == 1) Análise Financeira
+            @elseif($user_order->status == 2) Pagamento Aceito
+            @elseif($user_order->status == 3) Cancelado
+             @endif <span><i class="fas fa-external-link-alt"></i></span></li>
 
 </ul>
+
+<h2 class="text-center mt-5">Produtos</h2>
+
+@foreach ($orders as $order)
+<ul class="list-group list-group-flush mt-4 mb-4">
+    <li class="list-group-item">Produto: {{ $order->products->name }}</li>
+    <li class="list-group-item">Preço: {{ '€ ' . number_format($order->products->price, 2, ',', '.') }}</li>
+    <li class="list-group-item">Quantidade: {{ $order->products->quantity }}Kg</li>
+</ul>
+@endforeach
+
+
 <h2 class="text-center mt-5">Endereço</h2>
-<ul class="list-group list-group-flush">
+{{-- <ul class="list-group list-group-flush">
     <li class="list-group-item">Morada: {{ $pedido->adresses->morada }}</li>
     <li class="list-group-item">Código Postal: {{ $pedido->adresses->codigo_postal }}</li>
     <li class="list-group-item">Região: {{ $pedido->adresses->regiao }}</li>
     <li class="list-group-item">Distrito: {{ $pedido->adresses->distrito }}</li>
     <li class="list-group-item">Conselho: {{ $pedido->adresses->distrito }}</li>
     <li class="list-group-item">Freguesia: {{ $pedido->adresses->freguesia }}</li>
-</ul>
-<h2 class="text-center mt-5">Produtos</h2>
+</ul> --}}
 
-<ul class="list-group list-group-flush mt-4 mb-4">
-    <li class="list-group-item">Produto: {{ $pedido->products->name }}</li>
-    <li class="list-group-item">Preço: {{ '€ ' . number_format($pedido->products->price, 2, ',', '.') }}</li>
-    <li class="list-group-item">Quantidade: {{ $pedido->products->quantity }}Kg</li>
-
-</ul>
 
 
 </div>
@@ -62,7 +67,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form action="{{ url('admin/user/produto/status/'.$pedido->products->id) }}" method="post">
+            <form action="{{ url('admin/user/produto/status/'.$user_order->id) }}" method="post">
                 @csrf
 
                 <div>
@@ -71,27 +76,6 @@
                             value="2">
                         <label class="form-check-label text-success" for="exampleRadios1">
                             Pago
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
-                            value="3">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Liberar
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
-                            value="4">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Transporte
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
-                            value="5">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Entregue
                         </label>
                     </div>
                     <div class="form-check">

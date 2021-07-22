@@ -10,17 +10,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Comprador extends Authenticatable
 {
     use HasFactory, Notifiable;
-    
+
     protected $guard = 'buyer';
 
     protected $fillable = [
-        'user_id', 
+        'user_id',
         'name',
-        'lastname', 
-        'telemovel', 
-        'email', 
+        'lastname',
+        'telemovel',
+        'email',
         'password',
-        'codigo', 
+        'codigo',
         'type'
     ];
 

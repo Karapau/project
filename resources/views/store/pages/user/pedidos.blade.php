@@ -43,7 +43,17 @@
                             <h4>{{ '€ ' . number_format($order->total, 2, ',', '.') }}</h4>
                         </div>
                         <div class="col-4 status-pedido">
-                            <h4>Aguardando Pagamento</h4>
+                            <h4>
+                                @if ($order->status == 0)
+                                    Aguardando pagamento
+                                @elseif ($order->status == 1)
+                                    Análise Financeira
+                                @elseif ($order->status == 2)
+                                    Pago
+                                @elseif ($order->status == 3)
+                                    Cancelado
+                                @endif
+                            </h4>
                         </div>
                     </div>
                 </div>

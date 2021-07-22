@@ -14,7 +14,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nome do Comprador</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Pescador</th>
+                        <th scope="col">Total</th>
                         <th scope="col">Acão</th>
                     </tr>
                 </thead>
@@ -22,32 +22,30 @@
                     @foreach ($orders as $order)
                         <tr>
                             <th scope="row">{{ $order->id }}</th>
-                            <td>{{ $order->users->name }}</td>
+                            <td>{{ $order->user_name }}</td>
 
                             <td>
-                                @if ($order->products->status == 0) AGUARDANDO PAGAMENTO
-                                @elseif($order->products->status == 1) ANÁLISE FINANCEIRA
-                                @elseif($order->products->status == 2) PAGAMENTO ACEITO
-                                @elseif($order->products->status == 3) A LIBERAR
-                                @elseif($order->products->status == 4) EM TRANSPORTE
-                                @elseif($order->products->status == 5) ENTREGUE
-                                @elseif($order->products->status == 6) CANCELADO @endif
+                                @if ($order->status == 0) AGUARDANDO PAGAMENTO
+                                @elseif($order->status == 1) ANÁLISE FINANCEIRA
+                                @elseif($order->status == 2) PAGAMENTO ACEITO
+                                @elseif($order->status == 3) CANCELADO
+                           @endif
                             </td>
                             <td>
-                                {{ $order->pescador->name }}
+                                {{ '€ ' . number_format($order->total, 2, ',', '.') }}
                             </td>
                             <td>
                                 <div class="d-flex">
 
                                     <div>
-                                        <a href="{{ route('admin.pescador.pedidos.completo', $order->id) }}"> <button
+                                        <a href="{{ route('admin.pedidos.completo', $order->id) }}"> <button
                                                 class="btn btn-primary ml-2">Ver Pedido</button></a>
                                     </div>
                               @if ($order->payImage)
                               <div>
                                 <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
                                         class="btn btn-dark ml-2">Baixar Comprovante</button></a>
-                            </div>
+                                </div>
 
                               @endif
 

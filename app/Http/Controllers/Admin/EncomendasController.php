@@ -17,8 +17,16 @@ class EncomendasController extends Controller
     public function index()
     {
 
-        $orders  = PescadorPedido::with('adresses', 'orders', 'products', 'users', 'pescador')->get();
+        $orders = UserOrder::with('payimage')->orderBy('created_at', 'desc')->get();
         return view('painel.pages.encomendas.index', compact('orders'));
+    }
+
+    public function pedidoDatalheUser($id)
+    {
+
+        $user_order = UserOrder::with('enderecos')->find($id);
+        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->get();
+        return view('painel.pages.encomendas.pedido', compact('orders', 'user_order'));
     }
 
     public function download($id)
@@ -34,7 +42,7 @@ class EncomendasController extends Controller
         $porto->status = $request->get('status');
         $porto->save();
 
-    
+
         return redirect()->back();
     }
 }

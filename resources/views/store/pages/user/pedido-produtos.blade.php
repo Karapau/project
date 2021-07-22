@@ -54,7 +54,7 @@
                 </div>
                 <div class="pedidos-body row justify-content-between">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-primary">INFORMAR RECEBIMENTO</button>
+                        <button type="button" class="btn btn-primary" disabled="disabled">INFORMAR RECEBIMENTO</button>
                     </div>
 
 
@@ -103,13 +103,14 @@
             </div>
         </div>
     </div>
+    @if ($user_order->status != 2 AND $user_order->status != 3)
     <div class="square">
         <div class="container">
-            @if ($order->status == 0)
+
                 <div class="itens mt-3 pt-3">
                     <form action="{{ route('pay.image.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                        <input type="hidden" name="order_id" value="{{ $user_order->id }}">
                         <div class="form-group">
                             <input type="file" name="comprovante" class="form-control-file" required>
                         </div>
@@ -118,10 +119,9 @@
                         </div>
                     </form>
                 </div>
-            @endif
-
         </div>
     </div>
+    @endif
     <div class="square">
         <div class="container">
             <div class=" itens mt-3 pt-3 text-start">

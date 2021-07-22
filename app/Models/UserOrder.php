@@ -31,7 +31,7 @@ class UserOrder extends Model
 
     public function payimage()
     {
-        return $this->hasMany(PayImage::class, 'order_id');
+        return $this->hasOne(PayImage::class, 'order_id');
     }
 
 }
