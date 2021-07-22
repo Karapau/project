@@ -35,7 +35,7 @@
                               <img src="{{ url('app-store/img/icons/location.svg') }}" alt="">
                         </div>
                         <div class="col-8">
-                              <h4>{{ $adresses->morada ?? 'Sem endereço' }} - {{ $adresses->distrito  ?? 'Sem endereço' }}</h4>
+                              <h4>{{ $adresses->morada ?? 'Sem endereço' }} - {{ $adresses->distrito  ?? 'por favor insira endereço de entrega' }}</h4>
                         </div>
                         <div class="col-2">
                               <img src="{{ url('app-store/img/icons/close.svg') }}" alt="">
