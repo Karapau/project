@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="exampleInputEmail1">Código Postal</label>
-                        <input id="cep" type="number" class="form-control" name="codigo_postal">
+                        <input id="cep" type="text" class="form-control" name="codigo_postal">
 
                     </div>
                     <div style="margin-top: 32px;" class="col-6">
