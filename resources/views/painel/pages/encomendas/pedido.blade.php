@@ -29,6 +29,7 @@
     <li class="list-group-item">Produto: {{ $order->products->name }}</li>
     <li class="list-group-item">Preço: {{ '€ ' . number_format($order->products->price, 2, ',', '.') }}</li>
     <li class="list-group-item">Quantidade: {{ $order->products->quantity }}Kg</li>
+    <li class="list-group-item">Pescador: {{ $order->pescador->name }}</li>
 </ul>
 @endforeach
 
