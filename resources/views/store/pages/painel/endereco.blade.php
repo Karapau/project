@@ -44,8 +44,10 @@
                   <input type="hidden" name="adress" value="{{ $adresses->id  ?? 'Sem endereço' }}">
             </div>
       </a>
+      @if ($adresses)
       <div class="mt-5">
             <a href="{{ route('store.checkout') }}"> <button class="btn btn-continuar">CONTINUAR</button></a>
       </div>
+      @endif
 </div>
 @endsection
