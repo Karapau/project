@@ -147,6 +147,12 @@
             });
       </script>
       @endif
+      <script>
+        $('.open').on('click', function(){
+            var idprod = $(this).data('id');
+            $('[name="idproduto"]').val(idprod);
+        });
+    </script>
 </body>
 
 </html>

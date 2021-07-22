@@ -38,10 +38,19 @@ class EncomendasController extends Controller
     }
     public function status(Request $request, $id)
     {
-        $porto = UserProduct::find($id);
+        $porto = UserOrder::find($id);
         $porto->status = $request->get('status');
         $porto->save();
 
+
+        return redirect()->back();
+    }
+    public function statusProduto(Request $request)
+    {
+        $id = $request->idproduto;
+        $porto = UserProduct::find($id);
+        $porto->status = $request->get('status');
+        $porto->save();
 
         return redirect()->back();
     }
