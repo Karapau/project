@@ -96,7 +96,7 @@
     <div class="square">
         <div class="container">
             @if ($order->status == 0)
-                <div class="itens">
+                <div class="itens mt-3 pt-3">
                     <form action="{{ route('pay.image.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="order_id" value="{{ $order->id }}">
