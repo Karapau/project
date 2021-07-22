@@ -20,6 +20,7 @@ class UserOrder extends Model
         'telemovel',
         'total',
         'sub_total',
+        'frete'
 
     ];
 

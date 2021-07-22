@@ -12,16 +12,16 @@ class PedidoController extends Controller
 {
     public function userPedido()
     {
-        $user_orders = PescadorPedido::where('user_id', auth()->user()->id)->get();
+        $user_orders = UserOrder::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         return view('store.pages.user.pedidos', compact('user_orders'));
     }
 
     public function pedidoDatalheUser($id)
     {
 
-        $order  = PescadorPedido::with('adresses', 'orders', 'products')->find($id);
-
-        return view('store.pages.user.pedido-produtos', compact('order'));
+        $user_order = UserOrder::with('enderecos')->find($id);
+        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->get();
+        return view('store.pages.user.pedido-produtos', compact('orders', 'user_order'));
     }
 
     public function produtoStatus(Request $request, $id)

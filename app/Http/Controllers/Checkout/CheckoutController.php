@@ -59,6 +59,7 @@ class CheckoutController extends Controller
             'email' => auth()->user()->email,
             'telemovel' => auth()->user()->telemovel,
             'total' => $request->totalval,
+            'frete' => $request->freteval,
             'sub_total' => \Cart::getSubTotal(),
         ]);
 

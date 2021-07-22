@@ -160,6 +160,7 @@
                     <p>Taxa de Entrega:  {{ '€ ' . number_format($shipping->value * $ceil, 2, ',', '.') }} </p>
                     <h3>Total: {{ '€ ' . number_format(Cart::getTotal() + ($shipping->value * $ceil), 2, ',', '.') }}</h3>
                 </div>
+                <input type="hidden" name="freteval" value="{{ $shipping->value * $ceil }}">
                 <input type="hidden" name="totalval" value="{{ Cart::getTotal() + ($shipping->value * $ceil) }}">
             </div>
         </div>
