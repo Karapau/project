@@ -35,13 +35,13 @@
                               <img src="{{ url('app-store/img/icons/location.svg') }}" alt="">
                         </div>
                         <div class="col-8">
-                              <h4>{{ $adresses->morada }} - {{ $adresses->distrito }}</h4>
+                              <h4>{{ $adresses->morada ?? 'Sem endereço' }} - {{ $adresses->distrito  ?? 'Sem endereço' }}</h4>
                         </div>
                         <div class="col-2">
                               <img src="{{ url('app-store/img/icons/close.svg') }}" alt="">
                         </div>
                   </div>
-                  <input type="hidden" name="adress" value="{{ $adresses->id }}">
+                  <input type="hidden" name="adress" value="{{ $adresses->id  ?? 'Sem endereço' }}">
             </div>
       </a>
       <div class="mt-5">
