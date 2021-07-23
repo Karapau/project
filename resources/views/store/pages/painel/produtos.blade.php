@@ -77,7 +77,7 @@
             <div class="row">
                 @foreach ($produtos as $produto)
                     @if ($produto->quantidade_kg >= 10)
-                    @if (date('Y-m-d H:i:s', strtotime('+1 days', strtotime($produto->created_at))) )
+
                         <div class="col-6 my-4">
                             <a href="{{ route('store.produto.single', $produto->id) }}">
                                 <img src="{{ url('storage/especies/' . $produto->especies->image) }}" alt="">
@@ -90,7 +90,7 @@
                                 <p>STOCK - {{ $produto->quantidade_kg }} Kg</p>
                             </a>
                         </div>
-                        @endif
+                        
                     @endif
                 @endforeach
 
