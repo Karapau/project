@@ -146,7 +146,7 @@ Route::middleware(['auth:consultor'])->group(function () {
         Route::get('consultor-lead', [ComercialPainelController::class, 'lead'])->name('consultor.lead');
         Route::get('consultor-lead-form1', [ComercialPainelController::class, 'leadForm1'])->name('consultor.lead.individual');
         Route::get('consultor-lead-form2', [ComercialPainelController::class, 'leadForm2'])->name('consultor.lead.coletivo');
-
+        Route::any('teste', [TesteController::class, 'index']);
 
 
     });
@@ -219,7 +219,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
 
     Route::any('user/produto/status/{id}', [PedidoController::class, 'produtoStatus'])->name('user.produto.status');
 
-    Route::any('teste', [TesteController::class, 'index']);
+
 });
 
 

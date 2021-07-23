@@ -35,7 +35,7 @@
             $value = 0;
         @endphp
         @foreach ($pedidos as $pedido)
-            @if ($pedido->products->status != 0 AND $pedido->products->status != 1)
+            @if ($pedido->orders->status != 0 AND $pedido->orders->status != 1)
             @if ($pedido->values)
             @php
                 $value += $pedido->values->value

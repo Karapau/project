@@ -13,6 +13,8 @@ class UserProduct extends Model
         'product_id',
         'name',
         'price',
+        'value',
+        'total_value',
         'quantity',
         'image',
         'user_id',

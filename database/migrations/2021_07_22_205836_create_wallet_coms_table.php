@@ -19,6 +19,7 @@ class CreateWalletComsTable extends Migration
             $table->integer('comprador_id');
             $table->integer('pescador_id');
             $table->integer('product_id');
+            $table->integer('order_id');
             $table->string('total');
             $table->string('value');
             $table->integer('status')->default(0);

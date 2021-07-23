@@ -10,6 +10,7 @@ use App\Models\CompradorIndividual;
 use App\Http\Controllers\Controller;
 use App\Models\BuyerColective;
 use App\Models\BuyerInduvidual;
+use App\Models\WalletCom;
 
 class ComercialPainelController extends Controller
 {
@@ -18,12 +19,12 @@ class ComercialPainelController extends Controller
     {
         $comprador1 = Comprador::where('user_id', auth()->guard('consultor')->user()->id)->get();
 
-
+        $wallet = WalletCom::where('user_id', auth()->user()->id)->with('orders')->get();
         $inativos = Comprador::where('user_id', auth()->guard('consultor')->user()->id)->where('status', 0)->get();
         $ativos = Comprador::where('user_id', auth()->guard('consultor')->user()->id)->where('status', 1)->get();
 
         // $imcompletos_ind = CompradorIndividual::where('user_id', '=', 5)->orWhereNull('nif')->orWhereNull('sobrenome')->orWhereNull('telemovel')->orWhereNull('morada')->get();
-        $imcompletos_inds = Comprador::with(['individuais', 'coletivos'])->where('user_id', auth()->guard('consultor')->user()->id)->get();
+        $imcompletos_inds = Comprador::with(['individuais',  'coletivos'])->where('user_id', auth()->guard('consultor')->user()->id)->get();
 
         $incomplete_ind = [];
 
@@ -44,7 +45,7 @@ class ComercialPainelController extends Controller
                         foreach($value2 as $key3 => $value3){
 
                         if ($value3 == null) {
-                            
+
                                 $isValid = true;
                         }
                     }
@@ -60,7 +61,7 @@ class ComercialPainelController extends Controller
             }
         }
         // exit();
-        return view('comercial.pages.home', compact('incomplete_ind', 'comprador1', 'inativos', 'ativos'));
+        return view('comercial.pages.home', compact('incomplete_ind', 'wallet', 'comprador1', 'inativos', 'ativos'));
     }
 
     public function compradorCad()
@@ -126,7 +127,7 @@ class ComercialPainelController extends Controller
                         foreach($value2 as $key3 => $value3){
 
                         if ($value3 == null) {
-                            
+
                                 $isValid = true;
                         }
                     }

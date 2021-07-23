@@ -49,7 +49,7 @@
             </div>
       </div>
       @foreach ($pedidos as $pedido)
-      @if ($pedido->products->status != 0 AND $pedido->products->status != 1)
+      @if ($pedido->orders->status != 0 AND $pedido->orders->status != 1)
       <div class="repeat">
             <div class="for">
                   <div class="container">
@@ -76,11 +76,9 @@
                   <div class="text-center mt-4 mb-4">
                         <form action="{{ url('pescador/produto/status/'.$pedido->products->id) }}">
                             @csrf
-                              @if($pedido->products->status == 2)
-                              <input type="hidden" name="status" value="3">
+                              @if($pedido->products->status == 0)
+                              <input type="hidden" name="status" value="1">
                               <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
-
-
                               @endif
                         </form>
                   </div>

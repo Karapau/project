@@ -42,19 +42,27 @@
                 </div>
                 <div class="pedidos-body row justify-content-between">
                     <div class="col-12">
-                        <h4>Status:  @if ($order->products->status == 0) AGUARDANDO PAGAMENTO
-                            @elseif($order->products->status == 1) ANÁLISE FINANCEIRA
-                            @elseif($order->products->status == 2) PAGAMENTO ACEITO
-                            @elseif($order->products->status == 3) A LIBERAR
-                            @elseif($order->products->status == 4) EM TRANSPORTE
-                            @elseif($order->products->status == 5) ENTREGUE
-                            @elseif($order->products->status == 6) CANCELADO @endif</h4>
+                        <h4>Status:  @if ($order->products->status == 0) AGUARDANDO LIBERAÇÂO
+                            @elseif($order->products->status == 1) EM PREPARAÇÃO
+                            @elseif($order->products->status == 2) TRANSPORTE
+                            @elseif($order->products->status == 3) ENTREGUE
+                            @elseif($order->products->status == 4) CANCELADO
+                             @endif</h4>
                     </div>
 
                 </div>
                 <div class="pedidos-body row justify-content-between">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-primary" disabled="disabled">INFORMAR RECEBIMENTO</button>
+                        <form action="{{ route('user.produto.status', $order->products->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="status" value="3">
+                        <button type="submit" class="btn @if ($order->products->status != 2)
+                            btn-primary @else btn-success
+                        @endif " @if ($order->products->status != 2)
+                            disabled
+                        @endif >@if ($order->products->status == 3) PRODUTO ENTREGUE  @else INFORMAR RECEBIMENTO  @endif</button>
+                    </form>
+
                     </div>
 
 

@@ -67,19 +67,23 @@ class CheckoutController extends Controller
 
         foreach (\Cart::getContent() as $item) {
 
+
+            $itemQty = $item->price * $item->quantity;
+            $value = $itemQty - $itemQty * ($item->attributes->margem/100);
+
+
             $produtos = UserProduct::create([
                 'product_id' => $item->id,
                 'name' => $item->name,
                 'price' => $item->price,
+                'value' => $value,
+                'total_value' => $itemQty,
                 'quantity' => $item->quantity,
                 'image' => $item->attributes->image,
                 'user_id' => auth()->user()->id,
                 'order_id' => $user_order->id,
                 'pescador_id' => $item->attributes->pescador_id,
             ]);
-
-            $itemQty = $item->price * $item->quantity;
-            $value = $itemQty - $itemQty * ($item->attributes->margem/100);
 
            $wallet = SellToWallet::create([
                 'pescador_id' => $item->attributes->pescador_id,
@@ -95,6 +99,7 @@ class CheckoutController extends Controller
                 'user_id' => $comprador->comercial->id,
                 'comprador_id' => $id,
                 'pescador_id' => $item->attributes->pescador_id,
+                'order_id' => $user_order->id,
                 'product_id' => $item->id,
                 'total' => \Cart::getTotal(),
                 'value' => $valor,

@@ -21,7 +21,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                         <tr>
-                            <th scope="row">{{ $order->id }}</th>
+                            <th scope="row">{{ $order->id }} <span class="badge badge-success">Novo</span></th>
                             <td>{{ $order->user_name }}</td>
 
                             <td>

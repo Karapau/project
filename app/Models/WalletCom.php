@@ -14,9 +14,15 @@ class WalletCom extends Model
         'comprador_id',
         'pescador_id',
         'product_id',
+        'order_id',
         'value',
         'total',
         'status',
 
     ];
+
+    public function orders()
+    {
+        return $this->belongsTo(UserOrder::class, 'order_id');
+    }
 }

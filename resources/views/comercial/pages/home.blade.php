@@ -21,13 +21,24 @@
                   </div>
             </div>
       </div>
-
+      @php
+      $value = 0;
+  @endphp
+  @foreach ($wallet as $wal)
+  @if ($wal->orders)
+      @if ( $wal->orders->status != 0 AND $wal->orders->status != 1 AND $wal->orders->status != 4)
+@php
+     $value += $wal->value;
+@endphp
+@endif
+@endif
+  @endforeach
       <div class="container mt-2">
             <div class="wallet d-flex px-4">
                   <div class="py-4 ">
-                    
+
                         <a href=""><i class="fas fa-wallet a-2"></i> Seu Wallet</a>
-                        <h3 class="balance">€ 00,00</h3>
+                        <h3 class="balance"> {{  '€ '.number_format($value, 2, ',', '.') }}</h3>
                   </div>
                 <div class="col-4 eye">
                       <span onclick="hide()"><i class="fas fa-eye"></i></span>
@@ -47,7 +58,7 @@
                   </div>
             </div>
       </div>
-     
+
       {{-- @php $comp_inativo = $inativos_individual->count() + $inativos_coletivo->count() @endphp --}}
       <div class="container mt-3">
             <div class="inativos px-4">
@@ -116,7 +127,7 @@
 
 
 
-      {{-- 
+      {{--
       <div class="">
             <div class="container menu-ic">
                   <div class="row pt-3 text-center">
