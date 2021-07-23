@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Buyer;
 
-use App\Http\Controllers\Controller;
 use App\Models\Comprador;
-use App\Models\CompradorIndividual;
 use Illuminate\Http\Request;
+use App\Models\CompradorIndividual;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BuyerController extends Controller
 {
@@ -17,5 +18,12 @@ class BuyerController extends Controller
     public function coletivo()
     {
         return view('store.pages.user.edit-col');
+    }
+    public function logout()
+    {
+
+        Auth::logout();
+
+        return redirect('store-login-page');
     }
 }

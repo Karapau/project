@@ -9,11 +9,16 @@
                         <img src="{{ url('app-store/img/icons/icone-notificacoes.svg') }}" alt="">
                   </div>
                   <div class="mx-3">
-                      
+
                         <a href="{{ route('store.user.edit-ind', auth()->user()->id) }}"> <img
                                     src="{{ url('app-store/img/icons/edit-off.svg') }}" alt=""></a>
-                  
+
                   </div>
+                  <div class="mx-3 mt-1">
+                    <a href="{{ route('user.logout') }}"> <span class="iconify" data-inline="false"
+                                data-icon="ls:logout"
+                                style="color: #352020; font-size: 38.42677688598633px;"></span></a>
+                     </div>
 
             </div>
 
