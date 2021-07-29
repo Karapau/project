@@ -24,23 +24,23 @@
     </div>
 
     <div class="row mt-5 menu-icons">
-        <div class="col-6">
-            <a href="{{ route('store.porto') }}"> <img src="{{ url('front-app/store/assets/img/icons/compras.svg') }}"
+        <div class="col-6 scale-in-center">
+            <a href="{{ route('store.porto') }}"> <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/compras.svg') }}"
                     alt=""></a>
             <p>Fazer Compras</p>
         </div>
-        <div class="col-6">
-            <a href="{{ route('user.pedidos') }}"> <img src="{{ url('front-app/store/assets/img/icons/encomendas.svg') }}"
+        <div class="col-6 scale-in-center">
+            <a href="{{ route('user.pedidos') }}"> <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/encomendas.svg') }}"
                     alt=""></a>
             <p>SUAS ENCOMENDAS</p>
         </div>
-        <div class="col-6">
-            <img src="{{ url('front-app/store/assets/img/icons/perfil.svg') }}" alt="">
+        <div class="col-6 scale-in-center">
+            <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/perfil.svg') }}" alt="">
             <p>SEUS DADOS
                 DE PERFIL</p>
         </div>
-        <div class="col-6">
-            <img src="{{ url('front-app/store/assets/img/icons/suporte.svg') }}" alt="">
+        <div class="col-6 scale-in-center">
+            <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/suporte.svg') }}" alt="">
             <p>SUPORTE TÉCNICO</p>
         </div>
     </div>
