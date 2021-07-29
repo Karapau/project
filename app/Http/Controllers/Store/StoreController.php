@@ -17,11 +17,11 @@ class StoreController extends Controller
 
     public function index()
     {
-        return view('store.pages.painel.index');
+        return view('app-front.store.pages.home');
     }
 
     public function porto()
-    {
+    {   
         $portos = Porto::where('status', 0)->get();
         return view('store.pages.painel.porto', compact('portos'));
     }
@@ -66,13 +66,13 @@ class StoreController extends Controller
 
 
         $termos = $request->only('especie_id', 'tamanho', 'arte');
-    
+
         foreach ($termos as $nome => $valor) {
-            if ($valor) { 
+            if ($valor) {
                 $query->where($nome, 'LIKE', '%' . $valor . '%');
             }
         }
-    
+
 
         $produtos = $query->get();
 
