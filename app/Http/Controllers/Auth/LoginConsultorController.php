@@ -20,7 +20,7 @@ class LoginConsultorController extends Controller
      */
     public function index()
     {
-        return view('auth.consultor.login');
+        return view('app-front.comercial.auth.login');
     }
 
     /**
@@ -158,7 +158,7 @@ class LoginConsultorController extends Controller
 
     public function logout()
     {
-      
+
         Auth::logout();
 
         return redirect('consultor-login');

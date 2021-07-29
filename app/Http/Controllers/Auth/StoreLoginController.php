@@ -20,7 +20,7 @@ class StoreLoginController extends Controller
      */
     public function index()
     {
-        return view('auth.store.login');
+        return view('app-front.store.auth.login');
     }
 
     /**
