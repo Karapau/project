@@ -21,7 +21,7 @@
                     @if ($produto->quantidade_kg >= 10)
                         <div class="col-6 mb-5">
                             <div class="porto">
-                                <a href="#"> <img src="{{ url('storage/especies/' . $produto->especies->image) }}"
+                                <a href="{{ route('store.produto.single', $produto->id) }}"> <img src="{{ url('storage/especies/' . $produto->especies->image) }}"
                                         alt=""></a>
                             </div>
                             <div>

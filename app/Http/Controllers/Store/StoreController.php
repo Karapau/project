@@ -37,7 +37,7 @@ class StoreController extends Controller
     public function produto($id)
     {
         $produto = Produto::with('especies')->find($id);
-        return view('store.pages.painel.produto-single', compact('produto'));
+        return view('app-front.store.pages.produto-single', compact('produto'));
     }
     public function produtoInfo($id)
     {

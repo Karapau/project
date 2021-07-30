@@ -31,7 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="{{ url('js/jquery.countdown.min.js') }}"></script>
     <script src="{{ url('painel/js/timer.js') }}"></script>
-    <script src="{{ url('assets/js/script.js') }}"></script>
+    <script src="{{ url('front-app/store/assets/js/script.js') }}"></script>
     <script type="text/javascript">
         var url = "{{ route('store.produto', '') }}"
         var urlImage = "{{ url('storage/portos') }}"
