@@ -90,7 +90,7 @@
                                 <p>STOCK - {{ $produto->quantidade_kg }} Kg</p>
                             </a>
                         </div>
-                        
+
                     @endif
                 @endforeach
 
