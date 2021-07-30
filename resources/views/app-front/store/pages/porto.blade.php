@@ -15,22 +15,12 @@
             <div>
                 <button class="btn btn-filtro" data-bs-toggle="modal" data-bs-target="#exampleModal">FILTRAR</button>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">BUSCAR PORTO</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="search" id="search" name="search" class="form-control" placeholder="Buscar Porto..." x-webkit-speech>
-                          </div>
-                        </div>
-
-                    </div>
+            @component('components.modal.filtro-modal', ['title' => 'Buscar Porto'])
+                <div class="form-group">
+                    <input type="search" id="search" name="search" class="form-control" placeholder="Buscar Porto..."
+                        x-webkit-speech>
                 </div>
-            </div>
+            @endcomponent
         </div>
     </div>
 
