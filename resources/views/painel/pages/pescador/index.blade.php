@@ -1,11 +1,10 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-<p>Pescador</p>
 
-
-<div class="container">
+<div class="card m-5 col-md-10">
+    <p>Pescador</p>
       <table class="table">
             <thead class="thead-dark">
                   <tr>

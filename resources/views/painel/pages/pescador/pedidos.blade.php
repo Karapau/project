@@ -1,38 +1,39 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-<p>Pedidos</p>
 
-<div class="container">
-      <table class="table">
+
+    <div class="card m-5 col-md-10">
+        <p>Pedidos</p>
+        <table class="table">
             <thead>
-                  <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Pagamento</th>
-                        <th scope="col">Comprador</th>
-                        <th scope="col">Ver</th>
-                  </tr>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pagamento</th>
+                    <th scope="col">Comprador</th>
+                    <th scope="col">Ver</th>
+                </tr>
             </thead>
             <tbody>
-                
-                  @foreach ($pedidos as $pedido)
 
-                  <tr>
+                @foreach ($pedidos as $pedido)
+
+                    <tr>
                         <th scope="row">{{ $pedido->id }}</th>
                         <td>{{ $pedido->orders->payment_mothod }}</td>
                         <td>{{ $pedido->orders->user_name }}</td>
                         <td>
-                              <a href="{{ route('admin.pescador.pedidos.completo', $pedido->id) }}"> <button
-                                          class="btn btn-dark">Ver Completo</button></a>
+                            <a href="{{ route('admin.pescador.pedidos.completo', $pedido->id) }}"> <button
+                                    class="btn btn-dark">Ver Completo</button></a>
                         </td>
-                  </tr>
+                    </tr>
 
-                  @endforeach
-                
+                @endforeach
+
             </tbody>
-      </table>
-</div>
+        </table>
+    </div>
 
 
 

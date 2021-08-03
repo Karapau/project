@@ -1,10 +1,11 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
 
-<p>Estatisticas diarias do porto {{ $porto->nome }}</p>
-<div class="col-md-12">
+
+<div class="card m-5 col-md-10">
+    <p>Estatisticas diarias do porto {{ $porto->nome }}</p>
       <form action="{{ route('admin.estatistica.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row col-md-6">

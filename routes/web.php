@@ -53,8 +53,17 @@ Auth::routes();
 
 /*  Painel Routes  */
 Route::middleware(['auth'])->prefix('admin')->group( function () {
+    Route::get('layout', function(){
+        return view('layouts.painel.index');
+    });
+
+    Route::prefix('cadastro')->group( function () {
+
+        Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
+        Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
+    });
     Route::get('/home', [PainelController::class, 'index']);
-    Route::get('especies', [PainelController::class, 'especies'])->name('admin.especies');
+
     Route::get('especies/create', [EspecieController::class, 'create'])->name('admin.especies.create');
     Route::post('especies/store', [EspecieController::class, 'store'])->name('admin.especies.store');
     Route::get('especies/show/{id}', [EspecieController::class, 'show'])->name('admin.especies.show');
@@ -75,7 +84,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
 
 
 
-    Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
+
     Route::get('porto/create', [PortoController::class, 'create'])->name('admin.porto.create');
     Route::post('porto/store', [PortoController::class, 'store'])->name('admin.porto.store');
     Route::any('porto/delete/{id}', [PortoController::class, 'destroy'])->name('admin.porto.delete');

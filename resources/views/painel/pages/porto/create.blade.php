@@ -1,9 +1,9 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-<p>Porto</p>
-<div class="col-md-12">
+
+<div class="card m-5 col-md-10">
       <form action="{{ route('admin.porto.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -40,7 +40,7 @@
                                 @foreach ($especies as $especie)
                                     <option value="{{ $especie->id }}">{{ $especie->nome_portugues }}</option>
                                 @endforeach
-                      
+
                               </select>
                         </div>
                         <div class="form-group col-md-6">

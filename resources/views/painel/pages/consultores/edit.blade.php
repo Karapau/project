@@ -1,9 +1,8 @@
-@extends('layouts.painel')
-
+@extends('layouts.painel.index')
 
 @section('content')
 
-<div class="col-md-12">
+<div class="card m-5 col-md-10">
       <form action="{{ route('admin.consultores.update', $consultor->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf

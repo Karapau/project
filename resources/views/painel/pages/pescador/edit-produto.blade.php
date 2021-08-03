@@ -1,9 +1,8 @@
-@extends('layouts.painel')
-
+@extends('layouts.painel.index')
 
 @section('content')
-<p>Pescador Editar</p>
-<div class="col-md-12">
+<div class="card m-5 col-md-10">
+    <p>Pescador Editar</p>
       <form action="{{ route('admin.pescador.produto.update', $produto->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">

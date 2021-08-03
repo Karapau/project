@@ -1,9 +1,9 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
 
-<div class="col-md-12">
+<div class="card m-5 col-md-10">
       <form action="{{ route('admin.update.coletivo', $comprador->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
@@ -30,7 +30,7 @@
                               <label for="exampleInputEmail1">Confirmar Senha</label>
                               <input type="password" class="form-control" name="confirm-password">
                         </div>
-                    
+
                         <div class="form-group col-md-12">
                               <label for="exampleInputEmail1">Morada</label>
                               <input type="text" class="form-control" value="{{ $comprador->coletivos[0]->morada }}" name="morada">

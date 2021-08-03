@@ -1,10 +1,11 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-<p>Portos</p>
 
-<div>
+
+<div class="card m-5 col-md-10">
+    <p>Portos</p>
       <div>
             <a href="{{ route('admin.porto.create') }}"><button class="btn btn-dark my-2">Adicionar
                         Porto</button></a>

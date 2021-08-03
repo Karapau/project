@@ -1,6 +1,9 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-    <p>Dashboard</p>
+    <div class="card m-5 col-md-10">
+        <p>Dashboard</p>
+        <p>Bem vindo, {{ auth()->user()->name }}</p>
+    </div>
 @endsection

@@ -1,10 +1,11 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
 
-<p>Taxa de entrega {{ $porto->nome }}</p>
-<div class="col-md-12">
+
+<div class="card m-5 col-md-10">
+    <p>Taxa de entrega {{ $porto->nome }}</p>
       <form action="{{ route('admin.porto.tax.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row col-md-6">

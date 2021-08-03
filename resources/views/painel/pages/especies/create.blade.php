@@ -1,9 +1,8 @@
-@extends('layouts.painel')
-
+@extends('layouts.painel.index')
 
 @section('content')
-<p>Espécies</p>
-<div class="col-md-12">
+<div class="card m-5 col-md-10">
+    <p>Espécies</p>
       <form action="{{ route('admin.especies.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -54,7 +53,7 @@
                                     aria-describedby="emailHelp" value="Cadastrar">
                         </div>
 
-                     
+
                   </div>
             </div>
       </form>

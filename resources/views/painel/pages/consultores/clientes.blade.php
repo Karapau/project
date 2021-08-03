@@ -1,9 +1,9 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
 
-<div class="container">
+<div class="container card m-5 col-md-10">
       <div>
             <p>Compradores Individuais</p>
       </div>

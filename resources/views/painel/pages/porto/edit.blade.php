@@ -1,9 +1,9 @@
-@extends('layouts.painel')
+@extends('layouts.painel.index')
 
 
 @section('content')
-<p>Porto Editar</p>
-<div class="col-md-12">
+
+<div class="card m-5 col-md-10">
       <form action="{{ route('admin.porto.update', $porto->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
@@ -20,7 +20,7 @@
                               <label for="exampleInputEmail1"></label>
                               <input type="checkbox" name="registro" @if ($porto->registro == 'on')
                                   checked
-                                  @else 
+                                  @else
                               @endif id="registo">
                               <label class="form-check-label" for="defaultCheck1">
                                     Porto de Registo
