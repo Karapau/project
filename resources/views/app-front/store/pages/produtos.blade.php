@@ -44,22 +44,9 @@
 
             </div>
         </div>
-    </div>
-    <div class="total">
-        <div class="container">
-            <div class="itens">
-                <div>
-                    <span>itens ({{ Cart::getTotalQuantity() }})</span>
-                </div>
-                <div>
-                    <span>{{ '€ ' . number_format(Cart::getSubTotal(), 2, ',', '.') }}</span>
-                </div>
-            </div>
-        </div>
-        <div class="finalizar">
-            <button>FINALIZAR COMPRA</button>
-        </div>
-    </div>
+        @component('components.btn-comprar.btn-compra')
+
+        @endcomponent
 
     @component('components.modal.filtro-modal', ['title' => 'Buscar Produto'])
         <form action="{{ route('store.produto.buscar') }}" method="get">

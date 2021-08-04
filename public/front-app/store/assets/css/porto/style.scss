@@ -162,6 +162,9 @@ body {
         border: none;
     }
 }
+.finalizar button:hover {
+    color: #fff;
+}
 .detalhes {
     margin-bottom: 150px;
     img {
@@ -325,16 +328,16 @@ body {
     width: 100%;
     height: 408px;
     background-color: #fff;
-
-    .products-list {
-        font-size: 18px;
-        font-weight: 900;
-        .itens {
-            span {
-                padding-left: 10px;
-                font-size: 18px;
-                font-weight: 600;
-            }
+}
+.products-list {
+    padding-top: 17px;
+    font-size: 18px;
+    font-weight: 900;
+    .itens {
+        span {
+            padding-left: 10px;
+            font-size: 18px;
+            font-weight: 600;
         }
     }
 }
@@ -360,50 +363,239 @@ body {
 .top_4 {
     margin-bottom: 20px;
     width: 100%;
-    height: 80px;
+    height: 100px;
     background-color: #fff;
-    .total-price {
+    .metodos {
         display: flex;
-        align-items: center;
-        justify-content: space-around;
-        img {
-            width: 68px;
-            height: 68px;
+
+        .logo-metodos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: 100px;
+        }
+        .nome-metodos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 100px;
+
+            label {
+                font-size: 18.34px;
+                font-weight: 900;
+                line-height: 24.12px;
+            }
+        }
+        .check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: 100px;
+            font-size: 30px;
         }
     }
 }
+
 .termos {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 150px;
-}
-.scale-in-center {
-	-webkit-animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    input {
+        font-size: 28px;
+    }
+
+    label {
+        margin-top: 10px;
+        font-size: 18.34px;
+        font-weight: 900;
+        line-height: 24.12px;
+    }
 }
 
- @-webkit-keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
+// Detalhes das encomendas
+
+.section-1 {
+    background-color: #fff;
+    width: 100%;
+    height: 110px;
+
+    .numero-pedido {
+        height: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #4f3a57;
+        }
     }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
+    .botao-voltar {
+        position: relative;
+        bottom: 26px;
     }
-  }
-  @keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
+}
+.btn-voltar {
+    background-color: #1428bf;
+    width: 165px;
+    height: 54px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -1.5%;
+}
+
+.section-2 {
+    margin-top: 81px;
+    background-color: #fff;
+    width: 100%;
+    height: 127px;
+
+    .entrega {
+        padding-top: 12px;
+        h4 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #4f3a57;
+        }
     }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
+    .morada {
+        padding-top: 26px;
+        width: 282px;
+        height: auto;
+        p {
+            color: #4f3a57;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 23.67px;
+        }
     }
-  }
+}
+.section-3 {
+    margin-top: 35px;
+    background-color: #fff;
+    width: 100%;
+    height: 485px;
+    .list-item {
+        padding-top: 10px;
+        height: 485px;
+        .item {
+            color: #4f3a57;
+            font-size: 18px;
+            padding: 7px;
+            span {
+                padding-left: 10px;
+            }
+            .pergunta {
+                span {
+                    font-weight: 900;
+                }
+            }
+            .resposta {
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .wait {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            .wait-paying {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 331px;
+                height: 54px;
+                background-color: #bf1414;
+                border-radius: 10px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 900;
+            }
+        }
+        .info-receber {
+            padding-top: 9px;
+            display: flex;
+            justify-content: center;
+            .info-recebeu {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 331px;
+                height: 54px;
+                background-color: #06cc32;
+                border-radius: 10px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+.total-entrega {
+    margin-top: 51px;
+    h4 {
+        font-weight: 900;
+        font-size: 20px;
+        color: #4f3a57;
+    }
+}
+
+.section-4 {
+    margin-top: 35px;
+    background-color: #06cc32;
+    width: 100%;
+    height: 79px;
+
+    .preco-produtos {
+        height: 79px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        span {
+            font-size: 17.49px;
+            font-weight: 900;
+            color: #fff;
+        }
+    }
+}
+.section-5 {
+    margin-top: 35px;
+    background-color: #fff;
+    width: 100%;
+    .comprovante {
+        height: 48px;
+        background-color: #c4c4c4;
+    }
+    .btn-enviar {
+        width: 100%;
+        height: 54px;
+        border-radius: 10px;
+        background-color: #06cc32;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 900;
+    }
+}
+
+.modal-footer {
+
+    .btn-recebimento {
+        width: 245px;
+        height: 54px;
+        border-radius: 10px;
+        background-color: #1428bf;
+        color: #fff;
+        font-size: 14, 04px;
+        font-weight: 900;
+    }
+}

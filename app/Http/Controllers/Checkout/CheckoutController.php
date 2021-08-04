@@ -24,7 +24,7 @@ class CheckoutController extends Controller
     public function adress()
     {
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        return view('store.pages.painel.endereco', compact('adresses'));
+        return view('app-front.store.pages.adress', compact('adresses'));
     }
     public function index()
     {
@@ -36,7 +36,7 @@ class CheckoutController extends Controller
             return redirect()->route('store.porto');
         }
 
-        return view('store.pages.painel.checkout', compact('adresses', 'shipping'));
+        return view('app-front.store.pages.checkout', compact('adresses', 'shipping'));
     }
 
     public function payment(Request $request)
