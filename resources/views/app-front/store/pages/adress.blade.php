@@ -53,7 +53,7 @@
         </div>
         @if ($adresses)
         <div class="finalizar">
-            <a href="{{ route('store.checkout.adress') }}"> <button>FINALIZAR COMPRA</button></a>
+            <a href="{{ route('store.checkout') }}"> <button>FINALIZAR COMPRA</button></a>
         </div>
         @endif
     </div>
