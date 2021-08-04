@@ -56,6 +56,7 @@
                         <input type="hidden" name="embarcacao" value="{{ $produto->embarcacao }}">
                         <input type="hidden" name="margem" value="{{ $produto->especies->margem }}">
                         <input type="hidden" name="porto" value="{{ $produto->portos->nome }}">
+                        <input type="hidden" name="porto_id" value="{{ $produto->portos->id }}">
 
                     </div>
                     <div class="mt-3">
