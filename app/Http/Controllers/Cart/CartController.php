@@ -15,7 +15,7 @@ class CartController extends Controller
 
         $product = $request->all();
 
-     
+
         $cart = \Cart::add(array(
             'id' => $product['id'], // inique row ID
             'name' =>  $product['name'],
@@ -27,7 +27,7 @@ class CartController extends Controller
                 'pescador_id' => $product['pescador_id'],
                 'embarcacao' => $product['embarcacao'],
                 'margem' =>  $product['margem'],
-             
+                'porto' => $product['porto'],
             )
         ));
 

@@ -64,11 +64,11 @@
                     </div>
                     <div class="d-flex itens">
                         <p>Origem:</p>
-                        <span>{{ $item->attributes->embarcacao }}</span>
+                        <span>{{ $item->attributes->porto }}</span>
                     </div>
                     <div class="d-flex itens">
                         <p>Taxa de entrega:</p>
-                        <span>€ 5,00</span>
+                        <span>€ 0,00</span>
                     </div>
                 </div>
                 <div>
