@@ -68,7 +68,8 @@ class CheckoutController extends Controller
         return $response;
     }
 
-   public function mbway($checkout_response, $phone) {
+    public function mbway($checkout_response, $phone)
+    {
         $checkout_response = json_decode($checkout_response);
         $transactionID = $checkout_response->transactionID;
         $transactionSig = $checkout_response->transactionSignature;
@@ -99,62 +100,64 @@ class CheckoutController extends Controller
     public function payment(Request $request)
     {
         $timestamp = time();
-
-        $dados = [
-            'merchant' => [
-                "terminalId" => 50999,
-                "channel" => "web",
-                "merchantTransactionId" => "Teste 1",
-            ],
-            'transaction' => [
-                "transactionTimestamp" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
-                "description" => "Pagamento pela sibs",
-                "moto" => false,
-                "paymentType" => "PURS",
-                "amount" => [
-                    "value" => (int)$request->total,
-                    "currency" => "EUR"
+        $status = 0;
+        if ($request->payment_mothod == 'mbway') {
+            $dados = [
+                'merchant' => [
+                    "terminalId" => 50999,
+                    "channel" => "web",
+                    "merchantTransactionId" => "Teste 1",
                 ],
-                "paymentMethod" => [
-                    "REFERENCE",
-                    "QRCODE",
-                    "MBWAY"
-                ],
-                "paymentReference" => [
-                    "initialDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
-                    "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
-                    "maxAmount" => [
+                'transaction' => [
+                    "transactionTimestamp" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                    "description" => "Pagamento pela sibs",
+                    "moto" => false,
+                    "paymentType" => "PURS",
+                    "amount" => [
                         "value" => (int)$request->total,
                         "currency" => "EUR"
                     ],
-                    "minAmount" => [
-                        "value" => (int)$request->total,
-                        "currency" => "EUR"
+                    "paymentMethod" => [
+                        "REFERENCE",
+                        "QRCODE",
+                        "MBWAY"
                     ],
-                    "entity" => "24000"
+                    "paymentReference" => [
+                        "initialDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                        "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                        "maxAmount" => [
+                            "value" => (int)$request->total,
+                            "currency" => "EUR"
+                        ],
+                        "minAmount" => [
+                            "value" => (int)$request->total,
+                            "currency" => "EUR"
+                        ],
+                        "entity" => "24000"
+                    ],
                 ],
-            ],
 
-        ];
+            ];
 
-        $phone = $request->phone;
+            $phone = $request->phone;
 
-        $sibsDados = $this->sibs($dados);
-        if(empty(json_decode($sibsDados)->transactionID)){
-            return response()->json('idnulo', 412);
+            $sibsDados = $this->sibs($dados);
+            if (empty(json_decode($sibsDados)->transactionID)) {
+                return response()->json('idnulo', 412);
+            }
+
+            $mbwayDados = $this->mbway($sibsDados, $phone);
+
+            // dd($mbwayDados);
+            if (empty(json_decode($mbwayDados)->paymentStatus)) {
+                return response()->json(['erro', $mbwayDados], 412);
+            }
+            if (json_decode($mbwayDados)->paymentStatus != 'Success') {
+                return response()->json(['erro', $mbwayDados], 412);
+            }
+
+            $status = 2;
         }
-
-        $mbwayDados = $this->mbway($sibsDados, $phone);
-
-        // dd($mbwayDados);
-        if(empty(json_decode($mbwayDados)->paymentStatus)){
-            return response()->json(['erro',$mbwayDados], 412);
-        }
-        if(json_decode($mbwayDados)->paymentStatus != 'Success'){
-            return response()->json(['erro',$mbwayDados], 412);
-        }
-
-
 
         $user_order = UserOrder::create([
             'adress' => $request->adress,
@@ -167,6 +170,7 @@ class CheckoutController extends Controller
             'total' => $request->total,
             'frete' => $request->freteval,
             'sub_total' => \Cart::getSubTotal(),
+            'status' => $status,
         ]);
 
         foreach (\Cart::getContent() as $item) {

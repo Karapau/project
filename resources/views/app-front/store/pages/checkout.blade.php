@@ -158,7 +158,7 @@
                         <label for="banco">Transferência</label>
                     </div>
                     <div class="form-check check">
-                        <input id="banco" class="form-check-input" type="radio" name="payment_mothod">
+                        <input id="banco" class="form-check-input" value="transferencia" type="radio" name="payment_mothod">
                     </div>
                 </div>
             </div>
