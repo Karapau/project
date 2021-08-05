@@ -32,15 +32,118 @@ class CheckoutController extends Controller
         $adresses = AdressBuyer::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         $shipping = ShippingTax::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
 
-        if(\Cart::isEmpty()){
+        if (\Cart::isEmpty()) {
             return redirect()->route('store.porto');
         }
 
         return view('app-front.store.pages.checkout', compact('adresses', 'shipping'));
     }
 
+    public function sibs($dados)
+    {
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://spg.qly.site1.sibs.pt/api/v1/payments',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($dados),
+            CURLOPT_HTTPHEADER => array(
+                'X-IBM-Client-Id: 681275a2-4647-4e95-b090-98637e7a2bd0',
+                'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlNzYyMzE3Yi03N2IxLTQ0ZWItYTUzYy0zMjY1ZDY5NTllZGIifQ.eyJpYXQiOjE2MjYzMzQ5NDcsImp0aSI6ImVlMmRkNDdlLWNiMGUtNDNiYy1hYzA0LWU1YTc0ZTJkZDM1NiIsImlzcyI6Imh0dHBzOi8vcWx5LnNpdGUxLnNzby5zeXMuc2licy5wdC9hdXRoL3JlYWxtcy9RTFkuU1BHLkFQSSIsImF1ZCI6Imh0dHBzOi8vcWx5LnNpdGUxLnNzby5zeXMuc2licy5wdC9hdXRoL3JlYWxtcy9RTFkuU1BHLkFQSSIsInN1YiI6IjkxZTBkNzgyLTM5YzUtNGIyMy04ZTY3LTE4OTVlODliYTdlNSIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJRTFkuU1BHLkFQSS1DTEkiLCJzZXNzaW9uX3N0YXRlIjoiNmQxMWM1ZjctNGU5Yy00ODAyLWFiODktZGI2ZjAxZWU3ZjQ1Iiwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MifQ.gvJe153ziOuM0Rlq9ErYZHQPqbovwv5QCIUCs4fUevg.eyJtYyI6Ijk5OTk5OTkiLCJ0YyI6IjUwOTk5In0=.98764F889348F59773374549EF7DCFED7D121C0EA1BBA01141F81651A37405A2',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
+    }
+
+   public function mbway($checkout_response, $phone) {
+        $checkout_response = json_decode($checkout_response);
+        $transactionID = $checkout_response->transactionID;
+        $transactionSig = $checkout_response->transactionSignature;
+
+        $curl = curl_init();
+
+        $post_url = 'https://spg.qly.site1.sibs.pt/api/v1/payments/' . $transactionID . '/mbway-id/purchase';
+        curl_setopt($curl, CURLOPT_URL, $post_url);
+        $headers = array(
+            'X-IBM-Client-Id: 681275a2-4647-4e95-b090-98637e7a2bd0',
+            'Content-type: application/json; charset=utf-8',
+            'Authorization: Digest ' . $transactionSig
+        );
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        $payload = json_encode(array('customerPhone' => $phone));
+        echo $payload . "\n";
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $result;
+    }
+
     public function payment(Request $request)
     {
+        $timestamp = time();
+
+        $dados = [
+            'merchant' => [
+                "terminalId" => 50999,
+                "channel" => "web",
+                "merchantTransactionId" => "teste 1"
+            ],
+            'transaction' => [
+                "transactionTimestamp" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                "description" => "Pagamento pela sibs",
+                "moto" => false,
+                "paymentType" => "PURS",
+                "amount" => [
+                    "value" => (int)$request->total,
+                    "currency" => "EUR"
+                ],
+                "paymentMethod" => [
+                    "REFERENCE",
+                    "QRCODE",
+                    "MBWAY"
+                ],
+                "paymentReference" => [
+                    "initialDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                    "finalDatetime" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
+                    "maxAmount" => [
+                        "value" => (int)$request->total,
+                        "currency" => "EUR"
+                    ],
+                    "minAmount" => [
+                        "value" => (int)$request->total,
+                        "currency" => "EUR"
+                    ],
+                    "entity" => "24000"
+                ],
+            ],
+
+        ];
+
+        $phone = $request->phone;
+
+        $sibsDados = $this->sibs($dados);
+
+        $mbwayDados = $this->mbway($sibsDados, $phone);
+      
+
         $messages = [
             // 'adress.required' => 'Cadastre um endereço ou escolha um cadastrado',
             'payment.required' => 'Escolha um Metodo de pagamento para continuar',
@@ -69,7 +172,7 @@ class CheckoutController extends Controller
 
 
             $itemQty = $item->price * $item->quantity;
-            $value = $itemQty - $itemQty * ($item->attributes->margem/100);
+            $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
 
 
             $produtos = UserProduct::create([
@@ -85,7 +188,7 @@ class CheckoutController extends Controller
                 'pescador_id' => $item->attributes->pescador_id,
             ]);
 
-           $wallet = SellToWallet::create([
+            $wallet = SellToWallet::create([
                 'pescador_id' => $item->attributes->pescador_id,
                 'product_id' =>  $item->id,
                 'value' => $value,
@@ -93,7 +196,7 @@ class CheckoutController extends Controller
 
             $id = auth()->user()->id;
             $comprador = Comprador::with('comercial')->find($id);
-            $valor = \Cart::getTotal() * (2/100);
+            $valor = \Cart::getTotal() * (2 / 100);
 
             $walletCom = WalletCom::create([
                 'user_id' => $comprador->comercial->id,
@@ -109,7 +212,7 @@ class CheckoutController extends Controller
             $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
             $quantidade->save();
 
-          $pedido =  PescadorPedido::create([
+            $pedido =  PescadorPedido::create([
                 'pescador_id' => $item->attributes->pescador_id,
                 'order_id' => $user_order->id,
                 'adress' => $request->adress,
@@ -117,8 +220,6 @@ class CheckoutController extends Controller
                 'wallet' => $wallet->id,
                 'user_id' => auth()->user()->id,
             ]);
-
-
         }
 
 
@@ -133,7 +234,7 @@ class CheckoutController extends Controller
     }
 
     public function payImage(Request $request)
-{
+    {
         $data = $request->all();
         $img = ImageManagerStatic::make($data['comprovante']);
         $name = Str::random() . '.jpg';

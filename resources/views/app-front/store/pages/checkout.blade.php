@@ -1,7 +1,8 @@
 @extends('layouts.front-app.store.shop')
 
 @section('content')
-    <form action="" method="post">
+    <form action="{{ route('store.checkout.payment') }}" method="post">
+        @csrf
         <div class="top_1">
             <div class="nome-porto">
                 <h1>REVISAR PEDIDOS</h1>
@@ -176,21 +177,28 @@
             </div>
         </div>
     </div> --}}
-        {{-- <div class="top_4">
-        <div class="container">
-            <div class="metodos">
-                <div class="logo-metodos">
-                    <img src="{{ url('front-app/store/assets/img/mbred.png') }}" alt="">
-                </div>
-                <div class="nome-metodos">
-                    <label for="mbway">MB Way</label>
-                </div>
-                <div class="form-check check">
-                    <input id="mbway" class="form-check-input" type="radio" name="escolha">
+        <div class="top_4">
+            <div class="container">
+                <div class="metodos">
+                    <div class="logo-metodos">
+                        <img src="{{ url('front-app/store/assets/img/mbred.png') }}" alt="">
+                    </div>
+                    <div class="nome-metodos">
+                        <label for="mbway">MB Way</label>
+                    </div>
+                    <div class="form-check check">
+                        <input id="mbway" class="form-check-input" value="mbway" type="radio" name="escolha">
+                    </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+        <div id="phone" class="d-none">
+            <div class="container row justify-content-center my-3">
+                <div class="col-10">
+                    <input type="text" class="form-control" placeholder="telemóvel" name="phone">
+                </div>
+            </div>
+        </div>
         {{-- <div class="top_4">
         <div class="container">
             <div class="metodos">
@@ -226,6 +234,9 @@
                         <span>{{ '€ ' . number_format(Cart::getTotal() + $totalporto, 2, ',', '.') }}</span>
                     </div>
                 </div>
+            </div>
+            <div>
+                <input type="hidden" name="total" value="{{ Cart::getTotal() + $totalporto }}">
             </div>
             <div class="finalizar">
                 <button class="btn" type="submit">PAGAR E CONCLUIR</button>

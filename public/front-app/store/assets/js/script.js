@@ -83,3 +83,11 @@
 
 
 
+$(document).on('click', '[name="escolha"]', function() {
+    if($(this).val() == 'mbway' ){
+        $('#phone').removeClass('d-none');
+    }else{
+        $('#phone').addClass('d-none');
+    }
+
+});
