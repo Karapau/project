@@ -140,13 +140,20 @@ class CheckoutController extends Controller
         $phone = $request->phone;
 
         $sibsDados = $this->sibs($dados);
-        if(!json_decode($sibsDados)->transactionID){
-            return response()->json('erro', 412);
+        if(empty(json_decode($sibsDados)->transactionID)){
+            return response()->json('idnulo', 412);
         }
 
         $mbwayDados = $this->mbway($sibsDados, $phone);
 
         // dd($mbwayDados);
+        if(empty(json_decode($mbwayDados)->paymentStatus)){
+            return response()->json(['erro',$mbwayDados], 412);
+        }
+        if(json_decode($mbwayDados)->paymentStatus != 'Success'){
+            return response()->json(['erro',$mbwayDados], 412);
+        }
+
 
 
         $user_order = UserOrder::create([
