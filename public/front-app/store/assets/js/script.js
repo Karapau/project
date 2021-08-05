@@ -83,11 +83,38 @@
 
 
 
-$(document).on('click', '[name="escolha"]', function() {
+$(document).on('click', '[name="payment_mothod"]', function() {
     if($(this).val() == 'mbway' ){
         $('#phone').removeClass('d-none');
     }else{
         $('#phone').addClass('d-none');
     }
+
+});
+
+
+$(document).ready(function() {
+    $('#enviar').on('click', function(){
+
+        var dados = $('#checkForm').serialize();
+        var url = $('#checkForm').attr('action');
+        $(this).html('<div class="spinner-grow text-info" role="status"><span class="sr-only"></span></div>');
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: dados,
+            success: (data) => {
+                // console.log(data);
+                $('#enviar').html('PAGAR E CONCLUIR');
+                window.location.href = "/store/thanks";
+            },
+            error: (err) => {
+                console.log(err);
+                $('#enviar').html('PAGAR E CONCLUIR');
+            }
+
+        });
+
+    });
 
 });

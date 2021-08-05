@@ -85,7 +85,7 @@ class CheckoutController extends Controller
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_POST, 1);
         $payload = json_encode(array('customerPhone' => $phone));
-        echo $payload . "\n";
+        // echo $payload . "\n";
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -104,7 +104,7 @@ class CheckoutController extends Controller
             'merchant' => [
                 "terminalId" => 50999,
                 "channel" => "web",
-                "merchantTransactionId" => "teste 1"
+                "merchantTransactionId" => "Teste 1",
             ],
             'transaction' => [
                 "transactionTimestamp" => gmdate('Y-m-d\TH:i:s.v\Z', $timestamp),
@@ -140,30 +140,24 @@ class CheckoutController extends Controller
         $phone = $request->phone;
 
         $sibsDados = $this->sibs($dados);
+        if(!json_decode($sibsDados)->transactionID){
+            return response()->json('erro', 412);
+        }
 
         $mbwayDados = $this->mbway($sibsDados, $phone);
-      
 
-        $messages = [
-            // 'adress.required' => 'Cadastre um endereço ou escolha um cadastrado',
-            'payment.required' => 'Escolha um Metodo de pagamento para continuar',
-            'shipment.required' => 'Escolha um Metodo de Entrega para continuar',
-        ];
-        $validated = $request->validate([
-            // 'adress' => 'required',
-            'payment' => 'required',
-            'shipment' => 'required',
-        ], $messages);
+        // dd($mbwayDados);
+
 
         $user_order = UserOrder::create([
             'adress' => $request->adress,
-            'payment_mothod' => $request->payment,
+            'payment_mothod' => $request->payment_mothod,
             'shipping_mothod' => $request->shipment,
             'user_id' => auth()->user()->id,
             'user_name' => auth()->user()->name,
             'email' => auth()->user()->email,
             'telemovel' => auth()->user()->telemovel,
-            'total' => $request->totalval,
+            'total' => $request->total,
             'frete' => $request->freteval,
             'sub_total' => \Cart::getSubTotal(),
         ]);
@@ -225,7 +219,7 @@ class CheckoutController extends Controller
 
 
         \Cart::clear();
-        return redirect()->route('store.thanks');
+        return response()->json('success', 200);
     }
 
     public function thanks()

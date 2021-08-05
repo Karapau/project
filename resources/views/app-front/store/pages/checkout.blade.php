@@ -1,7 +1,7 @@
 @extends('layouts.front-app.store.shop')
 
 @section('content')
-    <form action="{{ route('store.checkout.payment') }}" method="post">
+    <form action="{{ route('store.checkout.payment') }}" id="checkForm" method="post">
         @csrf
         <div class="top_1">
             <div class="nome-porto">
@@ -134,6 +134,7 @@
                     <div class="euros">
                         <h1> {{ '€ ' . number_format($totalporto, 2, ',', '.') }}</h1>
                     </div>
+                    <input type="hidden" name="freteval" value="{{ $totalporto }}">
                     <div>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             COMO FUNCIONA?
@@ -157,7 +158,7 @@
                         <label for="banco">Transferência</label>
                     </div>
                     <div class="form-check check">
-                        <input id="banco" class="form-check-input" type="radio" name="escolha">
+                        <input id="banco" class="form-check-input" type="radio" name="payment_mothod">
                     </div>
                 </div>
             </div>
@@ -187,7 +188,7 @@
                         <label for="mbway">MB Way</label>
                     </div>
                     <div class="form-check check">
-                        <input id="mbway" class="form-check-input" value="mbway" type="radio" name="escolha">
+                        <input id="mbway" class="form-check-input" value="mbway" type="radio" name="payment_mothod">
                     </div>
                 </div>
             </div>
@@ -237,9 +238,11 @@
             </div>
             <div>
                 <input type="hidden" name="total" value="{{ Cart::getTotal() + $totalporto }}">
+                <input type="hidden" name="adress" value="{{ $adresses->id }}">
+                <input type="hidden" name="shipment" value="Padrão">
             </div>
             <div class="finalizar">
-                <button class="btn" type="submit">PAGAR E CONCLUIR</button>
+                <button class="btn" id="enviar" type="button">PAGAR E CONCLUIR</button>
             </div>
         </div>
 
