@@ -6,13 +6,13 @@
 <div class="container">
     @if (Session::has('errors'))
     <div class="alert alert-danger">
-          @foreach (Session::get('errors') as $error)
-      <br />
-          @endforeach
+        @foreach (Session::get('errors') as $error)
+            <br />
+        @endforeach
     </div>
     @endif
     <div class="mt-5 login">
-        <form action="{{ $route }}" method="post">
+        <form id="form-login" action="{{ $route }}" method="post">
             @csrf
             <div class="text-center">
                 <div class="input-container my-4">
@@ -25,7 +25,7 @@
                     <label class="label" for="password">Senha</label>
                 </div>
                 <div>
-                    <button class="btn btn-primary" type="submit">ENTRAR</button>
+                    <button id="btn-login" class="btn btn-primary" type="button">ENTRAR</button>
                 </div>
         </form>
     </div>

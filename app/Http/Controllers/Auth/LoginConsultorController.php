@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic;
 use Session;
 
@@ -65,11 +66,16 @@ class LoginConsultorController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::guard('consultor')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $authValid = Auth::guard('consultor')->validate(['email' => $request->email, 'password' => $request->password]);
 
-            return redirect()->intended('consultor');
+        if($authValid){
+            if (Auth::guard('consultor')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+                return response()->json('consultor', 200);
+            }
+        }else{
+            return response()->json(['invalid' => 'Email ou senha invalidos'], 422);
         }
-        return redirect('consultor-login');
     }
     /**
      * Display the specified resource.

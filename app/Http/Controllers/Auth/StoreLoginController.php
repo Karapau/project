@@ -35,13 +35,16 @@ class StoreLoginController extends Controller
 
     public function login(Request $request)
     {
+        $authValid = Auth::guard('buyer')->validate(['email' => $request->email, 'password' => $request->password]);
 
-        if (Auth::guard('buyer')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1], )) {
+        if($authValid){
+            if (Auth::guard('buyer')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
-            return redirect('store-index');
+                return response()->json('store-index', 200);
+            }
+        }else{
+            return response()->json(['invalid' => 'Email ou senha invalidos'], 422);
         }
-
-        return redirect()->back()->with('error', 'Você ainda não tem permissão para acessar');
     }
 
     public function store(Request $request)
