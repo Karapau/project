@@ -144,7 +144,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link @if (Request::is('')) active @endif">
+                            <a href="{{route('entregador')}}" class="nav-link @if (Request::is('admin/entregador')) active @endif">
                                 <i class="nav-icon fas fa-truck"></i>
                                 <p>Entregadores</p>
                             </a>
@@ -270,7 +270,7 @@
             var user_name = $('#user_name').text();
             user_name = user_name.split(' ');
             var intials = user_name[0].charAt(0) + user_name[user_name.length - 1].charAt(0);
-            $('#image_perfil').text(intials);
+            $('#image_perfil').text(intials.toUpperCase());
         });
     </script>
     <script>
