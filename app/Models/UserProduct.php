@@ -22,6 +22,7 @@ class UserProduct extends Model
         'caixas',
         'user_id',
         'order_id',
+        'status',
         'pescador_id',
     ];
 
