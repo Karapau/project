@@ -32,7 +32,7 @@
                         <span>Item</span>
                     </div>
                     <div class="resposta">
-                        <span>03</span>
+                        <span>{{ $order->products->item }}</span>
                     </div>
                 </div>
 
@@ -94,7 +94,12 @@
 
                 <div>
                     <div class="wait">
-                        <span class="btn wait-paying">AGUARDANDO PAGAMENTO</span>
+                        <span class="btn wait-paying">@if ($order->products->status == 0) AGUARDANDO PAGAMENTO
+                            @elseif($order->products->status == 1) EM PREPARAÇÃO
+                            @elseif($order->products->status == 2) TRANSPORTE
+                            @elseif($order->products->status == 3) ENTREGUE
+                            @elseif($order->products->status == 4) CANCELADO
+                             @endif</span>
                     </div>
                     {{-- STATUS DE PAGAMENTOS
                         <div class="wait">
@@ -127,10 +132,10 @@
         <div class="container">
             <div class="preco-produtos">
                 <div class="produtos-n">
-                    <span>ITENS (03)</span>
+                    <span>ITENS ({{ $orders->count() }})</span>
                 </div>
                 <div class="preco-total">
-                    <span>€ 95,00</span>
+                    <span>{{ '€ ' . number_format($user_order->total, 2, ',', '.') }}</span>
                 </div>
             </div>
         </div>

@@ -101,6 +101,7 @@ class CheckoutController extends Controller
     {
         $timestamp = time();
         $status = 0;
+        $status2 = 0;
         $codigo = $request->sigla.'-'.time();
         if ($request->payment_mothod == 'mbway') {
             $dados = [
@@ -158,6 +159,7 @@ class CheckoutController extends Controller
             }
 
             $status = 2;
+            $status2 = 1;
         }
 
         $user_order = UserOrder::create([
@@ -175,15 +177,19 @@ class CheckoutController extends Controller
             'codigo' => $codigo,
         ]);
 
-        foreach (\Cart::getContent() as $item) {
+
+        $count = 1;
+        foreach (\Cart::getContent() as $key => $item) {
 
 
             $itemQty = $item->price * $item->quantity;
             $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
+            $subir = $count++;
 
 
             $produtos = UserProduct::create([
                 'product_id' => $item->id,
+                'item' => $subir,
                 'name' => $item->name,
                 'price' => $item->price,
                 'value' => $value,
@@ -195,6 +201,7 @@ class CheckoutController extends Controller
                 'user_id' => auth()->user()->id,
                 'order_id' => $user_order->id,
                 'pescador_id' => $item->attributes->pescador_id,
+                'stutus' => $status2,
             ]);
 
             $wallet = SellToWallet::create([
