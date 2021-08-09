@@ -19,7 +19,7 @@
                                             <th>Nº PEDIDO</th>
                                             <th>Itens</th>
                                             <th>Caixas</th>
-                                            <th>Aceitar</th>
+                                            <th>ENTREGAR?</th>
                                             <th>Entrega concluida?</th>
                                             <th>PDF</th>
                                         </tr>
@@ -29,8 +29,14 @@
                                             <td>{{$userProduct->orders->codigo}}</td>
                                             <td>{{$userProduct->item}}</td>
                                             <td>{{$userProduct->caixas}}</td>
-                                            <td><button type="button" class="btn btn-dark btn-sm">SIM</button></td>
-                                            <td><button type="button" class="btn btn-dark btn-sm">AGUARDANDO</button></td>
+                                            <td><button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-success'}} btn-sm" @if($userProduct->aceito == 0) id="btn_entrega_aceito" @endif data-route="{{route('entregador.aceito')}}" data-id="{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'ACEITAR' : 'ACEITO'}}</button></td>
+                                            <td>
+                                                @if ($userProduct->status >= 1)
+                                                    <button type="button" class="btn btn-success btn-sm">ENTREGUE</button>
+                                                @else
+                                                    <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>
+                                                @endif
+                                            </td>
                                             <td><button type="button" class="btn btn-dark btn-sm">GERAR</button></td>
                                         </tr>
                                         <tr>

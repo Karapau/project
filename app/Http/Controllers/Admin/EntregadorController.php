@@ -32,4 +32,16 @@ class EntregadorController extends Controller
         $address = AdressBuyer::find($userProduct->orders->adress);
         return view('painel.pages.entregadores.indexDados', compact('userProduct', 'comprador', 'address'));
     }
+
+    public function entregaAceito(Request $request)
+    {
+        $userProduct = UserProduct::find($request->id)->update(['aceito' => '1']);
+        return response()->json($userProduct);
+    }
+
+    public function caixaDevolvida(Request $request)
+    {
+        $userProduct = UserProduct::find($request->id)->update(['caixa_devolvida' => '1', 'status' => '1']);
+        return response()->json($userProduct);
+    }
 }

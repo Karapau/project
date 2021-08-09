@@ -67,6 +67,8 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
 
     Route::get('/entregadores', [EntregadorController::class, 'index'])->name('entregador');
     Route::get('/entregador/dados/{id}', [EntregadorController::class, 'indexDados'])->name('entregador.dados');
+    Route::post('/entregador/aceito', [EntregadorController::class, 'entregaAceito'])->name('entregador.aceito');
+    Route::post('/entregador/caixa_devolvida', [EntregadorController::class, 'caixaDevolvida'])->name('entregador.caixa_devolvida');
 
     Route::get('especies/create', [EspecieController::class, 'create'])->name('admin.especies.create');
     Route::post('especies/store', [EspecieController::class, 'store'])->name('admin.especies.store');

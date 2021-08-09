@@ -31,11 +31,17 @@
                                                     <td>
                                                         <div class="btn-group">
                                                             <a href="{{route('entregador.dados', $userProduct->id)}}" class="btn btn-info btn-sm">VER</a>
-                                                            <button type="button" class="btn btn-dark btn-sm">ACEITAR</button>
+                                                            <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->aceito == 0) btn_entrega_aceito @endif" data-route="{{route('entregador.aceito')}}" data-id="{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'ACEITAR' : 'ACEITO'}}</button>
                                                         </div>
                                                     </td>
-                                                    <td><button type="button" class="btn btn-dark btn-sm">AGUARDANDO</button></td>
-                                                    <td><button type="button" class="btn btn-dark btn-sm">SIM</button></td>
+                                                    <td>
+                                                        @if ($userProduct->status >= 1)
+                                                            <button type="button" class="btn btn-success btn-sm">ENTREGUE</button>
+                                                        @else
+                                                            <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>
+                                                        @endif
+                                                    </td>
+                                                    <td><button type="button" class="btn {{$userProduct->caixa_devolvida == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->caixa_devolvida == 0) caixa_devolvida @endif" data-route="{{route('entregador.caixa_devolvida')}}" data-id="{{$userProduct->id}}">SIM</button></td>
                                                 </tr>
                                             @endif
                                         @endforeach
