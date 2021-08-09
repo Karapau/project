@@ -151,7 +151,7 @@
                                 </ul>
                             </li>
                         @endif
-                        @if (auth()->user()->permission <= 3)
+                        @if (auth()->user()->permission == 3 || auth()->user()->permission == 10)
                             <li class="nav-item">
                                 <a href="{{route('entregador')}}" class="nav-link @if (Request::is('admin/entregadores') || Request::is('admin/entregador/*')) active @endif">
                                     <i class="nav-icon fas fa-truck"></i>
