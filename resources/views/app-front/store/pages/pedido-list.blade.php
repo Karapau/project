@@ -70,7 +70,7 @@
                         <span>Caixas:</span>
                     </div>
                     <div class="resposta">
-                        <span>03</span>
+                        <span>{{ $order->products->caixas }}</span>
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@
                         <span>Origem:</span>
                     </div>
                     <div class="resposta">
-                        <span>Póvoa de Varzim</span>
+                        <span>{{ $order->products->origem }}</span>
                     </div>
                 </div>
 
@@ -135,7 +135,7 @@
             </div>
         </div>
     </div>
-    <div class="section-5">
+    <div class="section-5 mb-3">
         <div class="container">
             <div class="mb-3 mt-3">
                 <input class="form-control form-control-lg comprovante" type="file">

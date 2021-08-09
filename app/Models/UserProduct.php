@@ -17,6 +17,8 @@ class UserProduct extends Model
         'total_value',
         'quantity',
         'image',
+        'origem',
+        'caixas',
         'user_id',
         'order_id',
         'pescador_id',
