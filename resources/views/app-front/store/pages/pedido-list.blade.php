@@ -113,7 +113,7 @@
                     </div> --}}
                         <div class="info-receber">
                             <!-- Button trigger modal -->
-                            <button type="button" data-mod="{{ $order->products->id }}" class="btn info-recebeu"
+                            <button type="button" data-mod="{{ $order->products->id }}" id="modalEnt" class="btn info-recebeu"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 INFORMAR RECEBIMENTO
                             </button>
@@ -200,7 +200,8 @@
                     <form action="{{ route('user.produto.status') }}" method="post">
                         @csrf
                         <div class="text-center">
-
+                            <input type="hidden" name="modalId" value="">
+                            <input type="hidden" name="status" value="3">
                             <div class="mt-3">
                                 <span>MERCADORIA CHEGOU FRESCA?</span>
                             </div>

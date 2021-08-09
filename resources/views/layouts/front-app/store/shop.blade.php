@@ -27,7 +27,8 @@
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        < script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" >
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ url('js/jquery.countdown.min.js') }}"></script>
@@ -36,29 +37,34 @@
     <script type="text/javascript">
         var url = "{{ route('store.produto', '') }}"
         var urlImage = "{{ url('storage/portos') }}"
-            $('#search').on('keyup', function() {
-                $value = $(this).val();
-                $.ajax({
-                    type: 'get',
-                    url: '{{ url('porto/buscar') }}',
-                    data: {
-                        'search': $value
-                    },
-                    success: function(data) {
-                          console.log(data);
-                          $('.portos').find('.row').empty();
-                          for(var i = 0; data.length > i; i++){
+        $('#search').on('keyup', function() {
+            $value = $(this).val();
+            $.ajax({
+                type: 'get',
+                url: '{{ url('porto/buscar') }}',
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('.portos').find('.row').empty();
+                    for (var i = 0; data.length > i; i++) {
 
-                            $('.portos').find('.row').append('<div class="col-6">'+'<a href="'+url+'/'+data[i].id+'">'+'<img'+
-                                       " "+'src="'+urlImage+'/'+data[i].image+'" alt=""></a>'+
-                            '<p>'+data[i].nome+'</p></div>');
-                          }
-
+                        $('.portos').find('.row').append('<div class="col-6">' + '<a href="' + url +
+                            '/' + data[i].id + '">' + '<img' +
+                            " " + 'src="' + urlImage + '/' + data[i].image + '" alt=""></a>' +
+                            '<p>' + data[i].nome + '</p></div>');
                     }
-                });
-            })
 
-        </script>
+                }
+            });
+        });
+    </script>
+
+        <script>
+ 
+    </script>
+
 </body>
 
 </html>

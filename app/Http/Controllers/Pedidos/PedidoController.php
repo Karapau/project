@@ -26,7 +26,8 @@ class PedidoController extends Controller
 
     public function produtoStatus(Request $request)
     {
-        
+
+        $id = $request->modalId;
         $porto = UserProduct::find($id);
         $porto->status = $request->get('status');
         $porto->save();

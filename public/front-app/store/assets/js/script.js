@@ -145,3 +145,7 @@ $(document).ready(function () {
     });
 
 });
+$('#modalEnt').on('click', function(){
+    var idprod = $(this).data('mod');
+    $('[name="modalId"]').val(idprod);
+});
