@@ -147,15 +147,15 @@ class PortoController extends Controller
 
         $porto->save();
 
-        if ($porto) {
+        // if ($porto) {
 
-            foreach ($data['especies'] as $key => $especi) {
-                EspecieToPorto::create([
-                    'porto_id' => $porto->id,
-                    'especie_id' => $especi,
-                ]);
-            }
-        }
+        //     foreach ($data['especies'] as $key => $especi) {
+        //         EspecieToPorto::create([
+        //             'porto_id' => $porto->id,
+        //             'especie_id' => $especi,
+        //         ]);
+        //     }
+        // }
         return redirect()->route('admin.porto')->with('success', 'porto alterado com sucesso!');
     }
 
