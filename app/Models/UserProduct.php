@@ -22,6 +22,8 @@ class UserProduct extends Model
         'caixas',
         'user_id',
         'order_id',
+        'aceito',
+        'caixa_devolvida',
         'status',
         'pescador_id',
     ];
