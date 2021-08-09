@@ -87,7 +87,9 @@
                                 <p>Origem:</p>
                                 <span>{{ $item->attributes->porto }}</span>
                             </div>
-
+                            <input type="hidden" name="sigla" value="{{ $item->attributes->sigla }}">
+                            <input type="hidden" name="caixas" value="{{ $qty }}">
+                            <input type="hidden" name="origem" value="{{ $item->attributes->porto }}">
                         </div>
                         <div>
                             <a href="{{ route('store.cart.remove', $item->id) }}"> <button type="button"
@@ -240,6 +242,7 @@
                 <input type="hidden" name="total" value="{{ Cart::getTotal() + $totalporto }}">
                 <input type="hidden" name="adress" value="{{ $adresses->id }}">
                 <input type="hidden" name="shipment" value="Padrão">
+
             </div>
             <div class="finalizar">
                 <button class="btn" id="enviar" type="button">PAGAR E CONCLUIR</button>

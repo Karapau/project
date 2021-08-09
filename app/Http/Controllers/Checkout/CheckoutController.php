@@ -101,6 +101,7 @@ class CheckoutController extends Controller
     {
         $timestamp = time();
         $status = 0;
+        $codigo = $request->sigla.'-'.time();
         if ($request->payment_mothod == 'mbway') {
             $dados = [
                 'merchant' => [
@@ -171,6 +172,7 @@ class CheckoutController extends Controller
             'frete' => $request->freteval,
             'sub_total' => \Cart::getSubTotal(),
             'status' => $status,
+            'codigo' => $codigo,
         ]);
 
         foreach (\Cart::getContent() as $item) {
@@ -187,6 +189,7 @@ class CheckoutController extends Controller
                 'value' => $value,
                 'total_value' => $itemQty,
                 'quantity' => $item->quantity,
+                'caixas' => $request->caixa,
                 'image' => $item->attributes->image,
                 'user_id' => auth()->user()->id,
                 'order_id' => $user_order->id,
@@ -224,6 +227,7 @@ class CheckoutController extends Controller
                 'produtos' => $produtos->id,
                 'wallet' => $wallet->id,
                 'user_id' => auth()->user()->id,
+
             ]);
         }
 

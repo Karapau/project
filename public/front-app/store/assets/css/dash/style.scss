@@ -1,7 +1,37 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.titulo {
+    color: #4f3a57;
+    h1 {
+        font-size: 27.04px;
+        font-weight: 900;
+        line-height: 35.55px;
+    }
+    h2 {
+        font-size: 20px;
+        font-weight: 800;
+    }
+}
+.btn-voltar {
+    background-color: #1428bf;
+    width: 165px;
+    height: 54px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -1.5%;
+}
+
 .header-top {
     background-color: #162259;
     height: 100px;
     width: 100%;
+}
+body {
+    background-color: #e5e5e5;
 }
 .headertop1 {
     background-color: #007ebe;
@@ -72,35 +102,75 @@
         padding: 0 20px;
     }
 }
-
-
-
+<<<<<<< HEAD
 .scale-in-center {
 	-webkit-animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+=======
 
- @-webkit-keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
+// Pagina de listagem das encomendas
+.top {
+    width: 100%;
+    height: 110px;
+    background-color: #fff;
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 110px;
+        width: 100%;
     }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
+    .botao-voltar {
+        position: relative;
+        bottom: 26px;
     }
-  }
-  @keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
+}
+.top_1 {
+    margin-top: 58px;
+    width: 100%;
+    height: 161px;
+    background-color: #fff;
+
+    .center {
+        text-align: center;
+        height: 110px;
+        width: 100%;
+
+        .titulo {
+            h2 {
+                padding-top: 21px;
+            }
+        }
+
+        .numero-pedido {
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                color: #4f3a57;
+            }
+        }
+        .aguardando-pagamento {
+            h1 {
+                color: #bf1414;
+                font-size: 20px;
+                font-weight: 900;
+                line-height: 131.5%;
+            }
+        }
     }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
+    .botao-ver-detalhes {
+        .btn-detalhes{
+            width: 215px;
+            height: 54px;
+            border-radius: 10px;
+            background-color: #06cc32 !important;
+            color: #fff;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        position: relative;
+        top: 30px;
     }
-  }
+>>>>>>> main
+}
