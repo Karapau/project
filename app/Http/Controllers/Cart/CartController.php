@@ -29,6 +29,7 @@ class CartController extends Controller
                 'margem' =>  $product['margem'],
                 'porto' => $product['porto'],
                 'porto_id' => $product['porto_id'],
+                'sigla' => $product['sigla'],
             )
         ));
 

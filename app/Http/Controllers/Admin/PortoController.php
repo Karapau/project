@@ -58,6 +58,7 @@ class PortoController extends Controller
             'descarga' => $request->input('descarga'),
             'controle_veterinario' => $data['controle_veterinario'],
             'image' => $name,
+            'sigla' => $request->input('sigla'),
 
         ]);
         if ($porto) {
@@ -140,7 +141,7 @@ class PortoController extends Controller
         $porto->descarga = $request->get('descarga');
         $porto->controle_veterinario = $request->get('controle_veterinario');
         // $porto->especies = $request->get('especies');
-
+        $porto->sigla = $request->get('sigla');
 
 
 

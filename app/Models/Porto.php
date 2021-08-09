@@ -16,7 +16,8 @@ class Porto extends Model
         'registro',
         'descarga',
         'controle_veterinario',
-        'especies'
+        'especies',
+        'sigla'
 
     ];
 

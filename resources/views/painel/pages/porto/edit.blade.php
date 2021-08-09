@@ -13,6 +13,10 @@
                               <input type="text" class="form-control" value="{{ $porto->nome }}" name="nome">
                         </div>
                         <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Sigla do Porto</label>
+                            <input type="text" class="form-control" value="{{ $porto->sigla }}" name="sigla">
+                      </div>
+                        <div class="form-group col-md-12">
                               <label for="exampleInputEmail1">Foto do Porto</label>
                               <input type="file" class="form-control" name="image">
                         </div>
