@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PortoController;
 use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Store\StoreController;
 use App\Http\Controllers\Admin\PainelController;
+use App\Http\Controllers\Admin\EntregadorController;
 
 use App\Http\Controllers\Admin\ClienteController;
 
@@ -63,6 +64,8 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
         Route::get('porto', [PainelController::class, 'porto'])->name('admin.porto');
     });
     Route::get('/home', [PainelController::class, 'index']);
+
+    Route::get('/entregadores', [EntregadorController::class, 'index'])->name('entregador');
 
     Route::get('especies/create', [EspecieController::class, 'create'])->name('admin.especies.create');
     Route::post('especies/store', [EspecieController::class, 'store'])->name('admin.especies.store');
