@@ -140,6 +140,7 @@
             </div>
         </div>
     </div>
+    @if($user_order->payment_mothod == 'transferencia')
     <div class="section-5 mb-3">
         <div class="container">
             <div class="mb-3 mt-3">
@@ -150,7 +151,7 @@
             </div>
         </div>
     </div>
-
+@endif
 
 
                         <!-- Modal -->
