@@ -44,18 +44,18 @@
     <link rel="stylesheet" href="{{ asset('painel/css/main.min.css') }}">
 
     <style>
-        select[readonly].select2-hidden-accessible+.select2-container {
+        select[readonly].select2-hidden-accessible+.select2-container, select[readonly] {
             pointer-events: none;
             touch-action: none;
         }
 
-        select[readonly].select2-hidden-accessible+.select2-container .select2-selection {
+        select[readonly].select2-hidden-accessible+.select2-container .select2-selection, select[readonly] {
             background: #eee;
             box-shadow: none;
         }
 
         select[readonly].select2-hidden-accessible+.select2-container .select2-selection__arrow,
-        select[readonly].select2-hidden-accessible+.select2-container .select2-selection__clear {
+        select[readonly].select2-hidden-accessible+.select2-container .select2-selection__clear, {
             display: none;
         }
 
@@ -175,6 +175,12 @@
                                 </a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users') }}" class="nav-link @if (Request::is('admin/usuarios')) active @endif">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
 
 
                     </ul>
