@@ -27,7 +27,7 @@
     <!-- DateRangerPicker -->
     <link rel="stylesheet" href="{{ asset('plugin/daterangepicker/daterangepicker.css') }}">
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('plugin/select2/css/select2.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('plugin/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     {{-- Colopicker --}}
     <link rel="stylesheet" href="{{ asset('plugin/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
