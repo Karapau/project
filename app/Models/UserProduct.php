@@ -27,6 +27,14 @@ class UserProduct extends Model
     ];
 
 
+    public function orders()
+    {
+        return $this->belongsTo(UserOrder::class, 'order_id');
+    }
 
+    public function pescador()
+    {
+        return $this->belongsTo(Pescador::class, 'pescador_id');
+    }
 
 }

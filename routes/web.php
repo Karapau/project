@@ -66,6 +66,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('/home', [PainelController::class, 'index']);
 
     Route::get('/entregadores', [EntregadorController::class, 'index'])->name('entregador');
+    Route::get('/entregador/dados/{id}', [EntregadorController::class, 'indexDados'])->name('entregador.dados');
 
     Route::get('especies/create', [EspecieController::class, 'create'])->name('admin.especies.create');
     Route::post('especies/store', [EspecieController::class, 'store'])->name('admin.especies.store');
