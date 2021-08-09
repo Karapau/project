@@ -113,8 +113,8 @@
                     </div> --}}
                         <div class="info-receber">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn info-recebeu" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                            <button type="button" data-mod="{{ $order->products->id }}" class="btn info-recebeu"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 INFORMAR RECEBIMENTO
                             </button>
 
@@ -155,14 +155,14 @@
             <div class="section-5 mb-3">
                 <div class="container">
                     <div class="conta" style="font-family: Poppins;
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 18px;
-                        line-height: 131.5%;
-                        /* or 24px */
-                        letter-spacing: -0.015em;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 18px;
+                            line-height: 131.5%;
+                            /* or 24px */
+                            letter-spacing: -0.015em;
 
-                        color: #4F3A57;">
+                            color: #4F3A57;">
                         <span>Conta para Transferência</span>
                         <div>
                             <span>banco Montepio - numero de conta : 295.10.005582-7 <br> BIC/SWIFT : MPIOPTPL <br> NIB :
@@ -197,65 +197,68 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center">
+                    <form action="{{ route('user.produto.status') }}" method="post">
+                        @csrf
+                        <div class="text-center">
 
-                        <div class="mt-3">
-                            <span>MERCADORIA CHEGOU FRESCA?</span>
-                        </div>
-
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="mercadoria" id="inlineRadio1">
-                                <label class="form-check-label" for="inlineRadio1">SIM</label>
+                            <div class="mt-3">
+                                <span>MERCADORIA CHEGOU FRESCA?</span>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="mercadoria" id="inlineRadio2">
-                                <label class="form-check-label" for="inlineRadio2">NÃO</label>
+
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="inlineRadio1">
+                                    <label class="form-check-label" for="inlineRadio1">SIM</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="inlineRadio2">
+                                    <label class="form-check-label" for="inlineRadio2">NÃO</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mt-3">
-                            <span>ENTREGADOR FOI CORDIAL?</span>
-                        </div>
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="entregador" id="inlineRadio3">
-                                <label class="form-check-label" for="inlineRadio3">SIM</label>
+                            <div class="mt-3">
+                                <span>ENTREGADOR FOI CORDIAL?</span>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="entregador" id="inlineRadio4">
-                                <label class="form-check-label" for="inlineRadio4">NÃO</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="inlineRadio3">
+                                    <label class="form-check-label" for="inlineRadio3">SIM</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="inlineRadio4">
+                                    <label class="form-check-label" for="inlineRadio4">NÃO</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mt-3">
-                            <span>AS CAIXAS FORAM DEVOLVIDAS AO ENTREGADOR?</span>
-                        </div>
-
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="caixas" id="inlineRadio5">
-                                <label class="form-check-label" for="inlineRadio5">SIM</label>
+                            <div class="mt-3">
+                                <span>AS CAIXAS FORAM DEVOLVIDAS AO ENTREGADOR?</span>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="caixas" id="inlineRadio6">
-                                <label class="form-check-label" for="inlineRadio6">NÃO</label>
+
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="inlineRadio5">
+                                    <label class="form-check-label" for="inlineRadio5">SIM</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineRadio6">
+                                    <label class="form-check-label" for="inlineRadio6">NÃO</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mt-3">
-                            <span>QUER REGISTAR ALGUMA RECLAMAÇÃO OU ELOGIO?</span>
-                        </div>
+                            <div class="mt-3">
+                                <span>QUER REGISTAR ALGUMA RECLAMAÇÃO OU ELOGIO?</span>
+                            </div>
 
-                        <div class="mb-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
 
-                    </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-recebimento" data-bs-dismiss="modal">CONFIRMAR RECEBIMENTO</button>
+                    <button type="submit" class="btn btn-recebimento" data-bs-dismiss="modal">CONFIRMAR RECEBIMENTO</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

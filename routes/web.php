@@ -230,7 +230,7 @@ Route::group(['middleware' => ['auth:buyer']], function(){
     Route::get('store/pedidos', [PedidoController::class, 'userPedido'])->name('user.pedidos');
     Route::get('store/pedidos/produtos/{id}', [PedidoController::class, 'pedidoDatalheUser'])->name('user.pedido.produto');
 
-    Route::any('user/produto/status/{id}', [PedidoController::class, 'produtoStatus'])->name('user.produto.status');
+    Route::any('user/produto/status/', [PedidoController::class, 'produtoStatus'])->name('user.produto.status');
 
     Route::get('user-logout', [BuyerController::class, 'logout'])->name('user.logout');
 });

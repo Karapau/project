@@ -24,8 +24,9 @@ class PedidoController extends Controller
         return view('app-front.store.pages.pedido-list', compact('orders', 'user_order'));
     }
 
-    public function produtoStatus(Request $request, $id)
+    public function produtoStatus(Request $request)
     {
+        
         $porto = UserProduct::find($id);
         $porto->status = $request->get('status');
         $porto->save();
