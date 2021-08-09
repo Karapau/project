@@ -107,60 +107,74 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                            <a href="{{ asset('admin/home') }}" class="nav-link @if (Request::is('admin/home')) active @endif">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ asset('admin/pescador') }}" class="nav-link @if (Request::is('admin/pescador')) active @endif">
-                                <i class="nav-icon fas fa-boxes"></i>
-                                <p>Pescador</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ asset('admin/encomendas') }}" class="nav-link @if (Request::is('admin/encomendas')) active @endif">
-                                <i class="nav-icon fas fa-box"></i>
-                                <p>Encomendas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item @if (Request::is('admin/cadastro/*')) menu-open @endif">
-                            <a href="#" class="nav-link @if (Request::is('admin/cadastro/*')) active @endif">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Cadastros <i class="fas fa-angle-left right"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.especies') }}" class="nav-link @if (Request::is('cadastro/especies')) active @endif">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Espécies</p>
-                                    </a>
-                                    <a href="{{ route('admin.porto') }}" class="nav-link @if (Request::is('cadastro/porto')) active @endif">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Portos</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('entregador')}}" class="nav-link @if (Request::is('admin/entregador')) active @endif">
-                                <i class="nav-icon fas fa-truck"></i>
-                                <p>Entregadores</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.clientes') }}" class="nav-link @if (Request::is('admin/cliente')) active @endif">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Clientes</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.consultores') }}" class="nav-link @if (Request::is('admin/consultor')) active @endif">
-                                <i class="nav-icon fas fa-briefcase"></i>
-                                <p>Comerciais</p>
-                            </a>
-                        </li>
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/home') }}" class="nav-link @if (Request::is('admin/home')) active @endif">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/pescador') }}" class="nav-link @if (Request::is('admin/pescador')) active @endif">
+                                    <i class="nav-icon fas fa-boxes"></i>
+                                    <p>Pescador</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/encomendas') }}" class="nav-link @if (Request::is('admin/encomendas')) active @endif">
+                                    <i class="nav-icon fas fa-box"></i>
+                                    <p>Encomendas</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item @if (Request::is('admin/cadastro/*')) menu-open @endif">
+                                <a href="#" class="nav-link @if (Request::is('admin/cadastro/*')) active @endif">
+                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <p>Cadastros <i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.especies') }}" class="nav-link @if (Request::is('cadastro/especies')) active @endif">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Espécies</p>
+                                        </a>
+                                        <a href="{{ route('admin.porto') }}" class="nav-link @if (Request::is('cadastro/porto')) active @endif">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Portos</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 3)
+                            <li class="nav-item">
+                                <a href="{{route('entregador')}}" class="nav-link @if (Request::is('admin/entregadores') || Request::is('admin/entregador/*')) active @endif">
+                                    <i class="nav-icon fas fa-truck"></i>
+                                    <p>Entregadores</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
+                                <a href="{{ route('admin.clientes') }}" class="nav-link @if (Request::is('admin/cliente')) active @endif">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>Clientes</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (auth()->user()->permission == 10)
+                            <li class="nav-item">
+                                <a href="{{ route('admin.consultores') }}" class="nav-link @if (Request::is('admin/consultor')) active @endif">
+                                    <i class="nav-icon fas fa-briefcase"></i>
+                                    <p>Comerciais</p>
+                                </a>
+                            </li>
+                        @endif
 
 
                     </ul>
