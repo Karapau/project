@@ -11,9 +11,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Numero do Pedido</th>
                             <th scope="col">Nome do Comprador</th>
                             <th scope="col">Status</th>
+                            <th></th>
                             <th scope="col">Total</th>
                             <th scope="col">Acão</th>
                         </tr>
@@ -21,7 +22,7 @@
                     <tbody>
                         @foreach ($orders as $order)
                             <tr>
-                                <th scope="row">{{ $order->id }} <span class="badge badge-success">Novo</span></th>
+                                <th>{{ $order->codigo }}</th>
                                 <td>{{ $order->user_name }}</td>
 
                                 <td>
@@ -32,19 +33,24 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ '€ ' . number_format($order->total, 2, ',', '.') }}
+                                    <div>
+                                        <a href="{{ route('admin.pedidos.completo', $order->id) }}"> <button
+                                                class="btn btn-primary btn-sm ml-2">Faturar</button></a>
+                                    </div>
                                 </td>
                                 <td>
-                                    <div class="d-flex">
+                                    {{ '€ ' . number_format($order->total, 2, ',', '.') }}
+                                </td>
+
+                                <td>
+                                    <div class="d-flex justify-content-between icones">
 
                                         <div>
-                                            <a href="{{ route('admin.pedidos.completo', $order->id) }}"> <button
-                                                    class="btn btn-primary ml-2">Ver Pedido</button></a>
+                                            <a href="{{ route('admin.pedidos.completo', $order->id) }}"><i class="far fa-eye"></i> </a>
                                         </div>
                                         @if ($order->payImage)
-                                            <div>
-                                                <a href="{{ route('admin.encomendas.download', $order->id) }}"> <button
-                                                        class="btn btn-dark ml-2">Baixar Comprovante</button></a>
+                                            <div class="ml-3">
+                                                <a href="{{ route('admin.encomendas.download', $order->id) }}"><i class="far fa-file-alt"></i></a>
                                             </div>
 
                                         @endif
