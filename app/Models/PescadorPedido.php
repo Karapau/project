@@ -29,9 +29,13 @@ class PescadorPedido extends Model
 
  
 
-    public function products()
+    public function products2()
     {
         return $this->hasMany(UserProduct::class, 'order_id', 'order_id');
+    }
+    public function products()
+    {
+        return $this->belongsTo(UserProduct::class, 'produtos');
     }
     public function users()
     {

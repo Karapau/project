@@ -29,11 +29,11 @@ class EncomendasController extends Controller
         $arrayGeral->itens = 0;
         $arrayGeral->caixas = 0;
         $user_order = UserOrder::with('enderecos')->find($id);
-        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->first();
+        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products', 'products2')->first();
         $comprador = Comprador::find($user_order->user_id);
         $address = AdressBuyer::find($user_order->adress);
-        if($orders->products->count() > 0){
-            foreach($orders->products as $products){
+        if($orders->products2->count() > 0){
+            foreach($orders->products2 as $products){
                 $arrayGeral->itens += $products->item;
                 $arrayGeral->caixas += $products->caixas;
             }
