@@ -104,7 +104,7 @@
             @php
                 $portos[] = [$nomePorto, $totalQty];
             @endphp
-            
+
         @endforeach
         @php
             $totalporto = 0;
@@ -181,7 +181,7 @@
             </div>
         </div>
     </div> --}}
-        {{-- <div class="top_4">
+        <div class="top_4">
             <div class="container">
                 <div class="metodos">
                     <div class="logo-metodos">
@@ -195,7 +195,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div id="phone" class="d-none">
             <div class="container row justify-content-center my-3">
                 <div class="col-10">
