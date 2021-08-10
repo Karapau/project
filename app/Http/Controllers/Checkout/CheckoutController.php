@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Checkout;
 
+use App\Models\Porto;
 use App\Models\Produto;
 use App\Models\PayImage;
 use App\Models\PortoTax;
@@ -103,7 +104,7 @@ class CheckoutController extends Controller
         $timestamp = time();
         $status = 0;
         $status2 = 0;
-        $codigo = $request->sigla.'-'.time();
+
         if ($request->payment_mothod == 'mbway') {
             $dados = [
                 'merchant' => [
@@ -163,83 +164,93 @@ class CheckoutController extends Controller
             $status2 = 1;
         }
 
-        $user_order = UserOrder::create([
-            'adress' => $request->adress,
-            'payment_mothod' => $request->payment_mothod,
-            'shipping_mothod' => $request->shipment,
-            'user_id' => auth()->user()->id,
-            'user_name' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'telemovel' => auth()->user()->telemovel,
-            'total' => $request->total,
-            'frete' => $request->freteval,
-            'sub_total' => \Cart::getSubTotal(),
-            'status' => $status,
-            'codigo' => $codigo,
-        ]);
+        $array = [];
 
-
-        $count = 1;
-        foreach (\Cart::getContent() as $key => $item) {
-
-
-            $itemQty = $item->price * $item->quantity;
-            $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
-            $subir = $count++;
-
-
-            $produtos = UserProduct::create([
-                'product_id' => $item->id,
-                'item' => $subir,
-                'name' => $item->name,
-                'price' => $item->price,
-                'value' => $value,
-                'total_value' => $itemQty,
-                'quantity' => $item->quantity,
-                'caixas' => $request->caixas,
-                'origem' => $request->origem,
-                'image' => $item->attributes->image,
-                'user_id' => auth()->user()->id,
-                'order_id' => $user_order->id,
-                'pescador_id' => $item->attributes->pescador_id,
-                'stutus' => $status2,
-            ]);
-
-            $wallet = SellToWallet::create([
-                'pescador_id' => $item->attributes->pescador_id,
-                'product_id' =>  $item->id,
-                'value' => $value,
-            ]);
-
-            $id = auth()->user()->id;
-            $comprador = Comprador::with('comercial')->find($id);
-            $valor = \Cart::getTotal() * (2 / 100);
-
-            $walletCom = WalletCom::create([
-                'user_id' => $comprador->comercial->id,
-                'comprador_id' => $id,
-                'pescador_id' => $item->attributes->pescador_id,
-                'order_id' => $user_order->id,
-                'product_id' => $item->id,
-                'total' => \Cart::getTotal(),
-                'value' => $valor,
-            ]);
-
-            $quantidade = Produto::find($item->id);
-            $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
-            $quantidade->save();
-
-            $pedido =  PescadorPedido::create([
-                'pescador_id' => $item->attributes->pescador_id,
-                'order_id' => $user_order->id,
-                'adress' => $request->adress,
-                'produtos' => $produtos->id,
-                'wallet' => $wallet->id,
-                'user_id' => auth()->user()->id,
-
-            ]);
+        foreach (\Cart::getContent() as $item) {
+            $array[$item->attributes->porto_id][] = $item;
         }
 
+        foreach ($array as $key => $value) {
+            $date = new \DateTime();
+            $portoSigla = Porto::find($key);
+            $codigo = $portoSigla->sigla. '-' . $date->getTimestamp();
+            $user_order = UserOrder::create([
+                'adress' => $request->adress,
+                'payment_mothod' => $request->payment_mothod,
+                'shipping_mothod' => $request->shipment,
+                'user_id' => auth()->user()->id,
+                'user_name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'telemovel' => auth()->user()->telemovel,
+                'total' => $request->total,
+                'frete' => $request->freteval,
+                'sub_total' => \Cart::getSubTotal(),
+                'status' => $status,
+                'codigo' => $codigo,
+            ]);
+
+
+            $count = 1;
+            foreach ($value as $key => $item) {
+
+
+                $itemQty = $item->price * $item->quantity;
+                $value = $itemQty - $itemQty * ($item->attributes->margem / 100);
+                $subir = $count++;
+
+
+                $produtos = UserProduct::create([
+                    'product_id' => $item->id,
+                    'item' => $subir,
+                    'name' => $item->name,
+                    'price' => $item->price,
+                    'value' => $value,
+                    'total_value' => $itemQty,
+                    'quantity' => $item->quantity,
+                    'caixas' => $request->caixas,
+                    'origem' => $request->origem,
+                    'image' => $item->attributes->image,
+                    'user_id' => auth()->user()->id,
+                    'order_id' => $user_order->id,
+                    'pescador_id' => $item->attributes->pescador_id,
+                    'stutus' => $status2,
+                ]);
+
+                $wallet = SellToWallet::create([
+                    'pescador_id' => $item->attributes->pescador_id,
+                    'product_id' =>  $item->id,
+                    'value' => $value,
+                ]);
+
+                $id = auth()->user()->id;
+                $comprador = Comprador::with('comercial')->find($id);
+                $valor = \Cart::getTotal() * (2 / 100);
+
+                $walletCom = WalletCom::create([
+                    'user_id' => $comprador->comercial->id,
+                    'comprador_id' => $id,
+                    'pescador_id' => $item->attributes->pescador_id,
+                    'order_id' => $user_order->id,
+                    'product_id' => $item->id,
+                    'total' => \Cart::getTotal(),
+                    'value' => $valor,
+                ]);
+
+                $quantidade = Produto::find($item->id);
+                $quantidade->quantidade_kg = $quantidade->quantidade_kg - $item->quantity;
+                $quantidade->save();
+
+                $pedido =  PescadorPedido::create([
+                    'pescador_id' => $item->attributes->pescador_id,
+                    'order_id' => $user_order->id,
+                    'adress' => $request->adress,
+                    'produtos' => $produtos->id,
+                    'wallet' => $wallet->id,
+                    'user_id' => auth()->user()->id,
+
+                ]);
+            }
+        }
 
 
         \Cart::clear();

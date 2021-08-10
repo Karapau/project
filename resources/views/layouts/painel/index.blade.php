@@ -153,7 +153,7 @@
                         @endif
                         @if (auth()->user()->permission == 3 || auth()->user()->permission == 10)
                             <li class="nav-item">
-                                <a href="{{route('entregador')}}" class="nav-link @if (Request::is('admin/entregadores') || Request::is('admin/entregador/*')) active @endif">
+                                <a href="{{ route('entregador') }}" class="nav-link @if (Request::is('admin/entregadores') || Request::is('admin/entregador/*')) active @endif">
                                     <i class="nav-icon fas fa-truck"></i>
                                     <p>Entregadores</p>
                                 </a>
@@ -277,6 +277,12 @@
         $('.open').on('click', function() {
             var idprod = $(this).data('id');
             $('[name="idasset"]').val(idprod);
+        });
+    </script>
+    <script>
+        $('.openModal').on('click', function() {
+            var idproduto = $(this).data('idp');
+            $('[name="idproduto"]').val(idproduto);
         });
     </script>
     <script>

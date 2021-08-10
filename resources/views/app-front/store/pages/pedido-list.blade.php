@@ -7,7 +7,7 @@
             <h3>{{ $user_order->sigla }}</h3>
         </div>
         <div class="botao-voltar text-center">
-            <a href="javascript:history.back()"><button class="btn btn-voltar btn-lg">VOLTAR</button></a>
+            <a href="{{ route('user.pedidos') }}"><button class="btn btn-voltar btn-lg">VOLTAR</button></a>
         </div>
     </div>
     {{-- endereço de entrega --}}

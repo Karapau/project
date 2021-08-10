@@ -104,6 +104,7 @@
             @php
                 $portos[] = [$nomePorto, $totalQty];
             @endphp
+            
         @endforeach
         @php
             $totalporto = 0;

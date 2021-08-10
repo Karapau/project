@@ -41,8 +41,8 @@
                         {{ '€ ' . number_format($order->products->total_value, 2, ',', '.') }}</li>
                     <li class="list-group-item">Vai receber:
                         {{ '€ ' . number_format($order->products->value, 2, ',', '.') }}</li>
-                    <li class="list-group-item bg-danger open text-white" data-toggle="modal"
-                        data-id="{{ $order->products->id }}" data-target="#status">Status:
+                    <li class="list-group-item bg-danger openModal text-white" data-toggle="modal"
+                        data-idp="{{ $order->products->id }}" data-target="#status">Status:
                         @if ($order->products->status == 0) Aguardando Liberação
                         @elseif($order->products->status == 1) A liberar
                         @elseif($order->products->status == 2) Transporte
