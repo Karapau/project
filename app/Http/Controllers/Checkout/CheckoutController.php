@@ -164,16 +164,8 @@ class CheckoutController extends Controller
             $status2 = 1;
         }
 
-        $array = [];
-
-        foreach (\Cart::getContent() as $item) {
-            $array[$item->attributes->porto_id][] = $item;
-        }
-
-        foreach ($array as $key => $value) {
             $date = new \DateTime();
-            $portoSigla = Porto::find($key);
-            $codigo = $portoSigla->sigla. '-' . $date->getTimestamp();
+            $codigo = $request->sigla. '-' . $date->getTimestamp();
             $user_order = UserOrder::create([
                 'adress' => $request->adress,
                 'payment_mothod' => $request->payment_mothod,
@@ -191,7 +183,7 @@ class CheckoutController extends Controller
 
 
             $count = 1;
-            foreach ($value as $key => $item) {
+            foreach (\Cart::getContent() as $key => $item) {
 
 
                 $itemQty = $item->price * $item->quantity;
@@ -208,7 +200,7 @@ class CheckoutController extends Controller
                     'total_value' => $itemQty,
                     'quantity' => $item->quantity,
                     'caixas' => $request->caixas,
-                    'origem' => $request->origem,
+                    'origem' => $item->attributes->porto,
                     'image' => $item->attributes->image,
                     'user_id' => auth()->user()->id,
                     'order_id' => $user_order->id,
@@ -250,7 +242,7 @@ class CheckoutController extends Controller
 
                 ]);
             }
-        }
+
 
 
         \Cart::clear();

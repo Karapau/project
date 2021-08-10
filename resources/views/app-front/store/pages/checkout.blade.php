@@ -89,7 +89,7 @@
                             </div>
                             <input type="hidden" name="sigla" value="{{ $item->attributes->sigla }}">
                             <input type="hidden" name="caixas" value="{{ $qty }}">
-                            <input type="hidden" name="origem" value="{{ $item->attributes->porto }}">
+                            
                         </div>
                         <div>
                             <a href="{{ route('store.cart.remove', $item->id) }}"> <button type="button"
