@@ -114,13 +114,16 @@
                 <h2 class="titulo">PORTO: {{ $porto[0] }}</h2>
             </div>
             @php
+
+                $shipRand = number_format((mt_rand(5,15) / mt_rand(9,15)) + mt_rand(1,10), 2, '.', '');
                 $totalporto += $porto[1] * $shipping->value;
+
             @endphp
             <div class="top_3">
                 <div class="container">
                     <div class="total-price">
                         <div class="euros">
-                            <h1> {{ '€ ' . number_format($porto[1] * $shipping->value, 2, ',', '.') }}</h1>
+                            <h1> {{ '€ ' . number_format($porto[1] * $shipping->value + $shipRand, 2, ',', '.') }}</h1>
                         </div>
 
                     </div>
