@@ -41,7 +41,17 @@ class EntregadorController extends Controller
 
     public function caixaDevolvida(Request $request)
     {
-        $userProduct = UserProduct::find($request->id)->update(['caixa_devolvida' => '1', 'status' => '1']);
+        if($request->devolvida == 'S'){
+            $userProduct = UserProduct::find($request->id)->update(['caixa_devolvida' => '1']);
+        }else{
+            $userProduct = UserProduct::find($request->id)->update(['caixa_devolvida' => '0']);
+        }
+        return response()->json($userProduct);
+    }
+
+    public function entregue(Request $request)
+    {
+        $userProduct = UserProduct::find($request->id)->update(['status' => '1']);
         return response()->json($userProduct);
     }
 }

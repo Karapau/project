@@ -41,7 +41,7 @@
                                                             <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>
                                                         @endif
                                                     </td>
-                                                    <td><button type="button" class="btn {{$userProduct->caixa_devolvida == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->caixa_devolvida == 0) caixa_devolvida @endif" data-route="{{route('entregador.caixa_devolvida')}}" data-id="{{$userProduct->id}}">SIM</button></td>
+                                                    <td><button type="button" class="btn {{$userProduct->caixa_devolvida == 0 ? 'btn-dark' : 'btn-success'}} btn-sm caixa_devolvida" data-devolvida="{{$userProduct->caixa_devolvida == 0 ? 'S' : 'N'}}" data-route="{{route('entregador.caixa_devolvida')}}" data-id="{{$userProduct->id}}">{{$userProduct->caixa_devolvida == 0 ? 'NÃO' : 'SIM'}}</button></td>
                                                 </tr>
                                             @endif
                                         @endforeach
