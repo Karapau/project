@@ -32,9 +32,11 @@ class EncomendasController extends Controller
         $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->first();
         $comprador = Comprador::find($user_order->user_id);
         $address = AdressBuyer::find($user_order->adress);
-        foreach($orders->products as $products){
-            $arrayGeral->itens += $products->item;
-            $arrayGeral->caixas += $products->caixas;
+        if($orders->products->count() > 0){
+            foreach($orders->products as $products){
+                $arrayGeral->itens += $products->item;
+                $arrayGeral->caixas += $products->caixas;
+            }
         }
         return view('painel.pages.encomendas.pedido', compact('orders', 'user_order', 'arrayGeral', 'comprador', 'address'));
     }
