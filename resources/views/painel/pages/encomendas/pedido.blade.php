@@ -23,7 +23,7 @@
                                             <th></th>
                                             <th>TOTAL</th>
                                             <th>Taxa Entrega</th>
-                                            <th>AÇÂO</th>
+                                            <th>STATUS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,10 +31,27 @@
                                             <td>{{$user_order->codigo}}</td>
                                             <td>{{$arrayGeral->itens}}</td>
                                             <td>{{$arrayGeral->caixas}}</td>
-                                            <td><button type="button" class="btn btn-dark btn-sm">FATURAR</button></td>
+                                            <td>
+                                                <button type="button" class="btn btn-dark btn-sm">FATURAR</button>
+
+                                            </td>
                                             <td>€ {{number_format($user_order->total, 2, ',', '.')}}</td>
                                             <td>€ {{number_format($user_order->frete, 2, ',', '.')}}</td>
-                                            <td><span><i class="fas fa-eye"></i></span> <span><i class="fas fa-file"></i></span></td>
+                                            <td>
+                                                <form action="{{ url('admin/user/order/status/' . $user_order->id) }}" method="POST">
+                                                    @csrf
+                                                    @if ($user_order->status != 2)
+                                                    <input  type="hidden" name="status" id="exampleRadios1"
+                                                    value="2">
+                                                    <button type="submit" class="btn btn-success">Pago</button>
+                                                    @else
+                                                    <input  type="hidden" name="status" id="exampleRadios1"
+                                                    value="3">
+                                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                                    @endif
+
+                                                </form>
+                                            </td>
                                         </tr>
                                         @php
                                             $ordemPedido = 0;
