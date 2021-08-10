@@ -107,9 +107,6 @@
                                                     </table>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td colspan="7" class="text-right"><button type="button" class="btn btn-info btn-sm">ATUALIZAR</button></td>
-                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
