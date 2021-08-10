@@ -38,17 +38,9 @@
                                             <td>€ {{number_format($user_order->total, 2, ',', '.')}}</td>
                                             <td>€ {{number_format($user_order->frete, 2, ',', '.')}}</td>
                                             <td>
-                                                <form action="{{ url('admin/user/order/status/' . $user_order->id) }}" method="POST">
-                                                    @csrf
-                                                    @if ($user_order->status != 2)
-                                                    <input  type="hidden" name="status" id="exampleRadios1"
-                                                    value="2">
-                                                    <button type="submit" class="btn btn-success">Pago</button>
-                                                    @else
-                                                    <input  type="hidden" name="status" id="exampleRadios1"
-                                                    value="3">
-                                                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                                                    @endif
+
+                                                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-dark">STATUS</button>
+
 
                                                 </form>
                                             </td>
@@ -140,7 +132,45 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('admin/user/order/status/' . $user_order->id) }}" method="post">
+                        @csrf
 
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                    value="2">
+                                <label class="form-check-label text-success" for="exampleRadios1">
+                                    Pago
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                    value="3">
+                                <label class="form-check-label text-danger" for="exampleRadios1">
+                                    Cancelar
+                                </label>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success">Alterar Status</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="pescadorModal" tabindex="-1" aria-labelledby="pescadorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
