@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Comprador;
+use App\Models\AdressBuyer;
 use App\Models\PayImage;
 use App\Models\UserOrder;
 use App\Models\UserProduct;
@@ -23,10 +25,18 @@ class EncomendasController extends Controller
 
     public function pedidoDatalheUser($id)
     {
-
+        $arrayGeral = new \stdCLass();
+        $arrayGeral->itens = 0;
+        $arrayGeral->caixas = 0;
         $user_order = UserOrder::with('enderecos')->find($id);
-        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->get();
-        return view('painel.pages.encomendas.pedido', compact('orders', 'user_order'));
+        $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products')->first();
+        $comprador = Comprador::find($user_order->user_id);
+        $address = AdressBuyer::find($user_order->adress);
+        foreach($orders->products as $products){
+            $arrayGeral->itens += $products->item;
+            $arrayGeral->caixas += $products->caixas;
+        }
+        return view('painel.pages.encomendas.pedido', compact('orders', 'user_order', 'arrayGeral', 'comprador', 'address'));
     }
 
     public function download($id)
@@ -47,11 +57,7 @@ class EncomendasController extends Controller
     }
     public function statusProduto(Request $request)
     {
-        $id = $request->idproduto;
-        $porto = UserProduct::find($id);
-        $porto->status = $request->get('status');
-        $porto->save();
-
-        return redirect()->back();
+        $userProduct = UserProduct::find($request->id)->update(['status' => '1']);
+        return response()->json($userProduct);
     }
 }
