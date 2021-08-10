@@ -116,7 +116,7 @@
             @php
 
                 $shipRand = number_format((mt_rand(5,15) / mt_rand(9,15)) + mt_rand(1,10), 2, '.', '');
-                $totalporto += $porto[1] * $shipping->value;
+                $totalporto += $porto[1] * $shipping->value + $shipRand;
 
             @endphp
             <div class="top_3">
