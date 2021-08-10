@@ -21,31 +21,29 @@
                         <td>{{ $pescador->nome_embarcacao }}</td>
                         <td>{{ $pescador->email }}</td>
                         <td>
-                              <div class="d-flex">
+                              <div class="d-flex justify-content-around icones">
                                     <div class="mx-1">
-                                          <a href="{{ route('admin.pescador.produtos', $pescador->id) }}"><button
-                                                      class="btn btn-dark btn-sm">Ver Produtos</button></a>
+                                          <a href="{{ route('admin.pescador.produtos', $pescador->id) }}"><i class="fas fa-box-open"></i></a>
                                     </div>
                                     <div class="mx-1">
-                                          <a href="{{ route('admin.pescador.edit', $pescador->id) }}"><button
-                                                      class="btn btn-primary btn-sm">Editar</button></a>
+                                          <a href="{{ route('admin.pescador.edit', $pescador->id) }}"><i class="fas fa-edit"></i></a>
                                     </div>
                                     <div class="mx-1">
                                           <form action="{{ route('admin.pescador.update.status', $pescador->id) }}">
                                                 @csrf
                                                 @if($pescador->status == 0)
                                                 <input type="hidden" value="1" name="status">
-                                                <button type="submit" class="btn btn-danger btn-sm">Desativar</button>
+                                                <button type="submit" style="background: none; border: none; font-size: 1.5em; color: red;" class="fas fa-ban"></button>
                                                 @else
                                                 <input type="hidden" value="0" name="status">
-                                                <button type="submit" class="btn btn-success btn-sm">Ativar</button>
+                                                <button type="submit" style="background: none; border: none; font-size: 1.5em; color: green;" class="fas fa-check"></button>
                                                 @endif
 
 
                                           </form>
                                     </div>
                                     <div class="mx-1">
-                                         <a href="{{ route('admin.pescador.pedidos', $pescador->id) }}"> <button class="btn btn-info btn-sm">Ver Encomendas</button></a>
+                                         <a href="{{ route('admin.pescador.pedidos', $pescador->id) }}"> <i class="fas fa-pallet"></i></a>
                                     </div>
                               </div>
                         </td>
