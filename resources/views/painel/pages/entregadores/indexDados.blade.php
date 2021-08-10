@@ -34,7 +34,7 @@
                                                 @if ($userProduct->status >= 1)
                                                     <button type="button" class="btn btn-success btn-sm">ENTREGUE</button>
                                                 @else
-                                                    <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>
+                                                    <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm @if($userProduct->aceito == 1) btn_entregue @endif" data-route="{{route('entregador.entregue')}}" data-id="{{$userProduct->id}}" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>
                                                 @endif
                                             </td>
                                             <td><button type="button" class="btn btn-dark btn-sm">GERAR</button></td>
