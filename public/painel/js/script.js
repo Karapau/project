@@ -44,4 +44,12 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.btn-editar-user',function(){
+        var btn = $(this);
+
+        $.each(btn.data('dados'), (key, value) => {
+            $('#modalUsersEdit').find('[name="'+key+'"]').val(value);
+        });
+    });
 });

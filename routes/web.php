@@ -10,6 +10,8 @@ use App\Http\Controllers\Store\StoreController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\EntregadorController;
 
+use App\Http\Controllers\Admin\UserController;
+
 use App\Http\Controllers\Admin\ClienteController;
 
 use App\Http\Controllers\Admin\EspecieController;
@@ -69,6 +71,10 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('/entregador/dados/{id}', [EntregadorController::class, 'indexDados'])->name('entregador.dados');
     Route::post('/entregador/aceito', [EntregadorController::class, 'entregaAceito'])->name('entregador.aceito');
     Route::post('/entregador/caixa_devolvida', [EntregadorController::class, 'caixaDevolvida'])->name('entregador.caixa_devolvida');
+
+    Route::get('usuarios', [UserController::class, 'index'])->name('admin.users');
+    Route::post('usuarios/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('usuarios/update', [UserController::class, 'update'])->name('admin.users.update');
 
     Route::get('especies/create', [EspecieController::class, 'create'])->name('admin.especies.create');
     Route::post('especies/store', [EspecieController::class, 'store'])->name('admin.especies.store');
