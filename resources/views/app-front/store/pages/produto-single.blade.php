@@ -24,7 +24,7 @@
 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-in-geral" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    INFORMARÇÕES GERAIS
+                    INFORMAÇÕES GERAIS
                 </button>
                 <div class="mt-3 precokg">
                     <span>{{ '€ ' . number_format($produto->preco, 2, ',', '.') }} - KG</span>
