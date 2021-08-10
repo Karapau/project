@@ -39,7 +39,7 @@
                                         @php
                                             $ordemPedido = 0;
                                         @endphp
-                                        @foreach ($orders->products as $userProduct)
+                                        @foreach ($orders->products2 as $userProduct)
                                         @php
                                             $ordemPedido++;
                                         @endphp
