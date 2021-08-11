@@ -96,7 +96,7 @@
                     <div>
                         <div class="wait">
                             <span class="btn wait-paying">
-                                @if ($order->products->status == 0) AGUARDANDO PAGAMENTO
+                                @if ($order->products->status == 0) AGUARDANDO
                                 @elseif($order->products->status == 1) EM PREPARAÇÃO
                                 @elseif($order->products->status == 2) TRANSPORTE
                                 @elseif($order->products->status == 3) ENTREGUE
@@ -113,8 +113,8 @@
                     </div> --}}
                         <div class="info-receber">
                             <!-- Button trigger modal -->
-                            <button type="button" data-mod="{{ $order->products->id }}" id="modalEnt" class="btn info-recebeu"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" data-mod="{{ $order->products->id }}" id="modalEnt"
+                                class="btn info-recebeu" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 INFORMAR RECEBIMENTO
                             </button>
 
@@ -145,24 +145,29 @@
     </div>
     @if ($user_order->payment_mothod == 'transferencia')
         @if ($user_order->payimage)
-            <div class="section-5 mb-3">
+            <div class="section-5 mb-3 status-pay">
                 <div class="container">
-                    <h3>COMPROVANTE ENVIADO,</h3><br>
-                    <h4>ACOMPANHAR O STATUS DA SUA COMPRA</h4>
+                    <h3>COMPROVANTE ENVIADO</h3><br>
+                    <h4>STATUS DA SUA COMPRA: @if ($user_order->status == 1)
+                            ANÁLISE FINANCEIRA
+                        @elseif($user_order->status == 2)
+                            PAGO
+                        @endif
+                    </h4>
                 </div>
             </div>
         @else
             <div class="section-5 mb-3">
                 <div class="container">
                     <div class="conta" style="font-family: Poppins;
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 18px;
-                            line-height: 131.5%;
-                            /* or 24px */
-                            letter-spacing: -0.015em;
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 18px;
+                                line-height: 131.5%;
+                                /* or 24px */
+                                letter-spacing: -0.015em;
 
-                            color: #4F3A57;">
+                                color: #4F3A57;">
                         <span>Conta para Transferência</span>
                         <div>
                             <span>banco Montepio - numero de conta : 295.10.005582-7 <br> BIC/SWIFT : MPIOPTPL <br> NIB :
@@ -208,11 +213,11 @@
 
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"  id="inlineRadio1">
+                                    <input class="form-check-input" type="radio" id="inlineRadio1">
                                     <label class="form-check-label" for="inlineRadio1">SIM</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"  id="inlineRadio2">
+                                    <input class="form-check-input" type="radio" id="inlineRadio2">
                                     <label class="form-check-label" for="inlineRadio2">NÃO</label>
                                 </div>
                             </div>
@@ -222,11 +227,11 @@
                             </div>
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"  id="inlineRadio3">
+                                    <input class="form-check-input" type="radio" id="inlineRadio3">
                                     <label class="form-check-label" for="inlineRadio3">SIM</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"  id="inlineRadio4">
+                                    <input class="form-check-input" type="radio" id="inlineRadio4">
                                     <label class="form-check-label" for="inlineRadio4">NÃO</label>
                                 </div>
                             </div>
@@ -237,7 +242,7 @@
 
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"  id="inlineRadio5">
+                                    <input class="form-check-input" type="radio" id="inlineRadio5">
                                     <label class="form-check-label" for="inlineRadio5">SIM</label>
                                 </div>
                                 <div class="form-check form-check-inline">
