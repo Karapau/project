@@ -38,7 +38,7 @@
         </div>
     </div>
     @foreach ($user_orders as $order)
-        <div class="top_1">
+        <div class="top_1 mb-5">
             <div class="container">
                 <div class="center">
                     <div class="titulo">
