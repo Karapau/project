@@ -59,7 +59,7 @@
 
                 @else
                    @php
-                       $qty = $item->quantity;
+                       $qty = 1;
                    @endphp
                 @endif
 
