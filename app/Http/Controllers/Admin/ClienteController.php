@@ -13,9 +13,15 @@ class ClienteController extends Controller
 {
     public function index()
     {
+        if(isset($_GET['email'])){
+            $compradores = Comprador::where('email', 'like', '%'.$_GET['email'].'%');
 
+            if(isset($_GET['status'])) $compradores = Comprador::where('status', $_GET['status']);
 
-        $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->paginate(15);
+            $compradores = $compradores->with('individuais', 'coletivos', 'comercial')->paginate(15);
+        }else{
+            $compradores = Comprador::with('individuais', 'coletivos', 'comercial')->paginate(15);
+        }
 
         return view('painel.pages.clientes.index', compact('compradores'));
     }
