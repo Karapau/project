@@ -40,12 +40,17 @@
                 @endphp
                 <form action="{{ route('store.cart.add') }}" method="POST">
                     @csrf
+                    @if (!$produto->quantidade_unidade)
                     <div>
                         <span class="input-number-decrement qty-count--minus" data-action="minus">–</span>
                         <input name="quantity" class="input-number" type="number" value="10" min="10"
                             max="{{ $produto->quantidade_kg - $value }}">
                         <span class="input-number-increment qty-count--add" data-action="add">+</span>
                     </div>
+                    @else
+                    <input name="quantity"  class="input-number" type="hidden" value="{{ $produto->quantidade_kg}}">
+                    @endif
+
                     <div class="d-none">
                         <input type="hidden" name="id" value="{{ $produto->id }}">
                         <input type="hidden" name="name" value="{{ $produto->especies->nome_portugues }}">
