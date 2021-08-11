@@ -32,7 +32,17 @@
                                             <td>{{$arrayGeral->itens}}</td>
                                             <td>{{$arrayGeral->caixas}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-dark btn-sm">FATURAR</button>
+                                                @if($user_order->fatura)
+                                                <button type="button" class="btn btn-dark btn-sm ml-2">Faturarado</button>
+                                                @else
+
+                                                    <form action="{{ route('admin.status.fatura', $user_order->id) }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="fatura" value="1">
+                                                        <button type="submit" class="btn btn-dark btn-sm ml-2">Faturar</button>
+                                                    </form>
+
+                                                @endif
 
                                             </td>
                                             <td>€ {{number_format($user_order->total, 2, ',', '.')}}</td>

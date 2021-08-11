@@ -26,6 +26,7 @@ class UserProduct extends Model
         'caixa_devolvida',
         'status',
         'pescador_id',
+        'fatura',
     ];
 
 

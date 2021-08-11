@@ -62,4 +62,14 @@ class EncomendasController extends Controller
         $userProduct = UserProduct::find($request->id)->update(['status' => '2']);
         return response()->json($userProduct);
     }
+
+    public function fatura(Request $request, $id)
+    {
+        $porto = UserOrder::find($id);
+        $porto->fatura = $request->get('fatura');
+        $porto->save();
+        return redirect()->back();
+    }
+
 }
+
