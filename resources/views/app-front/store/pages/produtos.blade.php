@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                         @endif
-                    @else
+                    @elseif ($produto->quantidade_kg >= 1)
                         <div class="col-6 mb-5">
                             <div class="porto">
                                 <a href="{{ route('store.produto.single', $produto->id) }}"> <img
