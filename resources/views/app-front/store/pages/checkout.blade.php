@@ -48,13 +48,16 @@
                 @php
                     $quantity = $item->quantity;
                 @endphp
+                @if ($item->quantity >= 10)
                 @php
-                    $qty = substr($quantity, 0, -1);
-                    $caixaDiv = $qty / 3;
-                    $ceil = ceil($caixaDiv);
-                    $totalQty += $ceil;
-                    $nomePorto = $item->attributes->porto;
-                @endphp
+                $qty = substr($quantity, 0, -1);
+                $caixaDiv = $qty / 3;
+                $ceil = ceil($caixaDiv);
+                $totalQty += $ceil;
+                $nomePorto = $item->attributes->porto;
+            @endphp
+                @endif
+
                 <div class="top_2 mt-3">
                     <div class="container">
                         <div class="products-list">
@@ -89,7 +92,7 @@
                             </div>
                             <input type="hidden" name="sigla" value="{{ $item->attributes->sigla }}">
                             <input type="hidden" name="caixas" value="{{ $qty }}">
-                            
+
                         </div>
                         <div>
                             <a href="{{ route('store.cart.remove', $item->id) }}"> <button type="button"
