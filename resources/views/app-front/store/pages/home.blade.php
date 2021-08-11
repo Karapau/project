@@ -35,12 +35,12 @@
             <p>SUAS ENCOMENDAS</p>
         </div>
         <div class="col-6 scale-in-center">
-            <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/perfil.svg') }}" alt="">
+            <a href="{{ route('store.user.edit-ind', auth()->user()->id) }}"><img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/perfil.svg') }}" alt=""></a>
             <p>SEUS DADOS
                 DE PERFIL</p>
         </div>
         <div class="col-6 scale-in-center">
-            <img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/suporte.svg') }}" alt="">
+            <a href="https://api.whatsapp.com/send?phone=+351915934182" target="_blank"><img class="scale-in-center" src="{{ url('front-app/store/assets/img/icons/suporte.svg') }}" alt=""></a>
             <p>SUPORTE TÉCNICO</p>
         </div>
     </div>
