@@ -27,12 +27,12 @@
                   @csrf
                   <div class="form-group">
                         <label for="exampleInputEmail1">Nome</label>
-                        <input type="text" class="form-control" name="nome" value="{{ $user->name }}">
+                        <input type="text" class="form-control" name="name" value="{{ $user->name }}">
 
                   </div>
                   <div class="form-group">
                         <label for="exampleInputEmail1">Sobrenome</label>
-                        <input type="text" class="form-control" name="sobrenome" value="{{ $user->lastname }}">
+                        <input type="text" class="form-control" name="lastname" value="{{ $user->lastname }}">
 
                   </div>
                   <div class="form-group">

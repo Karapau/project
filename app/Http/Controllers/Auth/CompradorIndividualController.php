@@ -101,15 +101,12 @@ class CompradorIndividualController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $comprador = CompradorIndividual::find($id);
+        $compradorDados['name'] = $request->name;
+        $compradorDados['lastname'] = $request->lastname;
+        $compradorDados['telemovel'] = $request->telemovel;
+        if($request->password) $compradorDados['password'] = Hash::make($request->password);
 
-        $comprador->nome =     $request->get('nome');
-        $comprador->sobrenome = $request->get('sobrenome');
-        $comprador->telemovel = $request->get('telemovel');
-        $comprador->password = Hash::make($request->get('password'));
-    
-
-        $comprador->save();
+        $comprador = Comprador::find($id)->update($compradorDados);
 
         return redirect()->back()->with('success', 'alterado com sucesso!');
     }
