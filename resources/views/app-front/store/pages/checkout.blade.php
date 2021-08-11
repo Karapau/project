@@ -49,13 +49,18 @@
                     $quantity = $item->quantity;
                 @endphp
                 @if ($item->quantity >= 10)
-                @php
-                $qty = substr($quantity, 0, -1);
-                $caixaDiv = $qty / 3;
-                $ceil = ceil($caixaDiv);
-                $totalQty += $ceil;
-                $nomePorto = $item->attributes->porto;
-            @endphp
+                    @php
+                        $qty = substr($quantity, 0, -1);
+                        $caixaDiv = $qty / 3;
+                        $ceil = ceil($caixaDiv);
+                        $totalQty += $ceil;
+                        $nomePorto = $item->attributes->porto;
+                    @endphp
+
+                @else
+                   @php
+                       $qty = $item->quantity;
+                   @endphp
                 @endif
 
                 <div class="top_2 mt-3">
@@ -118,7 +123,7 @@
             </div>
             @php
 
-                $shipRand = number_format((mt_rand(5,15) / mt_rand(9,15)) + mt_rand(1,10), 2, '.', '');
+                $shipRand = number_format(mt_rand(5, 15) / mt_rand(9, 15) + mt_rand(1, 10), 2, '.', '');
                 $totalporto += $porto[1] * $shipping->value + $shipRand;
 
             @endphp
