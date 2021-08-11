@@ -20,8 +20,8 @@
                                             <div class="form-group col-12 col-md-5">
                                                 <select name="status" id="" class="form-control">
                                                     <option value="">Selecione um Status</option>
-                                                    <option value="1" @isset($_GET['status']){{$_GET['status'] == 1 ? 'selected' : ''}}@endisset>Ativo</option>
-                                                    <option value="0" @isset($_GET['status']){{$_GET['status'] == 0 ? 'selected' : ''}}@endisset>Inativo</option>
+                                                    <option value="1" @isset($_GET['status']){{$_GET['status'] == '1' ? 'selected' : ''}}@endisset>Ativo</option>
+                                                    <option value="0" @isset($_GET['status']){{$_GET['status'] == '0' ? 'selected' : ''}}@endisset>Inativo</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-12 col-md-2">
