@@ -35,7 +35,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        @if ($userProduct->status >= 2)
+                                                        @if ($userProduct->status >= 3)
                                                             <button type="button" class="btn btn-success btn-sm">ENTREGUE</button>
                                                         @else
                                                             <button type="button" class="btn {{$userProduct->aceito == 0 ? 'btn-dark' : 'btn-primary'}} btn-sm" id="status-{{$userProduct->id}}">{{$userProduct->aceito == 0 ? 'AGUARDANDO' : 'EM ENTREGA'}}</button>

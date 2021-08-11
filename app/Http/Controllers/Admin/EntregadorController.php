@@ -51,7 +51,7 @@ class EntregadorController extends Controller
 
     public function entregue(Request $request)
     {
-        $userProduct = UserProduct::find($request->id)->update(['status' => '2']);
+        $userProduct = UserProduct::find($request->id)->update(['status' => '3']);
         return response()->json($userProduct);
     }
 }

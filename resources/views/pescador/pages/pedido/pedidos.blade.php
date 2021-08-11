@@ -78,6 +78,9 @@
                             @csrf
                               @if($pedido->products->status == 0)
                               <input type="hidden" name="status" value="1">
+                              <button class="btn btn-danger bg-danger text-white">A PREPARAR</button>
+                              @elseif ($pedido->products->status == 1)
+                              <input type="hidden" name="status" value="2">
                               <button class="btn btn-danger bg-danger text-white">A LIBERAR</button>
                               @endif
                         </form>
