@@ -123,7 +123,7 @@
                                                         <tbody>
                                                             <tr class="table-light">
                                                                 <td><button type="button" class="btn btn-dark btn-sm">{{$userProduct->origem}}</button></td>
-                                                                <td><button type="button" class="btn {{$userProduct->status == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->status == 1) btn_liberar_pedido @endif"  data-route="{{route('admin.status.produto')}}" data-id="{{$userProduct->id}}">{{$userProduct->status == 1 ? 'A LIBERAR' : 'LIBERADO'}}</button></td>
+                                                                <td><button type="button" class="btn {{$userProduct->status == 0 ? 'btn-dark' : 'btn-success'}} btn-sm @if($userProduct->status == 1) btn_liberar_pedido @endif"  data-route="{{route('admin.status.produto')}}" data-id="{{$userProduct->id}}">{{$userProduct->status == 1 ? 'A LIBERAR' : 'LIBERARAR'}}</button></td>
                                                                 <td><button type="button" class="btn btn-dark btn-sm">ENVIAR</button></td>
                                                                 <td><button type="button" class="btn btn-dark btn-sm">GERAR</button></td>
                                                                 <td><button type="button" class="btn btn-dark btn-sm">ESCOLHER ENTREGADOR</button></td>
