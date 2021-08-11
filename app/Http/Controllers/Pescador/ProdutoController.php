@@ -43,9 +43,9 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
- 
+
         $user = auth()->user()->id;
-     
+
         $produto = Produto::create([
             'pescador_id' => $user,
             'especie_id' => $request->especie_id,
@@ -58,7 +58,7 @@ class ProdutoController extends Controller
             'arte' => $request->arte,
             'preco' => $request->preco,
             'unidade' => $request->unidade,
-     
+            // 'kg' => $request->kg,
             // 'image' => $request->image,
             // 'status' => $request->status,
         ]);

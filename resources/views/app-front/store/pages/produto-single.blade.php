@@ -124,13 +124,16 @@
             <h4>ZONA DE PESCA</h4>
             <h6>{{ $produto->zona }}</h6>
         </div>
+        @if ( $produto->quantidade_unidade)
         <div class="zona">
             <h4>UNIDADES</h4>
-            <h6>{{ $produto->quantidade_unidade }}</h6>
+            <h6>{{ $produto->quantidade_unidade }} - {{ $produto->quantidade_kg }}Kg </h6>
         </div>
         <div class="embarcação">
             <h4>EMBARCAÇÃO</h4>
             <h6>{{ $produto->embarcacao }}</h6>
         </div>
+        @endif
+
     @endcomponent
 @endsection
