@@ -129,11 +129,11 @@
             <h4>UNIDADES</h4>
             <h6>{{ $produto->quantidade_unidade }} - {{ $produto->quantidade_kg }}Kg </h6>
         </div>
+
+        @endif
         <div class="embarcação">
             <h4>EMBARCAÇÃO</h4>
             <h6>{{ $produto->embarcacao }}</h6>
         </div>
-        @endif
-
     @endcomponent
 @endsection
