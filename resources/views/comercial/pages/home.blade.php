@@ -95,7 +95,11 @@
                         </a>
                   </div>
                   <div class="col-5 text-center mt-3  altura pl">
-                        <a href="{{ route('consultor.compradores.ativo') }}"><i style="color: #36a6d4; font-size: 56px;"
+                        {{-- <a href="{{ route('consultor.compradores.ativo') }}"><i style="color: #36a6d4; font-size: 56px;"
+                                    class="fas fa-thumbs-up mb-2 pb-2"></i>
+                              <p>VER ATIVOS</p>
+                        </a> --}}
+                        <a href="#"><i style="color: #36a6d4; font-size: 56px;"
                                     class="fas fa-thumbs-up mb-2 pb-2"></i>
                               <p>VER ATIVOS</p>
                         </a>
