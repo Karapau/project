@@ -34,7 +34,7 @@
                                 </td>
                                 <td>
                                     @if($order->fatura)
-                                    <button type="button" class="btn btn-dark btn-sm ml-2">Faturarado</button>
+                                    <button type="button" class="btn btn-dark btn-sm ml-2">Faturado</button>
                                     @else
                                     <div>
                                         <form action="{{ route('admin.status.fatura', $order->id) }}" method="post">
