@@ -74,11 +74,9 @@ class ComercialPainelController extends Controller
         $comprador1 = CompradorIndividual::where('user_id', auth()->guard('consultor')->user()->id)->get();
         $comprador2 = CompradorColetivo::where('user_id', auth()->guard('consultor')->user()->id)->get();
 
-        $inativos_individual = CompradorIndividual::where('user_id', auth()->guard('consultor')->user()->id)->where('status', 0)->get();
-        $ativos_individual = CompradorIndividual::where('user_id', auth()->guard('consultor')->user()->id)->where('status', 1)->get();
-        $ativos_coletivo = Comprador::with('individuais', 'coletivos')->where('user_id', auth()->guard('consultor')->user()->id)->where('status', 1)->get();
+        $ativos = Comprador::with('individuais', 'coletivos')->where('user_id', auth()->guard('consultor')->user()->id)->where('status', 1)->get();
 
-        return view('comercial.pages.compradores-ativos', compact('comprador1', 'comprador2', 'ativos_coletivo', 'ativos_individual',));
+        return view('comercial.pages.compradores-ativos', compact('comprador1', 'comprador2', 'ativos'));
     }
     public function compradorListInativo()
     {
