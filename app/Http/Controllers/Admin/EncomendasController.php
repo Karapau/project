@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Comprador;
-use App\Models\AdressBuyer;
+use App\Models\Produto;
 use App\Models\PayImage;
+use App\Models\Comprador;
 use App\Models\UserOrder;
+use App\Models\AdressBuyer;
 use App\Models\UserProduct;
 use App\Models\SellToWallet;
 use Illuminate\Http\Request;
@@ -32,8 +33,8 @@ class EncomendasController extends Controller
         $orders  = PescadorPedido::where('order_id', $id)->with('adresses', 'pescador', 'orders', 'products', 'products2')->first();
         $comprador = Comprador::find($user_order->user_id);
         $address = AdressBuyer::find($user_order->adress);
-        if($orders->products2->count() > 0){
-            foreach($orders->products2 as $products){
+        if ($orders->products2->count() > 0) {
+            foreach ($orders->products2 as $products) {
                 $arrayGeral->itens += $products->item;
                 $arrayGeral->caixas += $products->caixas;
             }
@@ -44,7 +45,7 @@ class EncomendasController extends Controller
     public function download($id)
     {
         $comprovante = PayImage::where('order_id', $id)->orderBy('created_at', 'desc')->first();
-        $filepath = public_path('storage/comprovantes/'.$comprovante->path);
+        $filepath = public_path('storage/comprovantes/' . $comprovante->path);
 
         return response()->download($filepath);
     }
@@ -52,6 +53,16 @@ class EncomendasController extends Controller
     {
         $porto = UserOrder::find($id);
         $porto->status = $request->get('status');
+        if ($request->get('status') == 3) {
+            $products = UserProduct::where('order_id', $porto->id)->get();
+
+            foreach ($products as $product) {
+                $oldVal = Produto::find($product->product_id);
+                $newVal = $oldVal->quantidade_kg + $product->quantity;
+                $oldVal->update(['quantidade_kg' => $newVal]);
+            }
+        }
+
         $porto->save();
 
 
@@ -70,6 +81,4 @@ class EncomendasController extends Controller
         $porto->save();
         return redirect()->back();
     }
-
 }
-
