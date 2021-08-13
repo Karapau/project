@@ -31,18 +31,26 @@
             </div>
       </div>
       @foreach ($inativos_individual as $comp)
-      <div class="inativo my-3 text-center py-3">
+      <div class="inativo my-3 text-center py-3 acc accordition-header">
             <div class="container row">
                   <div class="col-4 dia">
-                   <p>0</p> 
+                   <p>0</p>
                   </div>
                   <div class="col-4">
-                       {{ $comp->name }} 
+                       {{ $comp->name }}
                   </div>
                   <div class="col-4">
-                      <span>Inativo</span> 
+                      <span>Inativo</span>
                   </div>
             </div>
+      </div>
+      <div class="acc accordition-body text-justify">
+        <div class="container text-black">
+            <p>Estabelecimento: {{ $comp->name }}</p>
+            <p>E-mail: {{ $comp->email }}</p>
+            <p>Telemóvel: {{ $comp->telemovel ?? 'Sem Telemóvel' }}</p>
+            <p>Tipo: {{ $comp->type }}</p>
+        </div>
       </div>
       @endforeach
 

@@ -53,7 +53,7 @@
       <div class="container mt-3">
             <div class="ativos px-4">
                   <div class="py-4">
-                        <a href=""> <i class="fas fa-thumbs-up"></i> Compradores Ativos</a>
+                        <a href="{{ route('consultor.compradores.ativo') }}"> <i class="fas fa-thumbs-up"></i> Compradores Ativos</a>
                         <h3>{{ $ativos->count() }}/100</h3>
                   </div>
             </div>
@@ -95,14 +95,14 @@
                         </a>
                   </div>
                   <div class="col-5 text-center mt-3  altura pl">
-                        {{-- <a href="{{ route('consultor.compradores.ativo') }}"><i style="color: #36a6d4; font-size: 56px;"
-                                    class="fas fa-thumbs-up mb-2 pb-2"></i>
-                              <p>VER ATIVOS</p>
-                        </a> --}}
-                        <a href="#"><i style="color: #36a6d4; font-size: 56px;"
+                        <a href="{{ route('consultor.compradores.ativo') }}"><i style="color: #36a6d4; font-size: 56px;"
                                     class="fas fa-thumbs-up mb-2 pb-2"></i>
                               <p>VER ATIVOS</p>
                         </a>
+                        {{-- <a href="#"><i style="color: #36a6d4; font-size: 56px;"
+                                    class="fas fa-thumbs-up mb-2 pb-2"></i>
+                              <p>VER ATIVOS</p>
+                        </a> --}}
                   </div>
 
                   <div class="col-5 text-center mt-3 pt-4 altura pl">

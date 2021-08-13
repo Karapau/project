@@ -31,7 +31,7 @@
           </div>
     </div>
     @foreach ($ativos as $comp)
-    <div class="ativo my-3 text-center py-3">
+    <div class="ativo my-3 text-center py-3 acc accordition-header">
           <div class="container row">
                 <div class="col-4 dia">
                  <p>0</p>
@@ -44,6 +44,14 @@
                 </div>
           </div>
     </div>
+    <div class="acc accordition-body text-justify">
+        <div class="container text-black">
+            <p>Estabelecimento: {{ $comp->name }}</p>
+            <p>E-mail: {{ $comp->email }}</p>
+            <p>Telemóvel: {{ $comp->telemovel ?? 'Sem Telemóvel' }}</p>
+            <p>Tipo: {{ $comp->type }}</p>
+        </div>
+      </div>
     @endforeach
 
 

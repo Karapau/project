@@ -35,3 +35,9 @@ function show() {
       $('.eye').removeClass('d-none');
       $('.eye-close').addClass('d-none');
 }
+$(document).ready(function() {
+    $('.accordition-header').on('click',function() {
+      $('.accordition-header').not(this).next().slideUp();
+      $(this).next().slideToggle();
+    });
+  });

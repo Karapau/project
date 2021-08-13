@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <!-- Fonts -->
+ 
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
         integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous">
@@ -45,6 +46,7 @@
     </script>
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="{{ url('js/jquery.countdown.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ url('painel/js/timer.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ url('app-comercial/js/script.js') }}"></script>

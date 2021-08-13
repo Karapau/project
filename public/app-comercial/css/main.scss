@@ -590,3 +590,23 @@ table th {
     transform: translate(-50%, -50%);
   }
 }
+.accordition-container {
+    padding: 1px;
+  }
+
+  .acc {
+    padding: 10px;
+  }
+
+  .accordition-header {
+
+    cursor: pointer;
+  }
+
+  .accordition-body {
+    display: none;
+    background: #fff;
+   p{
+       color: black !important;
+   }
+  }
