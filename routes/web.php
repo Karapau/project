@@ -107,6 +107,7 @@ Route::middleware(['auth'])->prefix('admin')->group( function () {
     Route::get('porto/tax/{id}', [PortoController::class, 'tax'])->name('admin.porto.tax');
     Route::post('porto/tax/store', [PortoController::class, 'taxStore'])->name('admin.porto.tax.store');
 
+    Route::get('adress/cep', [PortoController::class, 'buscaCep'])->name('adress.cep.admin');
 
     Route::get('estatistica/{id}', [EstatiscaDiariaController::class, 'index'])->name('admin.estatistica');
     Route::post('estatistica/store', [EstatiscaDiariaController::class, 'store'])->name('admin.estatistica.store');

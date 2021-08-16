@@ -17,7 +17,16 @@ class Porto extends Model
         'descarga',
         'controle_veterinario',
         'especies',
-        'sigla'
+        'sigla',
+        'codigo_postal',
+        'morada',
+        'regiao',
+        'porta',
+        'distrito',
+        'conselho',
+        'freguesia',
+        'latitude',
+        'longitude',
 
     ];
 

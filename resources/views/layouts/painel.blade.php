@@ -178,6 +178,7 @@
             $('[name="idproduto"]').val(idprod);
         });
     </script>
+
 </body>
 
 </html>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Especie;
 use App\Models\EspecieToPorto;
+use Illuminate\Support\Facades\Http;
 use App\Models\PortoTax;
 use Intervention\Image\ImageManagerStatic;
 
@@ -59,6 +60,16 @@ class PortoController extends Controller
             'controle_veterinario' => $data['controle_veterinario'],
             'image' => $name,
             'sigla' => $request->input('sigla'),
+            'codigo_postal' => $request->input('codigo_postal'),
+            'morada' => $request->input('morada'),
+            'regiao' => $request->input('regiao'),
+            'porta' => $request->input('porta'),
+            'distrito' => $request->input('distrito'),
+            'conselho' => $request->input('conselho'),
+            'freguesia' => $request->input('freguesia'),
+            'latitude' => $request->input('latitude'),
+            'longitude'  => $request->input('longitude'),
+
 
         ]);
         if ($porto) {
@@ -142,6 +153,15 @@ class PortoController extends Controller
         $porto->controle_veterinario = $request->get('controle_veterinario');
         // $porto->especies = $request->get('especies');
         $porto->sigla = $request->get('sigla');
+        $porto->codigo_postal = $request->get('codigo_postal');
+        $porto->morada = $request->get('morada');
+        $porto->regiao = $request->get('regiao');
+        $porto->porta = $request->get('porta');
+        $porto->distrito = $request->get('distrito');
+        $porto->conselho = $request->get('conselho');
+        $porto->freguesia = $request->get('freguesia');
+        $porto->latitude = $request->get('latitude');
+        $porto->longitude = $request->get('longitude');
 
 
 
@@ -188,7 +208,17 @@ class PortoController extends Controller
 
     public function taxstore(Request $request)
     {
-         $porto = PortoTax::create($request->all());
-         return redirect()->route('admin.porto')->with('success', "Taxa criado com sucesso!");
+        $porto = PortoTax::create($request->all());
+        return redirect()->route('admin.porto')->with('success', "Taxa criado com sucesso!");
+    }
+
+    public function buscaCep(Request $request)
+    {
+        $valor = $request->search;
+        $cep = str_replace('-', '', $valor);
+
+        $url = Http::get('https://api.duminio.com/ptcp/ptapi60ec808f3e8951.33243239/' . $cep);
+
+        return $url->collect();
     }
 }

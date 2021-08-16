@@ -65,7 +65,7 @@
                                     <h5>{{  '€ '.number_format($pedido->products->price, 2, ',', '.') }}</h5>
                               </div>
                               <div>
-                                    <h5>{{  '€ '.number_format($pedido->orders->total, 2, ',', '.') }}</h5>
+                                    <h5>{{  '€ '.number_format($pedido->products->value, 2, ',', '.') }}</h5>
                               </div>
                         </div>
 

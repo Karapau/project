@@ -304,6 +304,29 @@
             $('.js-example-basic-multiple').select2();
         });
     </script>
+                <script type="text/javascript">
+
+                    $('#buscaring').on('click', function() {
+                        $value = $('#ceping').val();
+                        $.ajax({
+                            type: 'get',
+                            url: '{{ url('admin/adress/cep') }}',
+                            data: {
+                                'search': $value
+                            },
+                            success: function(data) {
+                                  console.log(data);
+                                  $('#morada').val(data.Morada);
+                                  $('#regiao').val(data.Localidade);
+                                  $('#distrito').val(data.Distrito);
+                                  $('#conselho').val(data.Concelho);
+                                  $('#freguesia').val(data.Freguesia);
+                                  $('#latitude').val(data.Latitude);
+                                  $('#longitude').val(data.Longitude);
+                            }
+                        });
+                    })
+                </script>
 </body>
 
 </html>
